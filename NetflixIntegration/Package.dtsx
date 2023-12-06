@@ -1,0 +1,1041 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="12/6/2023 5:51:13 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="NAZUNA"
+  DTS:CreatorName="NAZUNA\Daniel"
+  DTS:DTSID="{0B4FE0CA-7AA4-4BFC-A1AE-3D5CEB38F10F}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5397.1"
+  DTS:LocaleID="2057"
+  DTS:ObjectName="Package"
+  DTS:PackageType="5"
+  DTS:VersionBuild="24"
+  DTS:VersionGUID="{02F7716C-50D7-4EC9-9406-C3A7DFEFF69B}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[NAZUNA.Staging]"
+      DTS:CreationName="ADO.NET:System.Data.SqlClient.SqlConnection, System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+      DTS:DTSID="{BAD1F268-B297-4A7C-BB39-7ED5930A747C}"
+      DTS:ObjectName="NAZUNA.Staging">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=NAZUNA;Initial Catalog=Staging;Integrated Security=True;Encrypt=False;Application Name=SSIS-Package-{BAD1F268-B297-4A7C-BB39-7ED5930A747C}NAZUNA.Staging;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Netflix Titles csv]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{B59FE4AA-3266-4585-8774-49BCBA0354F8}"
+      DTS:ObjectName="Netflix Titles csv">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="2057"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x0022_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="P:\BME\UzInt\csv\netflix_titles.csv">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="show_id"
+              DTS:DTSID="{0887D105-131E-400A-8087-ED9CD702FAD6}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="type"
+              DTS:DTSID="{6FE18251-0A4B-4CF1-8012-1630B211FB03}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="500"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="title"
+              DTS:DTSID="{B3FF5978-6452-4955-A187-DFAF1487B55C}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="1000"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="director"
+              DTS:DTSID="{FEE39AFA-9294-4B2B-AAFF-C75DB30B7B47}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="1000"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="cast"
+              DTS:DTSID="{5794D731-F926-4122-99E5-79FA42CF9D1A}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="500"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="country"
+              DTS:DTSID="{619582B6-68D0-4DD1-A3BA-A097949A3240}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="7"
+              DTS:TextQualified="True"
+              DTS:ObjectName="date_added"
+              DTS:DTSID="{77014D6F-5345-46A6-B0F7-5E97558F04A9}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="21"
+              DTS:TextQualified="True"
+              DTS:ObjectName="release_year"
+              DTS:DTSID="{80A13742-9231-4B1D-A33E-55D51451879C}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="500"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="rating"
+              DTS:DTSID="{9EED2298-C1CB-4DEE-A81C-0BE2889E9E93}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="duration"
+              DTS:DTSID="{0BDB66FB-052F-4530-AE3A-B9B5396AE154}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="1000"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="listed_in"
+              DTS:DTSID="{DAC8209E-0CC3-4E57-9334-6D6F492921B4}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000A_"
+              DTS:MaximumWidth="1000"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="description"
+              DTS:DTSID="{0B3F4106-E532-4D87-B8BB-F1B73A6AD8AE}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Data Flow Task"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{BF136F12-C741-40F0-B698-3CF0706EEDF8}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Data Flow Task">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Data Flow Task\ADO NET Destination"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="Loads data into an ADO.NET-compliant database that uses a database table or view. Load data into a new or existing table. For example, use an ADO.NET provider for ODBC to load data into an ODBC destination.;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Loads data into an ADO.NET-compliant database that uses a database table or view. Load data into a new or existing table. For example, use an ADO.NET provider for ODBC to load data into an ODBC destination."
+              name="ADO NET Destination"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="The Destination database table name."
+                  expressionType="Notify"
+                  name="TableOrViewName"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">"dbo"."NetflixTitles"</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify the number of rows per batch. The default is 0 which uses the same size as SSIS internal buffer. "
+                  expressionType="Notify"
+                  name="BatchSize">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out. A value of 0 indicates infinite time-out. "
+                  expressionType="Notify"
+                  name="CommandTimeout">30</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether to use the SqlBulkCopy interface to improve the performance of bulk insert operations. Only certain providers support this interface."
+                  expressionType="Notify"
+                  name="UseBulkInsertWhenPossible">true</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.ADONETDestination</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\ADO NET Destination.Connections[IDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[NAZUNA.Staging]"
+                  connectionManagerRefId="Package.ConnectionManagers[NAZUNA.Staging]"
+                  description="Managed connection manager"
+                  name="IDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input]"
+                  errorRowDisposition="IgnoreFailure"
+                  hasSideEffects="true"
+                  name="ADO NET Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[show_id]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="show_id"
+                      externalMetadataColumnId="Package\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[show_id]"
+                      lineageId="Package\Data Flow Task\Netflix Titles CSV parse.Outputs[Flat File Source Output].Columns[show_id]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[type]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="type"
+                      externalMetadataColumnId="Package\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[type]"
+                      lineageId="Package\Data Flow Task\Netflix Titles CSV parse.Outputs[Flat File Source Output].Columns[type]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[title]"
+                      cachedDataType="wstr"
+                      cachedLength="500"
+                      cachedName="title"
+                      externalMetadataColumnId="Package\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[title]"
+                      lineageId="Package\Data Flow Task\Netflix Titles CSV parse.Outputs[Flat File Source Output].Columns[title]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[director]"
+                      cachedDataType="wstr"
+                      cachedLength="1000"
+                      cachedName="director"
+                      externalMetadataColumnId="Package\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[director]"
+                      lineageId="Package\Data Flow Task\Netflix Titles CSV parse.Outputs[Flat File Source Output].Columns[director]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[cast]"
+                      cachedDataType="wstr"
+                      cachedLength="1000"
+                      cachedName="cast"
+                      externalMetadataColumnId="Package\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[cast]"
+                      lineageId="Package\Data Flow Task\Netflix Titles CSV parse.Outputs[Flat File Source Output].Columns[cast]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[country]"
+                      cachedDataType="wstr"
+                      cachedLength="500"
+                      cachedName="country"
+                      externalMetadataColumnId="Package\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[country]"
+                      lineageId="Package\Data Flow Task\Netflix Titles CSV parse.Outputs[Flat File Source Output].Columns[country]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[date_added]"
+                      cachedDataType="date"
+                      cachedName="date_added"
+                      externalMetadataColumnId="Package\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[date_added]"
+                      lineageId="Package\Data Flow Task\Netflix Titles CSV parse.Outputs[Flat File Source Output].Columns[date_added]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[release_year]"
+                      cachedDataType="ui8"
+                      cachedName="release_year"
+                      externalMetadataColumnId="Package\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[release_year]"
+                      lineageId="Package\Data Flow Task\Netflix Titles CSV parse.Outputs[Flat File Source Output].Columns[release_year]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[rating]"
+                      cachedDataType="wstr"
+                      cachedLength="500"
+                      cachedName="rating"
+                      externalMetadataColumnId="Package\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[rating]"
+                      lineageId="Package\Data Flow Task\Netflix Titles CSV parse.Outputs[Flat File Source Output].Columns[rating]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[duration]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="duration"
+                      externalMetadataColumnId="Package\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[duration]"
+                      lineageId="Package\Data Flow Task\Netflix Titles CSV parse.Outputs[Flat File Source Output].Columns[duration]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[listed_in]"
+                      cachedDataType="wstr"
+                      cachedLength="1000"
+                      cachedName="listed_in"
+                      externalMetadataColumnId="Package\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[listed_in]"
+                      lineageId="Package\Data Flow Task\Netflix Titles CSV parse.Outputs[Flat File Source Output].Columns[listed_in]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[description]"
+                      cachedDataType="wstr"
+                      cachedLength="1000"
+                      cachedName="description"
+                      externalMetadataColumnId="Package\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[description]"
+                      lineageId="Package\Data Flow Task\Netflix Titles CSV parse.Outputs[Flat File Source Output].Columns[description]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[show_id]"
+                      dataType="wstr"
+                      length="2147483647"
+                      name="show_id" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[type]"
+                      dataType="wstr"
+                      length="2147483647"
+                      name="type" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[title]"
+                      dataType="wstr"
+                      length="2147483647"
+                      name="title" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[director]"
+                      dataType="wstr"
+                      length="2147483647"
+                      name="director" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[cast]"
+                      dataType="wstr"
+                      length="2147483647"
+                      name="cast" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[country]"
+                      dataType="wstr"
+                      length="2147483647"
+                      name="country" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[date_added]"
+                      dataType="dbTimeStamp"
+                      name="date_added" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[release_year]"
+                      dataType="i4"
+                      name="release_year" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[rating]"
+                      dataType="wstr"
+                      length="2147483647"
+                      name="rating" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[duration]"
+                      dataType="wstr"
+                      length="2147483647"
+                      name="duration" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[listed_in]"
+                      dataType="wstr"
+                      length="2147483647"
+                      name="listed_in" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[description]"
+                      dataType="wstr"
+                      length="2147483647"
+                      name="description" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\ADO NET Destination.Outputs[ADO NET Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="ADO NET Destination Error Output"
+                  synchronousInputId="Package\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\ADO NET Destination.Outputs[ADO NET Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\ADO NET Destination.Outputs[ADO NET Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\ADO NET Destination.Outputs[ADO NET Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\ADO NET Destination.Outputs[ADO NET Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\Conditional Split"
+              componentClassID="Microsoft.ConditionalSplit"
+              contactInfo="Conditional Split;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Routes data rows to different outputs depending on the content of the data. Use conditions (SSIS expressions) to specify which rows are routed. For example, separate records that need to be cleaned from those that are ready to be loaded or route only a subset of records."
+              name="Conditional Split"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\Conditional Split.Inputs[Conditional Split Input]"
+                  description="Input to the Conditional Split Transformation"
+                  name="Conditional Split Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Conditional Split.Inputs[Conditional Split Input].Columns[date_added]"
+                      cachedDataType="date"
+                      cachedName="date_added"
+                      lineageId="Package\Data Flow Task\Netflix Titles CSV parse.Outputs[Flat File Source Output].Columns[date_added]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Conditional Split.Outputs[Valid added Date]"
+                  description="Output 1 of the Conditional Split Transformation"
+                  errorOrTruncationOperation="Computation"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Valid added Date"
+                  synchronousInputId="Package\Data Flow Task\Conditional Split.Inputs[Conditional Split Input]"
+                  truncationRowDisposition="FailComponent">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                      name="Expression">#{Package\Data Flow Task\Netflix Titles CSV parse.Outputs[Flat File Source Output].Columns[date_added]} &gt; (DT_DATE)("1997-08-29")</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the friendly version of the expression. This expression version uses column names."
+                      expressionType="Notify"
+                      name="FriendlyExpression">date_added &gt; (DT_DATE)("1997-08-29")</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                      name="EvaluationOrder">0</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Conditional Split.Outputs[Conditional Split Default Output]"
+                  description="Default Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  name="Conditional Split Default Output"
+                  synchronousInputId="Package\Data Flow Task\Conditional Split.Inputs[Conditional Split Input]">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      name="IsDefaultOut">true</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Conditional Split.Outputs[Conditional Split Error Output]"
+                  description="Error Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Conditional Split Error Output"
+                  synchronousInputId="Package\Data Flow Task\Conditional Split.Inputs[Conditional Split Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\Netflix Titles CSV parse"
+              componentClassID="Microsoft.FlatFileSource"
+              contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Flat File Source"
+              localeId="2057"
+              name="Netflix Titles CSV parse"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether zero-length columns are treated as null."
+                  name="RetainNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of an output column containing the file name. If no name is specified, no output column containing the file name will be generated."
+                  name="FileNameColumnName"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\Netflix Titles CSV parse.Connections[FlatFileConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Netflix Titles csv]"
+                  connectionManagerRefId="Package.ConnectionManagers[Netflix Titles csv]"
+                  name="FlatFileConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Netflix Titles CSV parse.Outputs[Flat File Source Output]"
+                  name="Flat File Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Netflix Titles CSV parse.Outputs[Flat File Source Output].Columns[show_id]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Netflix Titles CSV parse.Outputs[Flat File Source Output].ExternalColumns[show_id]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Netflix Titles CSV parse.Outputs[Flat File Source Output].Columns[show_id]"
+                      name="show_id"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Netflix Titles CSV parse.Outputs[Flat File Source Output].Columns[type]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Netflix Titles CSV parse.Outputs[Flat File Source Output].ExternalColumns[type]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Netflix Titles CSV parse.Outputs[Flat File Source Output].Columns[type]"
+                      name="type"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Netflix Titles CSV parse.Outputs[Flat File Source Output].Columns[title]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Netflix Titles CSV parse.Outputs[Flat File Source Output].ExternalColumns[title]"
+                      length="500"
+                      lineageId="Package\Data Flow Task\Netflix Titles CSV parse.Outputs[Flat File Source Output].Columns[title]"
+                      name="title"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Netflix Titles CSV parse.Outputs[Flat File Source Output].Columns[director]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Netflix Titles CSV parse.Outputs[Flat File Source Output].ExternalColumns[director]"
+                      length="1000"
+                      lineageId="Package\Data Flow Task\Netflix Titles CSV parse.Outputs[Flat File Source Output].Columns[director]"
+                      name="director"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Netflix Titles CSV parse.Outputs[Flat File Source Output].Columns[cast]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Netflix Titles CSV parse.Outputs[Flat File Source Output].ExternalColumns[cast]"
+                      length="1000"
+                      lineageId="Package\Data Flow Task\Netflix Titles CSV parse.Outputs[Flat File Source Output].Columns[cast]"
+                      name="cast"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Netflix Titles CSV parse.Outputs[Flat File Source Output].Columns[country]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Netflix Titles CSV parse.Outputs[Flat File Source Output].ExternalColumns[country]"
+                      length="500"
+                      lineageId="Package\Data Flow Task\Netflix Titles CSV parse.Outputs[Flat File Source Output].Columns[country]"
+                      name="country"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Netflix Titles CSV parse.Outputs[Flat File Source Output].Columns[date_added]"
+                      dataType="date"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Netflix Titles CSV parse.Outputs[Flat File Source Output].ExternalColumns[date_added]"
+                      lineageId="Package\Data Flow Task\Netflix Titles CSV parse.Outputs[Flat File Source Output].Columns[date_added]"
+                      name="date_added"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Netflix Titles CSV parse.Outputs[Flat File Source Output].Columns[release_year]"
+                      dataType="ui8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Netflix Titles CSV parse.Outputs[Flat File Source Output].ExternalColumns[release_year]"
+                      lineageId="Package\Data Flow Task\Netflix Titles CSV parse.Outputs[Flat File Source Output].Columns[release_year]"
+                      name="release_year"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Netflix Titles CSV parse.Outputs[Flat File Source Output].Columns[rating]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Netflix Titles CSV parse.Outputs[Flat File Source Output].ExternalColumns[rating]"
+                      length="500"
+                      lineageId="Package\Data Flow Task\Netflix Titles CSV parse.Outputs[Flat File Source Output].Columns[rating]"
+                      name="rating"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Netflix Titles CSV parse.Outputs[Flat File Source Output].Columns[duration]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Netflix Titles CSV parse.Outputs[Flat File Source Output].ExternalColumns[duration]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Netflix Titles CSV parse.Outputs[Flat File Source Output].Columns[duration]"
+                      name="duration"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Netflix Titles CSV parse.Outputs[Flat File Source Output].Columns[listed_in]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Netflix Titles CSV parse.Outputs[Flat File Source Output].ExternalColumns[listed_in]"
+                      length="1000"
+                      lineageId="Package\Data Flow Task\Netflix Titles CSV parse.Outputs[Flat File Source Output].Columns[listed_in]"
+                      name="listed_in"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Netflix Titles CSV parse.Outputs[Flat File Source Output].Columns[description]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Netflix Titles CSV parse.Outputs[Flat File Source Output].ExternalColumns[description]"
+                      length="1000"
+                      lineageId="Package\Data Flow Task\Netflix Titles CSV parse.Outputs[Flat File Source Output].Columns[description]"
+                      name="description"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Netflix Titles CSV parse.Outputs[Flat File Source Output].ExternalColumns[show_id]"
+                      dataType="wstr"
+                      length="50"
+                      name="show_id" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Netflix Titles CSV parse.Outputs[Flat File Source Output].ExternalColumns[type]"
+                      dataType="wstr"
+                      length="50"
+                      name="type" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Netflix Titles CSV parse.Outputs[Flat File Source Output].ExternalColumns[title]"
+                      dataType="wstr"
+                      length="500"
+                      name="title" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Netflix Titles CSV parse.Outputs[Flat File Source Output].ExternalColumns[director]"
+                      dataType="wstr"
+                      length="1000"
+                      name="director" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Netflix Titles CSV parse.Outputs[Flat File Source Output].ExternalColumns[cast]"
+                      dataType="wstr"
+                      length="1000"
+                      name="cast" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Netflix Titles CSV parse.Outputs[Flat File Source Output].ExternalColumns[country]"
+                      dataType="wstr"
+                      length="500"
+                      name="country" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Netflix Titles CSV parse.Outputs[Flat File Source Output].ExternalColumns[date_added]"
+                      dataType="date"
+                      name="date_added" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Netflix Titles CSV parse.Outputs[Flat File Source Output].ExternalColumns[release_year]"
+                      dataType="ui8"
+                      name="release_year" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Netflix Titles CSV parse.Outputs[Flat File Source Output].ExternalColumns[rating]"
+                      dataType="wstr"
+                      length="500"
+                      name="rating" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Netflix Titles CSV parse.Outputs[Flat File Source Output].ExternalColumns[duration]"
+                      dataType="wstr"
+                      length="50"
+                      name="duration" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Netflix Titles CSV parse.Outputs[Flat File Source Output].ExternalColumns[listed_in]"
+                      dataType="wstr"
+                      length="1000"
+                      name="listed_in" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Netflix Titles CSV parse.Outputs[Flat File Source Output].ExternalColumns[description]"
+                      dataType="wstr"
+                      length="1000"
+                      name="description" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Netflix Titles CSV parse.Outputs[Flat File Source Error Output]"
+                  isErrorOut="true"
+                  name="Flat File Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Netflix Titles CSV parse.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      codePage="1252"
+                      dataType="text"
+                      description="Flat File Source Error Output Column"
+                      lineageId="Package\Data Flow Task\Netflix Titles CSV parse.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      name="Flat File Source Error Output Column" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Netflix Titles CSV parse.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Netflix Titles CSV parse.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Netflix Titles CSV parse.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Netflix Titles CSV parse.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Data Flow Task.Paths[Flat File Source Output]"
+              endId="Package\Data Flow Task\Conditional Split.Inputs[Conditional Split Input]"
+              name="Flat File Source Output"
+              startId="Package\Data Flow Task\Netflix Titles CSV parse.Outputs[Flat File Source Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Valid added Date]"
+              endId="Package\Data Flow Task\ADO NET Destination.Inputs[ADO NET Destination Input]"
+              name="Valid added Date"
+              startId="Package\Data Flow Task\Conditional Split.Outputs[Valid added Date]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\purge DB"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{75D93578-1792-4641-BFFE-F1A56F02A4E6}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="purge DB"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{BAD1F268-B297-4A7C-BB39-7ED5930A747C}"
+          SQLTask:SqlStatementSource="truncate table [NetflixTitles]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{66C7234E-E165-4E43-9C81-E99234791B7A}"
+      DTS:From="Package\purge DB"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Data Flow Task" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="150.4,41.6"
+          Id="Package\Data Flow Task"
+          TopLeft="361.333317169713,209.366665666236" />
+        <NodeLayout
+          Size="122.4,41.6"
+          Id="Package\purge DB"
+          TopLeft="189.166656331056,195.866665304634" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="311.566656331056,216.666665304634">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="49.7666608386568,13.5000003616016"
+              Start="0,0"
+              End="42.2666608386568,13.5000003616016">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="20.8833304193284,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="20.8833304193284,0"
+                    Point2="24.8833304193284,0"
+                    Point3="24.8833304193284,4" />
+                  <mssgle:LineSegment
+                    End="24.8833304193284,9.50000036160162" />
+                  <mssgle:CubicBezierSegment
+                    Point1="24.8833304193284,9.50000036160162"
+                    Point2="24.8833304193284,13.5000003616016"
+                    Point3="28.8833304193284,13.5000003616016" />
+                  <mssgle:LineSegment
+                    End="42.2666608386568,13.5000003616016" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Data Flow Task">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="188,41.6"
+          Id="Package\Data Flow Task\Netflix Titles CSV parse"
+          TopLeft="211.499996930361,123.499998241663" />
+        <NodeLayout
+          Size="179.2,41.6"
+          Id="Package\Data Flow Task\ADO NET Destination"
+          TopLeft="176.833331857291,339.466662462288" />
+        <NodeLayout
+          Size="153.6,41.6"
+          Id="Package\Data Flow Task\Conditional Split"
+          TopLeft="229.166654145553,227.933331748313" />
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Flat File Source Output]"
+          TopLeft="305.733325537957,165.099998241663">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,62.8333335066503"
+              Start="0,0"
+              End="0,55.3333335066503">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,55.3333335066503" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Valid added Date]"
+          TopLeft="305.966654145553,269.533331748313">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-39.533322288262,69.9333307139746"
+              Start="0,0"
+              End="-39.533322288262,62.4333307139746">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,30.9666653569873" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,30.9666653569873"
+                    Point2="0,34.9666653569873"
+                    Point3="-4,34.9666653569873" />
+                  <mssgle:LineSegment
+                    End="-35.533322288262,34.9666653569873" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-35.533322288262,34.9666653569873"
+                    Point2="-39.533322288262,34.9666653569873"
+                    Point3="-39.533322288262,38.9666653569873" />
+                  <mssgle:LineSegment
+                    End="-39.533322288262,62.4333307139746" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-58.316192394131,39.9666653569873,77.0990625,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\ADO NET Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

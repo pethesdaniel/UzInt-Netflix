@@ -11,8 +11,8 @@
   DTS:LocaleID="2057"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="81"
-  DTS:VersionGUID="{71E13B5C-465A-4532-AE38-D44F46D6E93D}">
+  DTS:VersionBuild="91"
+  DTS:VersionGUID="{8656443F-B477-416E-A9A7-098B7CDAACFA}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -300,6 +300,1670 @@
   </DTS:ConnectionManagers>
   <DTS:Variables />
   <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Calculate KPI"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{5771D1DA-C187-4250-912F-EFC407705D2C}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Calculate KPI"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Calculate KPI\ADO NET Destination"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="Loads data into an ADO.NET-compliant database that uses a database table or view. Load data into a new or existing table. For example, use an ADO.NET provider for ODBC to load data into an ODBC destination.;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Loads data into an ADO.NET-compliant database that uses a database table or view. Load data into a new or existing table. For example, use an ADO.NET provider for ODBC to load data into an ODBC destination."
+              name="ADO NET Destination"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="The Destination database table name."
+                  expressionType="Notify"
+                  name="TableOrViewName"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">"dbo"."NetflixKPI"</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify the number of rows per batch. The default is 0 which uses the same size as SSIS internal buffer. "
+                  expressionType="Notify"
+                  name="BatchSize">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out. A value of 0 indicates infinite time-out. "
+                  expressionType="Notify"
+                  name="CommandTimeout">30</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether to use the SqlBulkCopy interface to improve the performance of bulk insert operations. Only certain providers support this interface."
+                  expressionType="Notify"
+                  name="UseBulkInsertWhenPossible">true</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.ADONETDestination</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Calculate KPI\ADO NET Destination.Connections[IDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Destination]"
+                  connectionManagerRefId="Package.ConnectionManagers[Destination]"
+                  description="Managed connection manager"
+                  name="IDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Calculate KPI\ADO NET Destination.Inputs[ADO NET Destination Input]"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="ADO NET Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Calculate KPI\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[year]"
+                      cachedDataType="i4"
+                      cachedName="year"
+                      cachedSortKeyPosition="1"
+                      externalMetadataColumnId="Package\Calculate KPI\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[year]"
+                      lineageId="Package\Calculate KPI\Merge Join.Outputs[Merge Join Output].Columns[year]" />
+                    <inputColumn
+                      refId="Package\Calculate KPI\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[KPI]"
+                      cachedDataType="i4"
+                      cachedName="KPI"
+                      externalMetadataColumnId="Package\Calculate KPI\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[kpi]"
+                      lineageId="Package\Calculate KPI\Merge Join.Outputs[Merge Join Output].Columns[KPI]" />
+                    <inputColumn
+                      refId="Package\Calculate KPI\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[last_year_kpi]"
+                      cachedDataType="i4"
+                      cachedName="last_year_kpi"
+                      externalMetadataColumnId="Package\Calculate KPI\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[last_year_kpi]"
+                      lineageId="Package\Calculate KPI\Merge Join.Outputs[Merge Join Output].Columns[last_year_kpi]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Calculate KPI\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[year]"
+                      dataType="numeric"
+                      name="year"
+                      precision="18" />
+                    <externalMetadataColumn
+                      refId="Package\Calculate KPI\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[kpi]"
+                      dataType="numeric"
+                      name="kpi"
+                      precision="18" />
+                    <externalMetadataColumn
+                      refId="Package\Calculate KPI\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[last_year_kpi]"
+                      dataType="numeric"
+                      name="last_year_kpi"
+                      precision="18" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Calculate KPI\ADO NET Destination.Outputs[ADO NET Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="ADO NET Destination Error Output"
+                  synchronousInputId="Package\Calculate KPI\ADO NET Destination.Inputs[ADO NET Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Calculate KPI\ADO NET Destination.Outputs[ADO NET Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Calculate KPI\ADO NET Destination.Outputs[ADO NET Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Calculate KPI\ADO NET Destination.Outputs[ADO NET Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Calculate KPI\ADO NET Destination.Outputs[ADO NET Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Calculate KPI\ADO NET Source"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="Consumes data from SQL Server, OLE DB, ODBC, or Oracle, using the corresponding .NET Framework data provider. Use a Transact-SQL statement to define the result set. For example, extract data from SQL Server with the .NET Framework data provider for SQL Server.;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="Consumes data from SQL Server, OLE DB, ODBC, or Oracle, using the corresponding .NET Framework data provider. Use a Transact-SQL statement to define the result set. For example, extract data from SQL Server with the .NET Framework data provider for SQL Server."
+              name="ADO NET Source"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement used by the component to extract data."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select s.year, COUNT(r.rating) as KPI
+from NetflixRatings r
+inner join NetflixTitles t on t.show_id = r.show_id
+inner join NetflixStats s on s.year = t.release_year
+where r.rating &gt; 7.0
+group by s.year</property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">30</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether to allow non-string external columns to be implicitly converted to strings at the output columns."
+                  name="AllowImplicitStringConversion">true</property>
+                <property
+                  dataType="System.String"
+                  description="The Source database table name."
+                  expressionType="Notify"
+                  name="TableOrViewName"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">"dbo"."NetflixRatings"</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify the mode to retrieve external column information"
+                  name="AccessMode"
+                  typeConverter="Microsoft.SqlServer.Dts.Pipeline.DataReaderSourceAdapter+EnumToStringConverter">2</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.DataReaderSourceAdapter</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Calculate KPI\ADO NET Source.Connections[IDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Destination]"
+                  connectionManagerRefId="Package.ConnectionManagers[Destination]"
+                  description="Managed connection manager"
+                  name="IDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Calculate KPI\ADO NET Source.Outputs[ADO NET Source Output]"
+                  name="ADO NET Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Calculate KPI\ADO NET Source.Outputs[ADO NET Source Output].Columns[year]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Calculate KPI\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[year]"
+                      lineageId="Package\Calculate KPI\ADO NET Source.Outputs[ADO NET Source Output].Columns[year]"
+                      name="year"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Calculate KPI\ADO NET Source.Outputs[ADO NET Source Output].Columns[KPI]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Calculate KPI\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[KPI]"
+                      lineageId="Package\Calculate KPI\ADO NET Source.Outputs[ADO NET Source Output].Columns[KPI]"
+                      name="KPI"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Calculate KPI\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[year]"
+                      dataType="i4"
+                      name="year" />
+                    <externalMetadataColumn
+                      refId="Package\Calculate KPI\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[KPI]"
+                      dataType="i4"
+                      name="KPI" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Calculate KPI\ADO NET Source.Outputs[ADO NET Source Error Output]"
+                  isErrorOut="true"
+                  name="ADO NET Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Calculate KPI\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[year]"
+                      dataType="i4"
+                      lineageId="Package\Calculate KPI\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[year]"
+                      name="year" />
+                    <outputColumn
+                      refId="Package\Calculate KPI\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[KPI]"
+                      dataType="i4"
+                      lineageId="Package\Calculate KPI\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[KPI]"
+                      name="KPI" />
+                    <outputColumn
+                      refId="Package\Calculate KPI\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Calculate KPI\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Calculate KPI\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Calculate KPI\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Calculate KPI\Derived Column"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived Column"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Calculate KPI\Derived Column.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Calculate KPI\Derived Column.Inputs[Derived Column Input].Columns[last_year_kpi]"
+                      cachedDataType="i4"
+                      cachedName="last_year_kpi"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Calculate KPI\Merge Join.Outputs[Merge Join Output].Columns[last_year_kpi]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[REPLACENULL](#{Package\Calculate KPI\Merge Join.Outputs[Merge Join Output].Columns[last_year_kpi]},0)</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">REPLACENULL(last_year_kpi,0)</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Calculate KPI\Derived Column.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Calculate KPI\Derived Column.Inputs[Derived Column Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Calculate KPI\Derived Column.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Calculate KPI\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Calculate KPI\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Calculate KPI\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Calculate KPI\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Calculate KPI\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Calculate KPI\Merge Join"
+              componentClassID="Microsoft.MergeJoin"
+              contactInfo="Merge Join;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Combine two sorted data flows into one using the FULL, LEFT, or INNER join. We recommend this transformation when data flows can be sorted at their sources."
+              name="Merge Join"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of join to perform."
+                  name="JoinType"
+                  typeConverter="JoinType">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the number of columns in the ordering key."
+                  name="NumKeyColumns">1</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the null values are treated as equal values."
+                  name="TreatNullsAsEqual">true</property>
+                <property
+                  dataType="System.Int32"
+                  description="Indicates the requested maximum buffers per input before blocking."
+                  name="MaxBuffersPerInput">5</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Calculate KPI\Merge Join.Inputs[Merge Join Left Input]"
+                  hasSideEffects="true"
+                  name="Merge Join Left Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Calculate KPI\Merge Join.Inputs[Merge Join Left Input].Columns[year]"
+                      cachedDataType="i4"
+                      cachedName="year"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\Calculate KPI\Sort.Outputs[Sort Output].Columns[year]" />
+                    <inputColumn
+                      refId="Package\Calculate KPI\Merge Join.Inputs[Merge Join Left Input].Columns[KPI]"
+                      cachedDataType="i4"
+                      cachedName="KPI"
+                      lineageId="Package\Calculate KPI\Sort.Outputs[Sort Output].Columns[KPI]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\Calculate KPI\Merge Join.Inputs[Merge Join Right Input]"
+                  hasSideEffects="true"
+                  name="Merge Join Right Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Calculate KPI\Merge Join.Inputs[Merge Join Right Input].Columns[last_year]"
+                      cachedDataType="i4"
+                      cachedName="last_year"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\Calculate KPI\Sort 1.Outputs[Sort Output].Columns[last_year]" />
+                    <inputColumn
+                      refId="Package\Calculate KPI\Merge Join.Inputs[Merge Join Right Input].Columns[KPI]"
+                      cachedDataType="i4"
+                      cachedName="KPI"
+                      lineageId="Package\Calculate KPI\Sort 1.Outputs[Sort Output].Columns[KPI]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Calculate KPI\Merge Join.Outputs[Merge Join Output]"
+                  isSorted="true"
+                  name="Merge Join Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Calculate KPI\Merge Join.Outputs[Merge Join Output].Columns[year]"
+                      dataType="i4"
+                      lineageId="Package\Calculate KPI\Merge Join.Outputs[Merge Join Output].Columns[year]"
+                      name="year"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Calculate KPI\Merge Join.Inputs[Merge Join Left Input].Columns[year]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Calculate KPI\Merge Join.Outputs[Merge Join Output].Columns[KPI]"
+                      dataType="i4"
+                      lineageId="Package\Calculate KPI\Merge Join.Outputs[Merge Join Output].Columns[KPI]"
+                      name="KPI">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Calculate KPI\Merge Join.Inputs[Merge Join Left Input].Columns[KPI]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Calculate KPI\Merge Join.Outputs[Merge Join Output].Columns[last_year_kpi]"
+                      dataType="i4"
+                      lineageId="Package\Calculate KPI\Merge Join.Outputs[Merge Join Output].Columns[last_year_kpi]"
+                      name="last_year_kpi">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Calculate KPI\Merge Join.Inputs[Merge Join Right Input].Columns[KPI]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Calculate KPI\Multicast"
+              componentClassID="Microsoft.Multicast"
+              contactInfo="Multicast;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Distributes every input row to every row in one or more outputs. For example, branch your data flow to make a copy of data so that some values can be masked before sharing with external partners."
+              name="Multicast">
+              <inputs>
+                <input
+                  refId="Package\Calculate KPI\Multicast.Inputs[Multicast Input 1]"
+                  name="Multicast Input 1">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Calculate KPI\Multicast.Outputs[Multicast Output 1]"
+                  deleteOutputOnPathDetached="true"
+                  name="Multicast Output 1"
+                  synchronousInputId="Package\Calculate KPI\Multicast.Inputs[Multicast Input 1]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Calculate KPI\Multicast.Outputs[Multicast Output 2]"
+                  deleteOutputOnPathDetached="true"
+                  name="Multicast Output 2"
+                  synchronousInputId="Package\Calculate KPI\Multicast.Inputs[Multicast Input 1]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Calculate KPI\Multicast.Outputs[Multicast Output 3]"
+                  dangling="true"
+                  deleteOutputOnPathDetached="true"
+                  name="Multicast Output 3"
+                  synchronousInputId="Package\Calculate KPI\Multicast.Inputs[Multicast Input 1]">
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Calculate KPI\Script Component"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="Includes and runs custom script code. For example, apply a business rule that limits the range of valid values in an &quot;income&quot; column or add values in two columns and calculate the average of the sum.;Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;13"
+              description="Includes and runs custom script code. For example, apply a business rule that limits the range of valid values in an &quot;income&quot; column or add values in two columns and calculate the average of the sum."
+              name="Script Component"
+              version="13">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Stores the source code of the component"
+                  isArray="true"
+                  name="SourceCode"
+                  state="cdata">
+                  <arrayElements
+                    arrayElementCount="30">
+                    <arrayElement
+                      dataType="System.String"><![CDATA[main.cs]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[#region Help:  Introduction to the Script Component
+/* The Script Component allows you to perform virtually any operation that can be accomplished in
+ * a .Net application within the context of an Integration Services data flow.
+ *
+ * Expand the other regions which have "Help" prefixes for examples of specific ways to use
+ * Integration Services features within this script component. */
+#endregion
+
+#region Namespaces
+using System;
+using System.Data;
+using Microsoft.SqlServer.Dts.Pipeline.Wrapper;
+using Microsoft.SqlServer.Dts.Runtime.Wrapper;
+#endregion
+
+/// <summary>
+/// This is the class to which to add your code.  Do not change the name, attributes, or parent
+/// of this class.
+/// </summary>
+[Microsoft.SqlServer.Dts.Pipeline.SSISScriptComponentEntryPointAttribute]
+public class ScriptMain : UserComponent
+{
+    #region Help:  Using Integration Services variables and parameters
+    /* To use a variable in this script, first ensure that the variable has been added to
+     * either the list contained in the ReadOnlyVariables property or the list contained in
+     * the ReadWriteVariables property of this script component, according to whether or not your
+     * code needs to write into the variable.  To do so, save this script, close this instance of
+     * Visual Studio, and update the ReadOnlyVariables and ReadWriteVariables properties in the
+     * Script Transformation Editor window.
+     * To use a parameter in this script, follow the same steps. Parameters are always read-only.
+     *
+     * Example of reading from a variable or parameter:
+     *  DateTime startTime = Variables.MyStartTime;
+     *
+     * Example of writing to a variable:
+     *  Variables.myStringVariable = "new value";
+     */
+    #endregion
+
+    #region Help:  Using Integration Services Connnection Managers
+    /* Some types of connection managers can be used in this script component.  See the help topic
+     * "Working with Connection Managers Programatically" for details.
+     *
+     * To use a connection manager in this script, first ensure that the connection manager has
+     * been added to either the list of connection managers on the Connection Managers page of the
+     * script component editor.  To add the connection manager, save this script, close this instance of
+     * Visual Studio, and add the Connection Manager to the list.
+     *
+     * If the component needs to hold a connection open while processing rows, override the
+     * AcquireConnections and ReleaseConnections methods.
+     * 
+     * Example of using an ADO.Net connection manager to acquire a SqlConnection:
+     *  object rawConnection = Connections.SalesDB.AcquireConnection(transaction);
+     *  SqlConnection salesDBConn = (SqlConnection)rawConnection;
+     *
+     * Example of using a File connection manager to acquire a file path:
+     *  object rawConnection = Connections.Prices_zip.AcquireConnection(transaction);
+     *  string filePath = (string)rawConnection;
+     *
+     * Example of releasing a connection manager:
+     *  Connections.SalesDB.ReleaseConnection(rawConnection);
+     */
+    #endregion
+
+    #region Help:  Firing Integration Services Events
+    /* This script component can fire events.
+     *
+     * Example of firing an error event:
+     *  ComponentMetaData.FireError(10, "Process Values", "Bad value", "", 0, out cancel);
+     *
+     * Example of firing an information event:
+     *  ComponentMetaData.FireInformation(10, "Process Values", "Processing has started", "", 0, fireAgain);
+     *
+     * Example of firing a warning event:
+     *  ComponentMetaData.FireWarning(10, "Process Values", "No rows were received", "", 0);
+     */
+    #endregion
+
+    /// <summary>
+    /// This method is called once, before rows begin to be processed in the data flow.
+    ///
+    /// You can remove this method if you don't need to do anything here.
+    /// </summary>
+    public override void PreExecute()
+    {
+        base.PreExecute();
+        /*
+         * Add your code here
+         */
+    }
+
+    /// <summary>
+    /// This method is called after all the rows have passed through this component.
+    ///
+    /// You can delete this method if you don't need to do anything here.
+    /// </summary>
+    public override void PostExecute()
+    {
+        base.PostExecute();
+        /*
+         * Add your code here
+         */
+    }
+
+    /// <summary>
+    /// This method is called once for every row that passes through the component from Input0.
+    ///
+    /// Example of reading a value from a column in the the row:
+    ///  string zipCode = Row.ZipCode
+    ///
+    /// Example of writing a value to a column in the row:
+    ///  Row.ZipCode = zipCode
+    /// </summary>
+    /// <param name="Row">The row that is currently passing through the component</param>
+    public override void Input0_ProcessInputRow(Input0Buffer Row)
+    {
+        if(Row.year_IsNull == false) {
+            Row.lastyear = Row.year + 1;
+        }
+    }
+
+}
+]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[SC_3ec25f8714204cc29c4d21a48d97c852.csproj]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectTypeGuids>{30D016F9-3734-4E33-A861-5E7D899E18F3};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{a66a6ca1-e46f-47ee-945d-30c54e93fc2f}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SC_3ec25f8714204cc29c4d21a48d97c852</RootNamespace>
+    <AssemblyName>SC_3ec25f8714204cc29c4d21a48d97c852</AssemblyName>
+    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch>true</ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch>
+    <TargetFrameworkProfile></TargetFrameworkProfile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>.\bin\Debug\</OutputPath>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>false</DebugSymbols>
+    <Optimize>true</Optimize>
+    <OutputPath>.\bin\Release\</OutputPath>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.SqlServer.TxScript, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.SqlServer.DTSRuntimeWrap, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.SqlServer.DTSPipelineWrap, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.SqlServer.PipelineHost, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Compile Include="main.cs" />
+    <Compile Include="BufferWrapper.cs" />
+    <Compile Include="ComponentWrapper.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <AppDesigner Include="Properties\" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <!-- Include the build rules for a C# project.-->
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- This section defines VSTA properties that describe the host-changable project properties. -->
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{30D016F9-3734-4E33-A861-5E7D899E18F3}">
+        <ProjectProperties HostName="ScriptComponent" HostPackage="{B3A685AA-7EAF-4BC6-9940-57959FA5AC07}" ApplicationType="usd" Language="cs" TemplatesPath="" DebugInfoExeName="" DebugInfoCommandLine="" DebugInfoWorkingDir="" IconImageList="" />
+        <Host Name="ScriptComponent" GeneratedNamespace="SC_3ec25f8714204cc29c4d21a48d97c852" IconIndex="0"></Host>
+        <ProjectClient>
+          <HostIdentifier>SSIS_SC160</HostIdentifier>
+        </ProjectClient>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[Properties\Resources.resx]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+</root>]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[BufferWrapper.cs]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[/* THIS IS AUTO-GENERATED CODE THAT WILL BE OVERWRITTEN! DO NOT EDIT!
+*  Microsoft SQL Server Integration Services buffer wrappers
+*  This module defines classes for accessing data flow buffers
+*  THIS IS AUTO-GENERATED CODE THAT WILL BE OVERWRITTEN! DO NOT EDIT! */
+
+
+
+using System;
+using System.Data;
+using Microsoft.SqlServer.Dts.Pipeline;
+using Microsoft.SqlServer.Dts.Pipeline.Wrapper;
+
+public class Input0Buffer: ScriptBuffer
+
+{
+    public Input0Buffer(PipelineBuffer Buffer, int[] BufferColumnIndexes, OutputNameMap OutputMap)
+        : base(Buffer, BufferColumnIndexes, OutputMap)
+    {
+    }
+
+    public Int32 year
+    {
+        get
+        {
+            return Buffer.GetInt32(BufferColumnIndexes[0]);
+        }
+    }
+    public bool year_IsNull
+    {
+        get
+        {
+            return IsNull(0);
+        }
+    }
+
+    public Int32 KPI
+    {
+        get
+        {
+            return Buffer.GetInt32(BufferColumnIndexes[1]);
+        }
+    }
+    public bool KPI_IsNull
+    {
+        get
+        {
+            return IsNull(1);
+        }
+    }
+
+    public Int32 lastyear
+    {
+        set
+        {
+            this[2] = value;
+        }
+    }
+    public bool lastyear_IsNull
+    {
+        set
+        {
+            if (value)
+            {
+                SetNull(2);
+            }
+            else
+            {
+                throw new InvalidOperationException("IsNull property cannot be set to False. Assign a value to the column instead.");
+            }
+        }
+    }
+
+    new public bool NextRow()
+    {
+        return base.NextRow();
+    }
+
+    new public bool EndOfRowset()
+    {
+        return base.EndOfRowset();
+    }
+
+}
+]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[Properties\Settings.Designer.cs]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="SC_3ec25f8714204cc29c4d21a48d97c852.Properties.Settings.get_Default():SC_3ec25f8714204cc29c4d21a48d97c852.Properties.Sett" +
+    "ings")]
+
+namespace SC_3ec25f8714204cc29c4d21a48d97c852.Properties {
+    
+    
+    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
+        
+        [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
+        private static Settings defaultInstance = new Settings();
+        
+        public static Settings Default {
+            get {
+                return defaultInstance;
+            }
+        }
+    }
+}
+]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[ComponentWrapper.cs]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[/* THIS IS AUTO-GENERATED CODE THAT WILL BE OVERWRITTEN! DO NOT EDIT!
+*  Microsoft SQL Server Integration Services component wrapper
+*  This module defines the base class for your component
+*  THIS IS AUTO-GENERATED CODE THAT WILL BE OVERWRITTEN! DO NOT EDIT! */
+
+using System;
+using System.Data;
+using Microsoft.SqlServer.Dts.Pipeline;
+using Microsoft.SqlServer.Dts.Pipeline.Wrapper;
+using Microsoft.SqlServer.Dts.Runtime.Wrapper;
+
+public class UserComponent: ScriptComponent
+{
+    public Connections Connections;
+    public Variables Variables;
+    public UserComponent()
+    {
+        Connections = new Connections(this);
+        Variables = new Variables(this);
+    }
+
+    public override void ProcessInput(int InputID, string InputName, PipelineBuffer Buffer, OutputNameMap OutputMap)
+    {
+
+        if (InputName.Equals(@"Input 0", StringComparison.Ordinal))
+        {
+            Input0_ProcessInput(new Input0Buffer(Buffer, GetColumnIndexes(InputID), OutputMap));
+        }
+
+    }
+
+    public virtual void Input0_ProcessInput(Input0Buffer Buffer)
+    {
+        while (Buffer.NextRow())
+        {
+            Input0_ProcessInputRow(Buffer);
+        }
+    }
+
+    public virtual void Input0_ProcessInputRow(Input0Buffer Row)
+    {
+    }
+
+}
+
+public class Connections
+{
+    ScriptComponent ParentComponent;
+
+    public Connections(ScriptComponent Component)
+    {
+        ParentComponent = Component;
+    }
+
+}
+
+public class Variables
+{
+    ScriptComponent ParentComponent;
+
+    public Variables(ScriptComponent Component)
+    {
+        ParentComponent = Component;
+    }
+
+}
+]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[Project]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF16LE]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[<?xml version="1.0" encoding="UTF-16" standalone="yes"?>
+<c:Project xmlns:c="http://schemas.microsoft.com/codeprojectml/2010/08/main" xmlns:msb="http://schemas.microsoft.com/developer/msbuild/2003" runtimeVersion="4.0" schemaVersion="1.0">
+  <msb:PropertyGroup>
+    <msb:CodeName>SC_3ec25f8714204cc29c4d21a48d97c852</msb:CodeName>
+    <msb:Language>msBuild</msb:Language>
+    <msb:DisplayName>SC_3ec25f8714204cc29c4d21a48d97c852</msb:DisplayName>
+    <msb:ProjectId>{B830BEA2-CA0D-4069-A40A-5B9F61AA9F77}</msb:ProjectId>
+  </msb:PropertyGroup>
+  <msb:ItemGroup>
+    <msb:Project Include="SC_3ec25f8714204cc29c4d21a48d97c852.csproj" />
+    <msb:File Include="Properties\Resources.Designer.cs" />
+    <msb:File Include="main.cs" />
+    <msb:File Include="BufferWrapper.cs" />
+    <msb:File Include="ComponentWrapper.cs" />
+    <msb:File Include="Properties\Settings.settings" />
+    <msb:File Include="Properties\AssemblyInfo.cs" />
+    <msb:File Include="Properties\Resources.resx" />
+    <msb:File Include="Properties\Settings.Designer.cs" />
+  </msb:ItemGroup>
+</c:Project>]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[Properties\AssemblyInfo.cs]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[using System.Reflection;
+using System.Runtime.CompilerServices;
+
+//
+// General Information about an assembly is controlled through the following 
+// set of attributes. Change these attribute values to modify the information
+// associated with an assembly.
+//
+[assembly: AssemblyTitle("SC_3ec25f8714204cc29c4d21a48d97c852")]
+[assembly: AssemblyDescription("")]
+[assembly: AssemblyConfiguration("")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("SC_3ec25f8714204cc29c4d21a48d97c852")]
+[assembly: AssemblyCopyright("Copyright @  2023")]
+[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCulture("")]
+//
+// Version information for an assembly consists of the following four values:
+//
+//      Major Version
+//      Minor Version 
+//      Build Number
+//      Revision
+//
+// You can specify all the values or you can default the Revision and Build Numbers 
+// by using the '*' as shown below:
+
+[assembly: AssemblyVersion("1.0.0.0")]
+]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[Properties\Settings.settings]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
+<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
+  <Profiles>
+    <Profile Name="(Default)" />
+  </Profiles>
+  <Settings />
+</SettingsFile>]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[Properties\Resources.Designer.cs]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="SC_3ec25f8714204cc29c4d21a48d97c852.Properties.Resources.get_ResourceManager():System.Resources.Resou" +
+    "rceManager")]
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="SC_3ec25f8714204cc29c4d21a48d97c852.Properties.Resources.get_Culture():System.Globalization.CultureIn" +
+    "fo")]
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="SC_3ec25f8714204cc29c4d21a48d97c852.Properties.Resources.set_Culture(System.Globalization.CultureInfo" +
+    "):Void")]
+
+namespace SC_3ec25f8714204cc29c4d21a48d97c852.Properties {
+    
+    
+    /// <summary>
+    ///   A strongly-typed resource class, for looking up localized strings, etc.
+    /// </summary>
+    // This class was auto-generated by the StronglyTypedResourceBuilder
+    // class via a tool like ResGen or Visual Studio.
+    // To add or remove a member, edit your .ResX file then rerun ResGen
+    // with the /str option, or rebuild your VS project.
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+    internal class Resources {
+        
+        private static global::System.Resources.ResourceManager resourceMan;
+        
+        private static global::System.Globalization.CultureInfo resourceCulture;
+        
+        [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
+        internal Resources() {
+        }
+        
+        /// <summary>
+        ///   Returns the cached ResourceManager instance used by this class.
+        /// </summary>
+        [global::System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        internal static global::System.Resources.ResourceManager ResourceManager {
+            get {
+                if ((resourceMan == null)) {
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("SC_3ec25f8714204cc29c4d21a48d97c852.Properties.Resources", typeof(Resources).Assembly);
+                    resourceMan = temp;
+                }
+                return resourceMan;
+            }
+        }
+        
+        /// <summary>
+        ///   Overrides the current thread's CurrentUICulture property for all
+        ///   resource lookups using this strongly typed resource class.
+        /// </summary>
+        [global::System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        internal static global::System.Globalization.CultureInfo Culture {
+            get {
+                return resourceCulture;
+            }
+            set {
+                resourceCulture = value;
+            }
+        }
+    }
+}
+]]></arrayElement>
+                  </arrayElements>
+                </property>
+                <property
+                  dataType="System.String"
+                  description="Stores the binary representation of the component"
+                  isArray="true"
+                  name="BinaryCode"
+                  state="cdata">
+                  <arrayElements
+                    arrayElementCount="2">
+                    <arrayElement
+                      dataType="System.String"><![CDATA[SC_3ec25f8714204cc29c4d21a48d97c852.dll]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[TVqQAAMAAAAEAAAA//8AALgAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAgAAAAA4fug4AtAnNIbgBTM0hVGhpcyBwcm9ncmFtIGNhbm5vdCBiZSBydW4gaW4gRE9TIG1v
+ZGUuDQ0KJAAAAAAAAABQRQAATAEDAJNicmUAAAAAAAAAAOAAIiALATAAABQAAAAIAAAAAAAACjIA
+AAAgAAAAQAAAAAAAEAAgAAAAAgAABAAAAAAAAAAGAAAAAAAAAACAAAAAAgAAAAAAAAMAYIUAABAA
+ABAAAAAAEAAAEAAAAAAAABAAAAAAAAAAAAAAALgxAABPAAAAAEAAAEgEAAAAAAAAAAAAAAAAAAAA
+AAAAAGAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAIAAACAAAAAAAAAAAAAAACCAAAEgAAAAAAAAAAAAAAC50ZXh0AAAAEBIAAAAgAAAAFAAAAAIA
+AAAAAAAAAAAAAAAAACAAAGAucnNyYwAAAEgEAAAAQAAAAAYAAAAWAAAAAAAAAAAAAAAAAABAAABA
+LnJlbG9jAAAMAAAAAGAAAAACAAAAHAAAAAAAAAAAAAAAAAAAQAAAQgAAAAAAAAAAAAAAAAAAAADs
+MQAAAAAAAEgAAAACAAUA1CEAACwPAAABAAAAAAAAAAAxAAC4AAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAB4CKBAAAAoqHgIoEQAACipeA28HAAAGLQ4DA28GAAAGF1hv
+CgAABioeAigOAAAGKioCAwQFKBIAAAoqUgJ7EwAACgJ7FAAAChaUbxUAAAoqIgIWKBYAAAoqUgJ7
+EwAACgJ7FAAACheUbxUAAAoqIgIXKBYAAAoqOgIYA4waAAABKBcAAAoqWgMsCAIYKBgAAAoqcgEA
+AHBzGQAACnoeAigaAAAKKh4CKBsAAAoqfgIoHAAACgICcxIAAAZ9AQAABAICcxMAAAZ9AgAABCqS
+BHKeAABwGm8dAAAKLBUCBQIDKB4AAAoOBHMFAAAGbxAAAAYqSisHAgNvEQAABgNvDAAABi3xKgYq
+OgIoHwAACgIDfQMAAAQqOgIoHwAACgIDfQQAAAQqHgIoHwAACiqufgUAAAQtHnKuAABw0AcAAAIo
+IAAACm8hAAAKcyIAAAqABQAABH4FAAAEKhp+BgAABCoeAoAGAAAEKhp+BwAABCoeAigjAAAKKi5z
+GQAABoAHAAAEKgBCU0pCAQABAAAAAAAMAAAAdjQuMC4zMDMxOQAAAAAFAGwAAACgBQAAI34AAAwG
+AABMBgAAI1N0cmluZ3MAAAAAWAwAACABAAAjVVMAeA0AABAAAAAjR1VJRAAAAIgNAACkAQAAI0Js
+b2IAAAAAAAAAAgAAAVcVoAEJAQAAAPoBMwAWAAABAAAAIAAAAAgAAAAHAAAAGgAAAA8AAAAjAAAA
+EAAAAAMAAAAJAAAACgAAAAEAAAAEAAAAAQAAAAAA+wIBAAAAAAAGAPUBgwQGAIkCgwQGAEEBcAQP
+APcEAAAGAG4BrwMGANgBrwMGALkBrwMGAHACrwMGABUCrwMGAC4CrwMGAIUBrwMGAKABxAIKAEkC
+jgAKAEIEjgAOADMEjgAKAPgDjgAKAL0FjgAGAIAFZwMGACQBcAQGAFMEowQGAOwDmgMSAPQA5QIS
+AFUB5QISANwAhQMGAAkBgwQGAAQAZwMGAMEDZwMGAN4CZwMGANsDZwMGAK8AZwMGAGAAZwMGAEIG
+rwMAAAAALgAAAAAAAQABAAEAEAB6AwAAEAABAAEAAQAQACYEAAA5AAEABQABABAAnwUAAEUAAQAO
+AAEAEAB0BQAASQADABIAAQAQADUFAABJAAQAEwAAABAAqgQGBUkABQAUAAABEABkBQYFYQAHABgA
+BgB0BXUABgA1BXkAAQCtBX0AAQCtBX0AEQBuA4EAEQDMAIUAEQBQAIkAUCAAAAAAxgCnAgYAAQBY
+IAAAAADGALICBgABAGAgAAAAAMYAHwaNAAEAeCAAAAAAhhhjBAYAAgCAIAAAAACGGGMEGwACAIsg
+AAAAAIYIEASTAAUAoCAAAAAAhggyAz0ABQCpIAAAAACGCD8AkwAFAL4gAAAAAIYIIwM9AAUAxyAA
+AAAAhggZBAEABQDWIAAAAACGCEIDlwAGAO0gAAAAAIYANgY9AAcA9SAAAAAAhgCHBT0ABwD9IAAA
+AACGGGMEBgAHAB0hAAAAAMYAEgacAAcAQiEAAAAAxgELBo0ACwBVIQAAAADGAR8GjQAMAFchAAAA
+AIYYYwSmAA0AZiEAAAAAhhhjBKYADgB1IQAAAACDGGMEBgAPAH0hAAAAAJMITwSsAA8AqSEAAAAA
+kwi0ALEADwCwIQAAAACTCMAAtgAPALghAAAAAJYIkwW8ABAAvyEAAAAAhhhjBAYAEADHIQAAAACR
+GGkEwQAQAAAAAQA6BgAAAQBIBAAAAgA/BQAAAwAGBAAAAQC+AgAAAQC+AgAAAQA3AAAAAgCEAAAA
+AwBIBAAABAAGBAAAAQBIBAAAAQA6BgAAAQDDBQAAAQDDBQAAAQC+AgkAYwQBABEAYwQGABkAYwQK
+ACkAYwQQADEAYwQQADkAYwQQAEEAYwQQAEkAYwQQAFEAYwQQAFkAYwQQAGEAYwQQAGkAYwQGAJkA
+YwQGALkAYwQVAMkAYwQGAIkApwIGAIkAsgIGAHEAYwQbAHEASAQlAHEAPwUpAHkAAQAtAHEATwMy
+AHEAXgM3AHEAVgMBANkAYwQQAHEANgY9AHEAhwU9AIkAYwQGAOEAbQVBAIkAUwVIAJEAYwQGAPEA
+cgBOAPEAPgZVAKEAYwRbAMEAYwQGAC4ACwDcAC4AEwDlAC4AGwAEAS4AIwANAS4AKwA2AS4AMwA2
+AS4AOwA2AS4AQwANAS4ASwA8AS4AUwA2AS4AWwBTAUMAYwCdAeEAewCdAeMAawCdAekAcwAEAQkB
+cwAEAQMAAQAHAAcACAAJAAAAIQTFAAAASgPJAAAAQwDFAAAAJwPJAAAAHQTFAAAARgPJAAAAUwTN
+AAAA1ADSAAAAlwXXAAIABgADAAIABwAFAAIACAAHAAIACQAJAAEACgALAAEACwANAAIAFQAPAAIA
+FgARAAEAFwARAAIAGAATAASAAAABAAAAAAAAAAAAAAAAAAoAAAAEAAAAAAAAAAAAAABjAEcAAAAA
+ABAAAAAAAAAAAAAAAGwAzQUAAAAAEAAAAAAAAAAAAAAAbADqBQAAAAAEAAAAAAAAAAAAAABjAGcD
+AAAAAAAAAAABAAAAtAQAAAAAAAAAR2V0SW50MzIAU0NfM2VjMjVmODcxNDIwNGNjMjljNGQyMWE0
+OGQ5N2M4NTIAPE1vZHVsZT4ASW5wdXRJRABnZXRfS1BJAG1zY29ybGliAGRlZmF1bHRJbnN0YW5j
+ZQBSdW50aW1lVHlwZUhhbmRsZQBHZXRUeXBlRnJvbUhhbmRsZQBJbnB1dE5hbWUATWljcm9zb2Z0
+LlNxbFNlcnZlci5EdHMuUGlwZWxpbmUAVHlwZQBnZXRfQ3VsdHVyZQBzZXRfQ3VsdHVyZQByZXNv
+dXJjZUN1bHR1cmUAQXBwbGljYXRpb25TZXR0aW5nc0Jhc2UARWRpdG9yQnJvd3NhYmxlU3RhdGUA
+Q29tcGlsZXJHZW5lcmF0ZWRBdHRyaWJ1dGUARGVidWdnZXJOb25Vc2VyQ29kZUF0dHJpYnV0ZQBE
+ZWJ1Z2dhYmxlQXR0cmlidXRlAEVkaXRvckJyb3dzYWJsZUF0dHJpYnV0ZQBBc3NlbWJseVRpdGxl
+QXR0cmlidXRlAEFzc2VtYmx5VHJhZGVtYXJrQXR0cmlidXRlAFRhcmdldEZyYW1ld29ya0F0dHJp
+YnV0ZQBBc3NlbWJseUNvbmZpZ3VyYXRpb25BdHRyaWJ1dGUAQXNzZW1ibHlEZXNjcmlwdGlvbkF0
+dHJpYnV0ZQBDb21waWxhdGlvblJlbGF4YXRpb25zQXR0cmlidXRlAEFzc2VtYmx5UHJvZHVjdEF0
+dHJpYnV0ZQBBc3NlbWJseUNvcHlyaWdodEF0dHJpYnV0ZQBTU0lTU2NyaXB0Q29tcG9uZW50RW50
+cnlQb2ludEF0dHJpYnV0ZQBBc3NlbWJseUNvbXBhbnlBdHRyaWJ1dGUAUnVudGltZUNvbXBhdGli
+aWxpdHlBdHRyaWJ1dGUAUHJlRXhlY3V0ZQBQb3N0RXhlY3V0ZQB2YWx1ZQBTeXN0ZW0uUnVudGlt
+ZS5WZXJzaW9uaW5nAFN0cmluZwBTeXN0ZW0uQ29tcG9uZW50TW9kZWwAU0NfM2VjMjVmODcxNDIw
+NGNjMjljNGQyMWE0OGQ5N2M4NTIuZGxsAGdldF9LUElfSXNOdWxsAGdldF95ZWFyX0lzTnVsbABz
+ZXRfbGFzdHllYXJfSXNOdWxsAFNldE51bGwAc2V0X0l0ZW0AU3lzdGVtAHJlc291cmNlTWFuAFNj
+cmlwdE1haW4AU3lzdGVtLkNvbmZpZ3VyYXRpb24AU3lzdGVtLkdsb2JhbGl6YXRpb24AU3lzdGVt
+LlJlZmxlY3Rpb24ASW52YWxpZE9wZXJhdGlvbkV4Y2VwdGlvbgBTdHJpbmdDb21wYXJpc29uAEN1
+bHR1cmVJbmZvAE91dHB1dE5hbWVNYXAAT3V0cHV0TWFwAGdldF95ZWFyAHNldF9sYXN0eWVhcgBJ
+bnB1dDBCdWZmZXIAUGlwZWxpbmVCdWZmZXIAU2NyaXB0QnVmZmVyAGdldF9SZXNvdXJjZU1hbmFn
+ZXIALmN0b3IALmNjdG9yAFN5c3RlbS5EaWFnbm9zdGljcwBTeXN0ZW0uUnVudGltZS5Db21waWxl
+clNlcnZpY2VzAFN5c3RlbS5SZXNvdXJjZXMAU0NfM2VjMjVmODcxNDIwNGNjMjljNGQyMWE0OGQ5
+N2M4NTIuUHJvcGVydGllcy5SZXNvdXJjZXMucmVzb3VyY2VzAERlYnVnZ2luZ01vZGVzAFNDXzNl
+YzI1Zjg3MTQyMDRjYzI5YzRkMjFhNDhkOTdjODUyLlByb3BlcnRpZXMAVmFyaWFibGVzAEJ1ZmZl
+ckNvbHVtbkluZGV4ZXMAR2V0Q29sdW1uSW5kZXhlcwBTZXR0aW5ncwBFcXVhbHMAQ29ubmVjdGlv
+bnMAT2JqZWN0AEVuZE9mUm93c2V0AGdldF9EZWZhdWx0AFVzZXJDb21wb25lbnQAUGFyZW50Q29t
+cG9uZW50AFNjcmlwdENvbXBvbmVudABNaWNyb3NvZnQuU3FsU2VydmVyLlR4U2NyaXB0AE1pY3Jv
+c29mdC5TcWxTZXJ2ZXIuUGlwZWxpbmVIb3N0AElucHV0MF9Qcm9jZXNzSW5wdXQASW5wdXQwX1By
+b2Nlc3NJbnB1dFJvdwBOZXh0Um93AGdldF9Bc3NlbWJseQAAAICbSQBzAE4AdQBsAGwAIABwAHIA
+bwBwAGUAcgB0AHkAIABjAGEAbgBuAG8AdAAgAGIAZQAgAHMAZQB0ACAAdABvACAARgBhAGwAcwBl
+AC4AIABBAHMAcwBpAGcAbgAgAGEAIAB2AGEAbAB1AGUAIAB0AG8AIAB0AGgAZQAgAGMAbwBsAHUA
+bQBuACAAaQBuAHMAdABlAGEAZAAuAAAPSQBuAHAAdQB0ACAAMAAAcVMAQwBfADMAZQBjADIANQBm
+ADgANwAxADQAMgAwADQAYwBjADIAOQBjADQAZAAyADEAYQA0ADgAZAA5ADcAYwA4ADUAMgAuAFAA
+cgBvAHAAZQByAHQAaQBlAHMALgBSAGUAcwBvAHUAcgBjAGUAcwAAbFz9lBzKj0euRWObs6Zx2AAE
+IAEBCAMgAAEFIAEBEREEIAEBDgUgAQERWQkgAwESPR0IEkEDBhI9AwYdCAQgAQgIBCABAggFIAIB
+CBwDIAACBiACAg4RdQUgAR0ICAYAARJ5EX0FIAASgIEHIAIBDhKAgQi3elxWGTTgiQiJhF3NgIDM
+kQMGEhQDBhIYAwYSRQMGElEDBhJVAwYSIAUgAQESDAMgAAgEIAEBAgkgBAEIDhI9EkEFIAEBEkUE
+AAASUQQAABJVBQABARJVBAAAEiADAAABAygACAMoAAIECAASUQQIABJVBAgAEiAIAQAIAAAAAAAe
+AQABAFQCFldyYXBOb25FeGNlcHRpb25UaHJvd3MBCAEAAgAAAAAAKAEAI1NDXzNlYzI1Zjg3MTQy
+MDRjYzI5YzRkMjFhNDhkOTdjODUyAAAFAQAAAAAWAQARQ29weXJpZ2h0IEAgIDIwMjMAAEkBABou
+TkVURnJhbWV3b3JrLFZlcnNpb249djQuNwEAVA4URnJhbWV3b3JrRGlzcGxheU5hbWUSLk5FVCBG
+cmFtZXdvcmsgNC43BAEAAAAAALQAAADOyu++AQAAAJEAAABsU3lzdGVtLlJlc291cmNlcy5SZXNv
+dXJjZVJlYWRlciwgbXNjb3JsaWIsIFZlcnNpb249NC4wLjAuMCwgQ3VsdHVyZT1uZXV0cmFsLCBQ
+dWJsaWNLZXlUb2tlbj1iNzdhNWM1NjE5MzRlMDg5I1N5c3RlbS5SZXNvdXJjZXMuUnVudGltZVJl
+c291cmNlU2V0AgAAAAAAAAAAAAAAUEFEUEFEULQAAADgMQAAAAAAAAAAAAD6MQAAACAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAA7DEAAAAAAAAAAAAAAABfQ29yRGxsTWFpbgBtc2NvcmVlLmRsbAAAAAAA
+/yUAIAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAQAQAAAAGAAAgAAAAAAAAAAAAAAAAAAAAQABAAAAMAAAgAAAAAAAAAAAAAAAAAAAAQAAAAAA
+SAAAAFhAAADsAwAAAAAAAAAAAADsAzQAAABWAFMAXwBWAEUAUgBTAEkATwBOAF8ASQBOAEYATwAA
+AAAAvQTv/gAAAQAAAAEAAAAAAAAAAQAAAAAAPwAAAAAAAAAEAAAAAgAAAAAAAAAAAAAAAAAAAEQA
+AAABAFYAYQByAEYAaQBsAGUASQBuAGYAbwAAAAAAJAAEAAAAVAByAGEAbgBzAGwAYQB0AGkAbwBu
+AAAAAAAAALAETAMAAAEAUwB0AHIAaQBuAGcARgBpAGwAZQBJAG4AZgBvAAAAKAMAAAEAMAAwADAA
+MAAwADQAYgAwAAAAGgABAAEAQwBvAG0AbQBlAG4AdABzAAAAAAAAACIAAQABAEMAbwBtAHAAYQBu
+AHkATgBhAG0AZQAAAAAAAAAAAHAAJAABAEYAaQBsAGUARABlAHMAYwByAGkAcAB0AGkAbwBuAAAA
+AABTAEMAXwAzAGUAYwAyADUAZgA4ADcAMQA0ADIAMAA0AGMAYwAyADkAYwA0AGQAMgAxAGEANAA4
+AGQAOQA3AGMAOAA1ADIAAAAwAAgAAQBGAGkAbABlAFYAZQByAHMAaQBvAG4AAAAAADEALgAwAC4A
+MAAuADAAAABwACgAAQBJAG4AdABlAHIAbgBhAGwATgBhAG0AZQAAAFMAQwBfADMAZQBjADIANQBm
+ADgANwAxADQAMgAwADQAYwBjADIAOQBjADQAZAAyADEAYQA0ADgAZAA5ADcAYwA4ADUAMgAuAGQA
+bABsAAAASAASAAEATABlAGcAYQBsAEMAbwBwAHkAcgBpAGcAaAB0AAAAQwBvAHAAeQByAGkAZwBo
+AHQAIABAACAAIAAyADAAMgAzAAAAKgABAAEATABlAGcAYQBsAFQAcgBhAGQAZQBtAGEAcgBrAHMA
+AAAAAAAAAAB4ACgAAQBPAHIAaQBnAGkAbgBhAGwARgBpAGwAZQBuAGEAbQBlAAAAUwBDAF8AMwBl
+AGMAMgA1AGYAOAA3ADEANAAyADAANABjAGMAMgA5AGMANABkADIAMQBhADQAOABkADkANwBjADgA
+NQAyAC4AZABsAGwAAABoACQAAQBQAHIAbwBkAHUAYwB0AE4AYQBtAGUAAAAAAFMAQwBfADMAZQBj
+ADIANQBmADgANwAxADQAMgAwADQAYwBjADIAOQBjADQAZAAyADEAYQA0ADgAZAA5ADcAYwA4ADUA
+MgAAADQACAABAFAAcgBvAGQAdQBjAHQAVgBlAHIAcwBpAG8AbgAAADEALgAwAC4AMAAuADAAAAA4
+AAgAAQBBAHMAcwBlAG0AYgBsAHkAIABWAGUAcgBzAGkAbwBuAAAAMQAuADAALgAwAC4AMAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwAAAMAAAADDIAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
+                  </arrayElements>
+                </property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the Microsoft Visual Studio Tools for Applications project. Project names must be unique within a package."
+                  name="VSTAProjectName"
+                  typeConverter="NOTBROWSABLE">SC_3ec25f8714204cc29c4d21a48d97c852</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the programming language used by the script."
+                  name="ScriptLanguage"
+                  typeConverter="Microsoft.SqlServer.VSTAHosting.ScriptingLanguages">CSharp</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a comma-separated list of read-only variables."
+                  name="ReadOnlyVariables"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ScriptUIVariablePickerDlg"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a comma-separated list of read/write variables."
+                  name="ReadWriteVariables"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ScriptUIWriteableVariablePickerDlg"></property>
+                <property
+                  dataType="System.String"
+                  description="List of breakpoints present on the script."
+                  isArray="true"
+                  name="BreakpointCollection"
+                  typeConverter="NOTBROWSABLE">
+                  <arrayElements
+                    arrayElementCount="0" />
+                </property>
+                <property
+                  dataType="System.String"
+                  description="Checksum to match component metedata against compiled codes."
+                  name="MetadataChecksum140"
+                  typeConverter="NOTBROWSABLE">87</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.ScriptComponentHost</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Calculate KPI\Script Component.Inputs[Input 0]"
+                  hasSideEffects="true"
+                  name="Input 0">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Calculate KPI\Script Component.Inputs[Input 0].Columns[year]"
+                      cachedDataType="i4"
+                      cachedName="year"
+                      lineageId="Package\Calculate KPI\ADO NET Source.Outputs[ADO NET Source Output].Columns[year]" />
+                    <inputColumn
+                      refId="Package\Calculate KPI\Script Component.Inputs[Input 0].Columns[KPI]"
+                      cachedDataType="i4"
+                      cachedName="KPI"
+                      lineageId="Package\Calculate KPI\ADO NET Source.Outputs[ADO NET Source Output].Columns[KPI]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Calculate KPI\Script Component.Outputs[Output 0]"
+                  name="Output 0"
+                  synchronousInputId="Package\Calculate KPI\Script Component.Inputs[Input 0]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Calculate KPI\Script Component.Outputs[Output 0].Columns[last_year]"
+                      dataType="i4"
+                      lineageId="Package\Calculate KPI\Script Component.Outputs[Output 0].Columns[last_year]"
+                      name="last_year" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Calculate KPI\Sort"
+              componentClassID="Microsoft.Sort"
+              contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
+              name="Sort"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the Sort transformation removes rows with duplicate sort values."
+                  name="EliminateDuplicates">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the maximum number of threads to use for sorting."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Calculate KPI\Sort.Inputs[Sort Input]"
+                  name="Sort Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Calculate KPI\Sort.Inputs[Sort Input].Columns[year]"
+                      cachedDataType="i4"
+                      cachedName="year"
+                      lineageId="Package\Calculate KPI\ADO NET Source.Outputs[ADO NET Source Output].Columns[year]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">1</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Calculate KPI\Sort.Inputs[Sort Input].Columns[KPI]"
+                      cachedDataType="i4"
+                      cachedName="KPI"
+                      lineageId="Package\Calculate KPI\ADO NET Source.Outputs[ADO NET Source Output].Columns[KPI]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Calculate KPI\Sort.Outputs[Sort Output]"
+                  isSorted="true"
+                  name="Sort Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Calculate KPI\Sort.Outputs[Sort Output].Columns[year]"
+                      dataType="i4"
+                      lineageId="Package\Calculate KPI\Sort.Outputs[Sort Output].Columns[year]"
+                      name="year"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Calculate KPI\ADO NET Source.Outputs[ADO NET Source Output].Columns[year]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Calculate KPI\Sort.Outputs[Sort Output].Columns[KPI]"
+                      dataType="i4"
+                      lineageId="Package\Calculate KPI\Sort.Outputs[Sort Output].Columns[KPI]"
+                      name="KPI">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Calculate KPI\ADO NET Source.Outputs[ADO NET Source Output].Columns[KPI]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Calculate KPI\Sort 1"
+              componentClassID="Microsoft.Sort"
+              contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
+              name="Sort 1"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the Sort transformation removes rows with duplicate sort values."
+                  name="EliminateDuplicates">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the maximum number of threads to use for sorting."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Calculate KPI\Sort 1.Inputs[Sort Input]"
+                  name="Sort Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Calculate KPI\Sort 1.Inputs[Sort Input].Columns[year]"
+                      cachedDataType="i4"
+                      cachedName="year"
+                      lineageId="Package\Calculate KPI\ADO NET Source.Outputs[ADO NET Source Output].Columns[year]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Calculate KPI\Sort 1.Inputs[Sort Input].Columns[KPI]"
+                      cachedDataType="i4"
+                      cachedName="KPI"
+                      lineageId="Package\Calculate KPI\ADO NET Source.Outputs[ADO NET Source Output].Columns[KPI]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Calculate KPI\Sort 1.Inputs[Sort Input].Columns[last_year]"
+                      cachedDataType="i4"
+                      cachedName="last_year"
+                      lineageId="Package\Calculate KPI\Script Component.Outputs[Output 0].Columns[last_year]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">1</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Calculate KPI\Sort 1.Outputs[Sort Output]"
+                  isSorted="true"
+                  name="Sort Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Calculate KPI\Sort 1.Outputs[Sort Output].Columns[year]"
+                      dataType="i4"
+                      lineageId="Package\Calculate KPI\Sort 1.Outputs[Sort Output].Columns[year]"
+                      name="year">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Calculate KPI\ADO NET Source.Outputs[ADO NET Source Output].Columns[year]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Calculate KPI\Sort 1.Outputs[Sort Output].Columns[KPI]"
+                      dataType="i4"
+                      lineageId="Package\Calculate KPI\Sort 1.Outputs[Sort Output].Columns[KPI]"
+                      name="KPI">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Calculate KPI\ADO NET Source.Outputs[ADO NET Source Output].Columns[KPI]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Calculate KPI\Sort 1.Outputs[Sort Output].Columns[last_year]"
+                      dataType="i4"
+                      lineageId="Package\Calculate KPI\Sort 1.Outputs[Sort Output].Columns[last_year]"
+                      name="last_year"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Calculate KPI\Script Component.Outputs[Output 0].Columns[last_year]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Calculate KPI.Paths[ADO NET Source Output]"
+              endId="Package\Calculate KPI\Multicast.Inputs[Multicast Input 1]"
+              name="ADO NET Source Output"
+              startId="Package\Calculate KPI\ADO NET Source.Outputs[ADO NET Source Output]" />
+            <path
+              refId="Package\Calculate KPI.Paths[Derived Column Output]"
+              endId="Package\Calculate KPI\ADO NET Destination.Inputs[ADO NET Destination Input]"
+              name="Derived Column Output"
+              startId="Package\Calculate KPI\Derived Column.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Calculate KPI.Paths[Merge Join Output]"
+              endId="Package\Calculate KPI\Derived Column.Inputs[Derived Column Input]"
+              name="Merge Join Output"
+              startId="Package\Calculate KPI\Merge Join.Outputs[Merge Join Output]" />
+            <path
+              refId="Package\Calculate KPI.Paths[Multicast Output 1]"
+              endId="Package\Calculate KPI\Script Component.Inputs[Input 0]"
+              name="Multicast Output 1"
+              startId="Package\Calculate KPI\Multicast.Outputs[Multicast Output 1]" />
+            <path
+              refId="Package\Calculate KPI.Paths[Multicast Output 2]"
+              endId="Package\Calculate KPI\Sort.Inputs[Sort Input]"
+              name="Multicast Output 2"
+              startId="Package\Calculate KPI\Multicast.Outputs[Multicast Output 2]" />
+            <path
+              refId="Package\Calculate KPI.Paths[Output 0]"
+              endId="Package\Calculate KPI\Sort 1.Inputs[Sort Input]"
+              name="Output 0"
+              startId="Package\Calculate KPI\Script Component.Outputs[Output 0]" />
+            <path
+              refId="Package\Calculate KPI.Paths[Sort Output]"
+              endId="Package\Calculate KPI\Merge Join.Inputs[Merge Join Left Input]"
+              name="Sort Output"
+              startId="Package\Calculate KPI\Sort.Outputs[Sort Output]" />
+            <path
+              refId="Package\Calculate KPI.Paths[Sort Output1]"
+              endId="Package\Calculate KPI\Merge Join.Inputs[Merge Join Right Input]"
+              name="Sort Output"
+              startId="Package\Calculate KPI\Sort 1.Outputs[Sort Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
     <DTS:Executable
       DTS:refId="Package\Load IMDb data to DW"
       DTS:CreationName="Microsoft.Pipeline"
@@ -1881,6 +3545,95 @@ group by id</property>
                       refId="Package\Load some data to DW\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
                       dataType="i4"
                       lineageId="Package\Load some data to DW\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load some data to DW\Conditional Split 1"
+              componentClassID="Microsoft.ConditionalSplit"
+              contactInfo="Conditional Split;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Routes data rows to different outputs depending on the content of the data. Use conditions (SSIS expressions) to specify which rows are routed. For example, separate records that need to be cleaned from those that are ready to be loaded or route only a subset of records."
+              name="Conditional Split 1"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Load some data to DW\Conditional Split 1.Inputs[Conditional Split Input]"
+                  description="Input to the Conditional Split Transformation"
+                  name="Conditional Split Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load some data to DW\Conditional Split 1.Inputs[Conditional Split Input].Columns[Year]"
+                      cachedDataType="decimal"
+                      cachedName="Year"
+                      lineageId="Package\Load some data to DW\Netflix Revenues.Outputs[Flat File Source Output].Columns[Year]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load some data to DW\Conditional Split 1.Outputs[Case 1]"
+                  description="Output 1 of the Conditional Split Transformation"
+                  errorOrTruncationOperation="Computation"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Case 1"
+                  synchronousInputId="Package\Load some data to DW\Conditional Split 1.Inputs[Conditional Split Input]"
+                  truncationRowDisposition="FailComponent">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                      name="Expression">#{Package\Load some data to DW\Netflix Revenues.Outputs[Flat File Source Output].Columns[Year]} &lt; 2022</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the friendly version of the expression. This expression version uses column names."
+                      expressionType="Notify"
+                      name="FriendlyExpression">Year &lt; 2022</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                      name="EvaluationOrder">0</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load some data to DW\Conditional Split 1.Outputs[Conditional Split Default Output]"
+                  description="Default Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  name="Conditional Split Default Output"
+                  synchronousInputId="Package\Load some data to DW\Conditional Split 1.Inputs[Conditional Split Input]">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      name="IsDefaultOut">true</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load some data to DW\Conditional Split 1.Outputs[Conditional Split Error Output]"
+                  description="Error Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Conditional Split Error Output"
+                  synchronousInputId="Package\Load some data to DW\Conditional Split 1.Inputs[Conditional Split Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load some data to DW\Conditional Split 1.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load some data to DW\Conditional Split 1.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load some data to DW\Conditional Split 1.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load some data to DW\Conditional Split 1.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -4329,25 +6082,30 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
           </components>
           <paths>
             <path
+              refId="Package\Load some data to DW.Paths[Case 1]"
+              endId="Package\Load some data to DW\Sort.Inputs[Sort Input]"
+              name="Case 1"
+              startId="Package\Load some data to DW\Conditional Split 1.Outputs[Case 1]" />
+            <path
               refId="Package\Load some data to DW.Paths[Flat File Source Output]"
               endId="Package\Load some data to DW\Conditional Split.Inputs[Conditional Split Input]"
               name="Flat File Source Output"
               startId="Package\Load some data to DW\Netflix Titles CSV parse.Outputs[Flat File Source Output]" />
             <path
               refId="Package\Load some data to DW.Paths[Flat File Source Output1]"
-              endId="Package\Load some data to DW\Sort.Inputs[Sort Input]"
-              name="Flat File Source Output"
-              startId="Package\Load some data to DW\Netflix Revenues.Outputs[Flat File Source Output]" />
-            <path
-              refId="Package\Load some data to DW.Paths[Flat File Source Output2]"
               endId="Package\Load some data to DW\Sort 1.Inputs[Sort Input]"
               name="Flat File Source Output"
               startId="Package\Load some data to DW\Netflix Subscribers.Outputs[Flat File Source Output]" />
             <path
-              refId="Package\Load some data to DW.Paths[Flat File Source Output3]"
+              refId="Package\Load some data to DW.Paths[Flat File Source Output2]"
               endId="Package\Load some data to DW\Script Component.Inputs[Input]"
               name="Flat File Source Output"
               startId="Package\Load some data to DW\Netflix Titles CSV parse 1.Outputs[Flat File Source Output]" />
+            <path
+              refId="Package\Load some data to DW.Paths[Flat File Source Output3]"
+              endId="Package\Load some data to DW\Conditional Split 1.Inputs[Conditional Split Input]"
+              name="Flat File Source Output"
+              startId="Package\Load some data to DW\Netflix Revenues.Outputs[Flat File Source Output]" />
             <path
               refId="Package\Load some data to DW.Paths[Merge Join Output]"
               endId="Package\Load some data to DW\ADO NET Destination 1.Inputs[ADO NET Destination Input]"
@@ -4396,7 +6154,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{BAD1F268-B297-4A7C-BB39-7ED5930A747C}"
-          SQLTask:SqlStatementSource="truncate table [NetflixTitles];&#xA;truncate table [NetflixStats];&#xA;truncate table [NetflixGenres]&#xA;truncate table [NetflixRatings]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="truncate table [NetflixTitles];&#xA;truncate table [NetflixStats];&#xA;truncate table [NetflixGenres];&#xA;truncate table [NetflixRatings];&#xA;truncate table [NetflixKPI];" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -4450,6 +6208,14 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 3"
       DTS:To="Package\purge staging" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 4]"
+      DTS:CreationName=""
+      DTS:DTSID="{4828FEE5-ECB2-4BB8-BD76-FA57A32D61CB}"
+      DTS:From="Package\Load IMDb data to DW"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 4"
+      DTS:To="Package\Calculate KPI" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
@@ -4464,6 +6230,14 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
+          Size="159.2,41.6"
+          Id="Package\Load IMDb data to DW"
+          TopLeft="573.333302007782,298.999997920791" />
+        <NodeLayout
+          Size="159.2,41.6"
+          Id="Package\Load IMDb data to staging"
+          TopLeft="366.33331361827,294.966664653752" />
+        <NodeLayout
           Size="150.4,41.6"
           Id="Package\Load some data to DW"
           TopLeft="365.499983608723,196.366665756636" />
@@ -4471,6 +6245,10 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
           Size="122.4,41.6"
           Id="Package\purge DB"
           TopLeft="156.666658106778,189.799998680154" />
+        <NodeLayout
+          Size="141.6,41.6"
+          Id="Package\purge staging"
+          TopLeft="145.499993989865,290.299998228153" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
           TopLeft="279.066658106778,213.883332218395">
@@ -4493,40 +6271,6 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="159.2,41.6"
-          Id="Package\Load IMDb data to staging"
-          TopLeft="366.33331361827,294.966664653752" />
-        <NodeLayout
-          Size="159.2,41.6"
-          Id="Package\Load IMDb data to DW"
-          TopLeft="573.333302007782,298.999997920791" />
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 2]"
-          TopLeft="525.53331361827,317.783331287271">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="47.799988389512,0"
-              Start="0,0"
-              End="40.299988389512,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="40.299988389512,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="141.6,41.6"
-          Id="Package\purge staging"
-          TopLeft="145.499993989865,290.299998228153" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
           TopLeft="287.099993989865,313.433331440952">
@@ -4541,6 +6285,28 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
                   Capacity="5">
                   <mssgle:LineSegment
                     End="71.733319628405,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="525.53331361827,317.783331287271">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="47.799988389512,0"
+              Start="0,0"
+              End="40.299988389512,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="40.299988389512,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -4571,30 +6337,218 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <NodeLayout
+          Size="141.6,41.6"
+          Id="Package\Calculate KPI"
+          TopLeft="799.166623002127,296.399997938871" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 4]"
+          TopLeft="732.533302007782,318.499997929831">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="66.6333209943448,0"
+              Start="0,0"
+              End="59.1333209943448,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="59.1333209943448,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </Package>
+  <TaskHost
+    design-time-name="Package\Load IMDb data to DW">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="160,41.6"
+          Id="Package\Load IMDb data to DW\ADO NET Source"
+          TopLeft="244.999996349216,229.999996572733" />
+        <NodeLayout
+          Size="179.2,41.6"
+          Id="Package\Load IMDb data to DW\ADO NET Destination"
+          TopLeft="253.999996215105,332.999995037913" />
+        <EdgeLayout
+          Id="Package\Load IMDb data to DW.Paths[ADO NET Source Output]"
+          TopLeft="324.999996349216,271.599996572733">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="18.5999998658895,61.3999984651803"
+              Start="0,0"
+              End="18.5999998658895,53.8999984651803">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,26.6999992325902" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,26.6999992325902"
+                    Point2="0,30.6999992325902"
+                    Point3="4,30.6999992325902" />
+                  <mssgle:LineSegment
+                    End="14.5999998658895,30.6999992325902" />
+                  <mssgle:CubicBezierSegment
+                    Point1="14.5999998658895,30.6999992325902"
+                    Point2="18.5999998658895,30.6999992325902"
+                    Point3="18.5999998658895,34.6999992325902" />
+                  <mssgle:LineSegment
+                    End="18.5999998658895,53.8999984651803" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load IMDb data to DW\ADO NET Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load IMDb data to DW\ADO NET Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Load IMDb data to staging">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="188,41.6"
+          Id="Package\Load IMDb data to staging\ADO NET Destination 3"
+          TopLeft="27.6666644000397,371.533331659701" />
+        <NodeLayout
+          Size="188,41.6"
+          Id="Package\Load IMDb data to staging\Netflix Titles CSV parse 2"
+          TopLeft="252.77035669074,72.0592601378168" />
+        <NodeLayout
+          Size="151.2,41.6"
+          Id="Package\Load IMDb data to staging\Flat File Source"
+          TopLeft="60,60" />
+        <NodeLayout
+          Size="179.2,41.6"
+          Id="Package\Load IMDb data to staging\ADO NET Destination"
+          TopLeft="298.999995544553,184.999997243285" />
+        <EdgeLayout
+          Id="Package\Load IMDb data to staging.Paths[Flat File Source Output1]"
+          TopLeft="135.6,101.6">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-13.9333355999603,269.933331659701"
+              Start="0,0"
+              End="-13.9333355999603,262.433331659701">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,130.966665829851" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,130.966665829851"
+                    Point2="0,134.966665829851"
+                    Point3="-4,134.966665829851" />
+                  <mssgle:LineSegment
+                    End="-9.93333559996034,134.966665829851" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-9.93333559996034,134.966665829851"
+                    Point2="-13.9333355999603,134.966665829851"
+                    Point3="-13.9333355999603,138.966665829851" />
+                  <mssgle:LineSegment
+                    End="-13.9333355999603,262.433331659701" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load IMDb data to staging.Paths[Flat File Source Output]"
+          TopLeft="346.77035669074,113.659260137817">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="41.8296388538128,71.3407371054685"
+              Start="0,0"
+              End="41.8296388538128,63.8407371054685">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31.6703685527342" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,31.6703685527342"
+                    Point2="0,35.6703685527342"
+                    Point3="4,35.6703685527342" />
+                  <mssgle:LineSegment
+                    End="37.8296388538128,35.6703685527342" />
+                  <mssgle:CubicBezierSegment
+                    Point1="37.8296388538128,35.6703685527342"
+                    Point2="41.8296388538128,35.6703685527342"
+                    Point3="41.8296388538128,39.6703685527342" />
+                  <mssgle:LineSegment
+                    End="41.8296388538128,63.8407371054685" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load IMDb data to staging\ADO NET Destination 3">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load IMDb data to staging\ADO NET Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
   <TaskHost
     design-time-name="Package\Load some data to DW">
     <LayoutInfo>
       <GraphLayout
         Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="106.4,41.6"
-          Id="Package\Load some data to DW\Sort 2"
-          TopLeft="1003.33327851362,280.399998228153" />
-        <NodeLayout
-          Size="106.4,41.6"
-          Id="Package\Load some data to DW\Sort 1"
-          TopLeft="695.833295314678,226.199998427034" />
-        <NodeLayout
-          Size="161.6,41.6"
-          Id="Package\Load some data to DW\Script Component"
-          TopLeft="986.666612757579,203.933332616157" />
-        <NodeLayout
-          Size="188,41.6"
-          Id="Package\Load some data to DW\ADO NET Destination 1"
-          TopLeft="514.999971861642,487.266663623187" />
+          Size="129.6,41.6"
+          Id="Package\Load some data to DW\Merge Join"
+          TopLeft="550.833303237128,396.066663912469" />
         <NodeLayout
           Size="164.8,41.6"
           Id="Package\Load some data to DW\Netflix Subscribers"
@@ -4604,135 +6558,45 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
           Id="Package\Load some data to DW\Sort"
           TopLeft="495.833306242195,231.399998390873" />
         <NodeLayout
+          Size="188,41.6"
+          Id="Package\Load some data to DW\ADO NET Destination 1"
+          TopLeft="514.999971861642,487.266663623187" />
+        <NodeLayout
+          Size="106.4,41.6"
+          Id="Package\Load some data to DW\Sort 2"
+          TopLeft="1003.33327851362,280.399998228153" />
+        <NodeLayout
           Size="153.6,41.6"
           Id="Package\Load some data to DW\Conditional Split"
           TopLeft="149.999991804362,252.199998246233" />
         <NodeLayout
           Size="156.8,41.6"
           Id="Package\Load some data to DW\Netflix Revenues"
-          TopLeft="478.333307198353,116.133332525757" />
-        <NodeLayout
-          Size="188,41.6"
-          Id="Package\Load some data to DW\ADO NET Destination 2"
-          TopLeft="962.499947411321,456.99999752303" />
-        <NodeLayout
-          Size="129.6,41.6"
-          Id="Package\Load some data to DW\Merge Join"
-          TopLeft="550.833303237128,396.066663912469" />
+          TopLeft="485.833306788571,37.2666664075193" />
         <NodeLayout
           Size="188,41.6"
           Id="Package\Load some data to DW\Netflix Titles CSV parse"
           TopLeft="218.166663232777,125.233331562943" />
         <NodeLayout
+          Size="188,41.6"
+          Id="Package\Load some data to DW\Netflix Titles CSV parse 1"
+          TopLeft="968.333280425935,90.4000000723202" />
+        <NodeLayout
+          Size="106.4,41.6"
+          Id="Package\Load some data to DW\Sort 1"
+          TopLeft="695.833295314678,226.199998427034" />
+        <NodeLayout
+          Size="188,41.6"
+          Id="Package\Load some data to DW\ADO NET Destination 2"
+          TopLeft="962.499947411321,456.99999752303" />
+        <NodeLayout
           Size="179.2,41.6"
           Id="Package\Load some data to DW\ADO NET Destination"
           TopLeft="180.166665008499,473.799994861484" />
         <NodeLayout
-          Size="188,41.6"
-          Id="Package\Load some data to DW\Netflix Titles CSV parse 1"
-          TopLeft="968.333280425935,90.4000000723202" />
-        <EdgeLayout
-          Id="Package\Load some data to DW.Paths[Flat File Source Output2]"
-          TopLeft="739.899964075785,160.333332507677">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="9.13333123889254,65.8666659193569"
-              Start="0,0"
-              End="9.13333123889254,58.3666659193569">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,28.9333329596785" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,28.9333329596785"
-                    Point2="0,32.9333329596785"
-                    Point3="4,32.9333329596785" />
-                  <mssgle:LineSegment
-                    End="5.13333123889254,32.9333329596785" />
-                  <mssgle:CubicBezierSegment
-                    Point1="5.13333123889254,32.9333329596785"
-                    Point2="9.13333123889254,32.9333329596785"
-                    Point3="9.13333123889254,36.9333329596785" />
-                  <mssgle:LineSegment
-                    End="9.13333123889254,58.3666659193569" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Load some data to DW.Paths[Flat File Source Output1]"
-          TopLeft="556.733307198353,157.733332525757">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-12.1000009561579,73.6666658651166"
-              Start="0,0"
-              End="-12.1000009561579,66.1666658651166">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,32.8333329325583" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,32.8333329325583"
-                    Point2="0,36.8333329325583"
-                    Point3="-4,36.8333329325583" />
-                  <mssgle:LineSegment
-                    End="-8.10000095615794,36.8333329325583" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-8.10000095615794,36.8333329325583"
-                    Point2="-12.1000009561579,36.8333329325583"
-                    Point3="-12.1000009561579,40.8333329325583" />
-                  <mssgle:LineSegment
-                    End="-12.1000009561579,66.1666658651166" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Load some data to DW.Paths[Flat File Source Output]"
-          TopLeft="312.166663232777,166.833331562943">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-85.3666714284154,85.3666666832896"
-              Start="0,0"
-              End="-85.3666714284154,77.8666666832896">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,38.6833333416448" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,38.6833333416448"
-                    Point2="0,42.6833333416448"
-                    Point3="-4,42.6833333416448" />
-                  <mssgle:LineSegment
-                    End="-81.3666714284154,42.6833333416448" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-81.3666714284154,42.6833333416448"
-                    Point2="-85.3666714284154,42.6833333416448"
-                    Point3="-85.3666714284154,46.6833333416448" />
-                  <mssgle:LineSegment
-                    End="-85.3666714284154,77.8666666832896" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+          Size="161.6,41.6"
+          Id="Package\Load some data to DW\Script Component"
+          TopLeft="986.666612757579,203.933332616157" />
         <EdgeLayout
           Id="Package\Load some data to DW.Paths[Valid added Date]"
           TopLeft="226.799991804362,293.799998246233">
@@ -4916,7 +6780,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Load some data to DW.Paths[Flat File Source Output3]"
+          Id="Package\Load some data to DW.Paths[Flat File Source Output2]"
           TopLeft="1064.89994659176,132.00000007232">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -4935,6 +6799,136 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load some data to DW.Paths[Flat File Source Output1]"
+          TopLeft="739.899964075785,160.333332507677">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="9.13333123889254,65.8666659193569"
+              Start="0,0"
+              End="9.13333123889254,58.3666659193569">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,28.9333329596785" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,28.9333329596785"
+                    Point2="0,32.9333329596785"
+                    Point3="4,32.9333329596785" />
+                  <mssgle:LineSegment
+                    End="5.13333123889254,32.9333329596785" />
+                  <mssgle:CubicBezierSegment
+                    Point1="5.13333123889254,32.9333329596785"
+                    Point2="9.13333123889254,32.9333329596785"
+                    Point3="9.13333123889254,36.9333329596785" />
+                  <mssgle:LineSegment
+                    End="9.13333123889254,58.3666659193569" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load some data to DW.Paths[Flat File Source Output]"
+          TopLeft="312.166663232777,166.833331562943">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-85.3666714284154,85.3666666832896"
+              Start="0,0"
+              End="-85.3666714284154,77.8666666832896">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,38.6833333416448" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,38.6833333416448"
+                    Point2="0,42.6833333416448"
+                    Point3="-4,42.6833333416448" />
+                  <mssgle:LineSegment
+                    End="-81.3666714284154,42.6833333416448" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-81.3666714284154,42.6833333416448"
+                    Point2="-85.3666714284154,42.6833333416448"
+                    Point3="-85.3666714284154,46.6833333416448" />
+                  <mssgle:LineSegment
+                    End="-85.3666714284154,77.8666666832896" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="162.4,41.6"
+          Id="Package\Load some data to DW\Conditional Split 1"
+          TopLeft="486.666640076373,146.466665648156" />
+        <EdgeLayout
+          Id="Package\Load some data to DW.Paths[Flat File Source Output3]"
+          TopLeft="566.049973432472,78.8666664075193">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,67.5999992406365"
+              Start="0,0"
+              End="0,60.0999992406365">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,60.0999992406365" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load some data to DW.Paths[Case 1]"
+          TopLeft="567.866640076373,188.066665648156">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-23.2333338341784,43.3333327427172"
+              Start="0,0"
+              End="-23.2333338341784,35.8333327427172">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,17.6666663713586" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,17.6666663713586"
+                    Point2="0,21.6666663713586"
+                    Point3="-4,21.6666663713586" />
+                  <mssgle:LineSegment
+                    End="-19.2333338341784,21.6666663713586" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-19.2333338341784,21.6666663713586"
+                    Point2="-23.2333338341784,21.6666663713586"
+                    Point3="-23.2333338341784,25.6666663713586" />
+                  <mssgle:LineSegment
+                    End="-23.2333338341784,35.8333327427172" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-26.8347528545892,26.6666663713586,30.436171875,9.5537109375"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -4965,152 +6959,282 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
     </Properties>
   </PipelineComponentMetadata>
   <TaskHost
-    design-time-name="Package\Load IMDb data to staging">
+    design-time-name="Package\Calculate KPI">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="188,41.6"
-          Id="Package\Load IMDb data to staging\ADO NET Destination 3"
-          TopLeft="27.6666644000397,371.533331659701" />
-        <NodeLayout
-          Size="188,41.6"
-          Id="Package\Load IMDb data to staging\Netflix Titles CSV parse 2"
-          TopLeft="252.77035669074,72.0592601378168" />
-        <NodeLayout
-          Size="151.2,41.6"
-          Id="Package\Load IMDb data to staging\Flat File Source"
-          TopLeft="60,60" />
-        <NodeLayout
-          Size="179.2,41.6"
-          Id="Package\Load IMDb data to staging\ADO NET Destination"
-          TopLeft="298.999995544553,184.999997243285" />
-        <EdgeLayout
-          Id="Package\Load IMDb data to staging.Paths[Flat File Source Output]"
-          TopLeft="346.77035669074,113.659260137817">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="41.8296388538128,71.3407371054685"
-              Start="0,0"
-              End="41.8296388538128,63.8407371054685">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,31.6703685527342" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,31.6703685527342"
-                    Point2="0,35.6703685527342"
-                    Point3="4,35.6703685527342" />
-                  <mssgle:LineSegment
-                    End="37.8296388538128,35.6703685527342" />
-                  <mssgle:CubicBezierSegment
-                    Point1="37.8296388538128,35.6703685527342"
-                    Point2="41.8296388538128,35.6703685527342"
-                    Point3="41.8296388538128,39.6703685527342" />
-                  <mssgle:LineSegment
-                    End="41.8296388538128,63.8407371054685" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Load IMDb data to staging.Paths[Flat File Source Output1]"
-          TopLeft="135.6,101.6">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-13.9333355999603,269.933331659701"
-              Start="0,0"
-              End="-13.9333355999603,262.433331659701">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,130.966665829851" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,130.966665829851"
-                    Point2="0,134.966665829851"
-                    Point3="-4,134.966665829851" />
-                  <mssgle:LineSegment
-                    End="-9.93333559996034,134.966665829851" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-9.93333559996034,134.966665829851"
-                    Point2="-13.9333355999603,134.966665829851"
-                    Point3="-13.9333355999603,138.966665829851" />
-                  <mssgle:LineSegment
-                    End="-13.9333355999603,262.433331659701" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\Load IMDb data to staging\ADO NET Destination 3">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Load IMDb data to staging\ADO NET Destination">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <TaskHost
-    design-time-name="Package\Load IMDb data to DW">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="160,41.6"
-          Id="Package\Load IMDb data to DW\ADO NET Source"
-          TopLeft="244.999996349216,229.999996572733" />
+          Id="Package\Calculate KPI\ADO NET Source"
+          TopLeft="354.999994710088,174.999997392297" />
         <NodeLayout
           Size="179.2,41.6"
-          Id="Package\Load IMDb data to DW\ADO NET Destination"
-          TopLeft="253.999996215105,332.999995037913" />
+          Id="Package\Calculate KPI\ADO NET Destination"
+          TopLeft="521.499992311001,628.499990716577" />
+        <NodeLayout
+          Size="119.2,41.6"
+          Id="Package\Calculate KPI\Multicast"
+          TopLeft="374.999994412065,266.99999602139" />
         <EdgeLayout
-          Id="Package\Load IMDb data to DW.Paths[ADO NET Source Output]"
-          TopLeft="324.999996349216,271.599996572733">
+          Id="Package\Calculate KPI.Paths[ADO NET Source Output]"
+          TopLeft="434.799994561076,216.599997392297">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="18.5999998658895,61.3999984651803"
+              EndConnector="0,50.3999986290931"
               Start="0,0"
-              End="18.5999998658895,53.8999984651803">
+              End="0,42.8999986290931">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,26.6999992325902" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,26.6999992325902"
-                    Point2="0,30.6999992325902"
-                    Point3="4,30.6999992325902" />
+                    End="0,42.8999986290931" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="161.6,41.6"
+          Id="Package\Calculate KPI\Script Component"
+          TopLeft="542.999991908669,339.999994933605" />
+        <EdgeLayout
+          Id="Package\Calculate KPI.Paths[Multicast Output 1]"
+          TopLeft="434.599994412065,308.59999602139">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="189.199997496605,31.3999989122151"
+              Start="0,0"
+              End="189.199997496605,23.8999989122151">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
                   <mssgle:LineSegment
-                    End="14.5999998658895,30.6999992325902" />
+                    End="0,11.6999994561075" />
                   <mssgle:CubicBezierSegment
-                    Point1="14.5999998658895,30.6999992325902"
-                    Point2="18.5999998658895,30.6999992325902"
-                    Point3="18.5999998658895,34.6999992325902" />
+                    Point1="0,11.6999994561075"
+                    Point2="0,15.6999994561075"
+                    Point3="4,15.6999994561075" />
                   <mssgle:LineSegment
-                    End="18.5999998658895,53.8999984651803" />
+                    End="185.199997496605,15.6999994561075" />
+                  <mssgle:CubicBezierSegment
+                    Point1="185.199997496605,15.6999994561075"
+                    Point2="189.199997496605,15.6999994561075"
+                    Point3="189.199997496605,19.6999994561075" />
+                  <mssgle:LineSegment
+                    End="189.199997496605,23.8999989122151" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="97.6,41.6"
+          Id="Package\Calculate KPI\Sort"
+          TopLeft="321.999995201826,356.999994680285" />
+        <EdgeLayout
+          Id="Package\Calculate KPI.Paths[Multicast Output 2]"
+          TopLeft="416.066661078731,308.59999602139">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-45.2666658769051,48.3999986588955"
+              Start="0,0"
+              End="-45.2666658769051,40.8999986588955">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,15.7446352144898" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,15.7446352144898"
+                    Point2="0,19.7446352144898"
+                    Point3="-4,19.7446352144898" />
+                  <mssgle:LineSegment
+                    End="-41.2666658769051,19.7446352144898" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-41.2666658769051,19.7446352144898"
+                    Point2="-45.2666658769051,19.7446352144898"
+                    Point3="-45.2666658769051,23.7446352144898" />
+                  <mssgle:LineSegment
+                    End="-45.2666658769051,40.8999986588955" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="106.4,41.6"
+          Id="Package\Calculate KPI\Sort 1"
+          TopLeft="510.999992385507,404.99999396503" />
+        <EdgeLayout
+          Id="Package\Calculate KPI.Paths[Output 0]"
+          TopLeft="623.799991908669,381.599994933605">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-59.5999995231625,23.3999990314246"
+              Start="0,0"
+              End="-59.5999995231625,15.8999990314246">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,7.69999951571229" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,7.69999951571229"
+                    Point2="0,11.6999995157123"
+                    Point3="-4,11.6999995157123" />
+                  <mssgle:LineSegment
+                    End="-55.5999995231625,11.6999995157123" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-55.5999995231625,11.6999995157123"
+                    Point2="-59.5999995231625,11.6999995157123"
+                    Point3="-59.5999995231625,15.6999995157123" />
+                  <mssgle:LineSegment
+                    End="-59.5999995231625,15.8999990314246" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="129.6,41.6"
+          Id="Package\Calculate KPI\Merge Join"
+          TopLeft="423.999993681908,478.999992862344" />
+        <EdgeLayout
+          Id="Package\Calculate KPI.Paths[Sort Output]"
+          TopLeft="370.799995201826,398.599994680285">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="117.999998480082,80.3999981820584"
+              Start="0,0"
+              End="117.999998480082,72.8999981820584">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,36.1999990910292" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,36.1999990910292"
+                    Point2="0,40.1999990910292"
+                    Point3="4,40.1999990910292" />
+                  <mssgle:LineSegment
+                    End="113.999998480082,40.1999990910292" />
+                  <mssgle:CubicBezierSegment
+                    Point1="113.999998480082,40.1999990910292"
+                    Point2="117.999998480082,40.1999990910292"
+                    Point3="117.999998480082,44.1999990910292" />
+                  <mssgle:LineSegment
+                    End="117.999998480082,72.8999981820584" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Calculate KPI.Paths[Sort Output1]"
+          TopLeft="564.199992385507,446.59999396503">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-55.1333320369325,32.3999988973142"
+              Start="0,0"
+              End="-55.1333320369325,24.8999988973142">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,15.2029261757252" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,15.2029261757252"
+                    Point2="0,19.2029261757252"
+                    Point3="-4,19.2029261757252" />
+                  <mssgle:LineSegment
+                    End="-51.1333320369325,19.2029261757252" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-51.1333320369325,19.2029261757252"
+                    Point2="-55.1333320369325,19.2029261757252"
+                    Point3="-55.1333320369325,23.2029261757252" />
+                  <mssgle:LineSegment
+                    End="-55.1333320369325,24.8999988973142" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="152.8,41.6"
+          Id="Package\Calculate KPI\Derived Column"
+          TopLeft="527.999992132187,548.999991819263" />
+        <EdgeLayout
+          Id="Package\Calculate KPI.Paths[Merge Join Output]"
+          TopLeft="488.799993681908,520.599992862344">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="115.599998450279,28.3999989569187"
+              Start="0,0"
+              End="115.599998450279,20.8999989569187">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,10.1999994784593" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,10.1999994784593"
+                    Point2="0,14.1999994784593"
+                    Point3="4,14.1999994784593" />
+                  <mssgle:LineSegment
+                    End="111.599998450279,14.1999994784593" />
+                  <mssgle:CubicBezierSegment
+                    Point1="111.599998450279,14.1999994784593"
+                    Point2="115.599998450279,14.1999994784593"
+                    Point3="115.599998450279,18.1999994784593" />
+                  <mssgle:LineSegment
+                    End="115.599998450279,20.8999989569187" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Calculate KPI.Paths[Derived Column Output]"
+          TopLeft="607.749992221594,590.599991819263">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,37.8999988973143"
+              Start="0,0"
+              End="0,30.3999988973143">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,30.3999988973143" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -5123,7 +7247,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Load IMDb data to DW\ADO NET Source">
+    design-time-name="Package\Calculate KPI\ADO NET Source">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -5131,7 +7255,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Load IMDb data to DW\ADO NET Destination">
+    design-time-name="Package\Calculate KPI\ADO NET Destination">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>

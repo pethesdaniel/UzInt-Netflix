@@ -11,8 +11,8 @@
   DTS:LocaleID="2057"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="94"
-  DTS:VersionGUID="{2C6786D9-6006-4A25-B668-5A18A534BC00}">
+  DTS:VersionBuild="100"
+  DTS:VersionGUID="{9EB9682B-7373-43F2-BA7A-5F5DDF7ADB04}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -24,6 +24,59 @@
       <DTS:ObjectData>
         <DTS:ConnectionManager
           DTS:ConnectionString="Data Source=NAZUNA;Initial Catalog=NetflixBI;Integrated Security=True;Encrypt=False;Application Name=SSIS-Package-{BAD1F268-B297-4A7C-BB39-7ED5930A747C}NAZUNA.Staging;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Google Trends]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{568C30FE-D1CF-48A9-9FB2-08E2367A649C}"
+      DTS:ObjectName="Google Trends">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="2057"
+          DTS:HeaderRowsToSkip="3"
+          DTS:HeaderRowDelimiter="_x000A_"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="65001"
+          DTS:ConnectionString="P:\BME\UzInt\csv\google_trends.csv">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="date"
+              DTS:DTSID="{60C890C9-CA74-4051-BE3C-417A8D329A5B}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="netflix"
+              DTS:DTSID="{116AD85D-352F-44BA-B0E2-C660AABE0F48}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="amazon"
+              DTS:DTSID="{6DE116DF-1706-4EF0-95C4-9D1C2E43282E}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000A_"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="hulu"
+              DTS:DTSID="{7CF8B91A-7852-4A90-BE8E-22F1437710F8}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
@@ -1979,7 +2032,1917 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{BAD1F268-B297-4A7C-BB39-7ED5930A747C}"
-          SQLTask:SqlStatementSource="DELETE FROM NetflixKPI&#xA;WHERE [year] &gt; 2018&#xA;&#xA;DELETE FROM NetflixStats&#xA;WHERE [year] &gt; 2018&#xA;&#xA;DELETE FROM NetflixTitles&#xA;WHERE YEAR(date_added) &gt; 2018" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="DELETE FROM NetflixKPI&#xA;WHERE [year] &gt; 2018&#xA;&#xA;DELETE FROM NetflixStats&#xA;WHERE [year] &gt; 2018&#xA;&#xA;DELETE FROM NetflixTitles&#xA;WHERE YEAR(date_added) &gt; 2018&#xA;&#xA;DELETE FROM GoogleTrends&#xA;WHERE  [year] &gt; 2018" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Load Google Trends into DW"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{5D78F072-AD6D-4FC5-B47B-177654E79263}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Load Google Trends into DW"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Load Google Trends into DW\ADO NET Destination"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="Loads data into an ADO.NET-compliant database that uses a database table or view. Load data into a new or existing table. For example, use an ADO.NET provider for ODBC to load data into an ODBC destination.;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Loads data into an ADO.NET-compliant database that uses a database table or view. Load data into a new or existing table. For example, use an ADO.NET provider for ODBC to load data into an ODBC destination."
+              name="ADO NET Destination"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="The Destination database table name."
+                  expressionType="Notify"
+                  name="TableOrViewName"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">"dbo"."GoogleTrends"</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify the number of rows per batch. The default is 0 which uses the same size as SSIS internal buffer. "
+                  expressionType="Notify"
+                  name="BatchSize">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out. A value of 0 indicates infinite time-out. "
+                  expressionType="Notify"
+                  name="CommandTimeout">30</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether to use the SqlBulkCopy interface to improve the performance of bulk insert operations. Only certain providers support this interface."
+                  expressionType="Notify"
+                  name="UseBulkInsertWhenPossible">true</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.ADONETDestination</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load Google Trends into DW\ADO NET Destination.Connections[IDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Destination]"
+                  connectionManagerRefId="Package.ConnectionManagers[Destination]"
+                  description="Managed connection manager"
+                  name="IDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Load Google Trends into DW\ADO NET Destination.Inputs[ADO NET Destination Input]"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="ADO NET Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load Google Trends into DW\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[netflix]"
+                      cachedDataType="decimal"
+                      cachedName="netflix"
+                      externalMetadataColumnId="Package\Load Google Trends into DW\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[netflix]"
+                      lineageId="Package\Load Google Trends into DW\Aggregate.Outputs[Aggregate Output 1].Columns[netflix]" />
+                    <inputColumn
+                      refId="Package\Load Google Trends into DW\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[amazon]"
+                      cachedDataType="decimal"
+                      cachedName="amazon"
+                      externalMetadataColumnId="Package\Load Google Trends into DW\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[amazon]"
+                      lineageId="Package\Load Google Trends into DW\Aggregate.Outputs[Aggregate Output 1].Columns[amazon]" />
+                    <inputColumn
+                      refId="Package\Load Google Trends into DW\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[hulu]"
+                      cachedDataType="decimal"
+                      cachedName="hulu"
+                      externalMetadataColumnId="Package\Load Google Trends into DW\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[hulu]"
+                      lineageId="Package\Load Google Trends into DW\Aggregate.Outputs[Aggregate Output 1].Columns[hulu]" />
+                    <inputColumn
+                      refId="Package\Load Google Trends into DW\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[date]"
+                      cachedCodepage="65001"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="date"
+                      externalMetadataColumnId="Package\Load Google Trends into DW\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[year]"
+                      lineageId="Package\Load Google Trends into DW\Aggregate.Outputs[Aggregate Output 1].Columns[date]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load Google Trends into DW\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[year]"
+                      dataType="numeric"
+                      name="year"
+                      precision="18" />
+                    <externalMetadataColumn
+                      refId="Package\Load Google Trends into DW\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[netflix]"
+                      dataType="numeric"
+                      name="netflix"
+                      precision="18" />
+                    <externalMetadataColumn
+                      refId="Package\Load Google Trends into DW\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[amazon]"
+                      dataType="numeric"
+                      name="amazon"
+                      precision="18" />
+                    <externalMetadataColumn
+                      refId="Package\Load Google Trends into DW\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[hulu]"
+                      dataType="numeric"
+                      name="hulu"
+                      precision="18" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load Google Trends into DW\ADO NET Destination.Outputs[ADO NET Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="ADO NET Destination Error Output"
+                  synchronousInputId="Package\Load Google Trends into DW\ADO NET Destination.Inputs[ADO NET Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Google Trends into DW\ADO NET Destination.Outputs[ADO NET Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load Google Trends into DW\ADO NET Destination.Outputs[ADO NET Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load Google Trends into DW\ADO NET Destination.Outputs[ADO NET Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load Google Trends into DW\ADO NET Destination.Outputs[ADO NET Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load Google Trends into DW\Aggregate"
+              componentClassID="Microsoft.Aggregate"
+              contactInfo="Aggregate;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;3"
+              description="Aggregates data with functions such as Average, Sum, Count, Max, and Min. For example, group data to compute the sum of sales per product or the average visits per day."
+              name="Aggregate"
+              version="3">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the approximate number of group by keys that the aggregation produces. Low indicates 500,000 key values, Medium indicates 5 million key values, and High indicates more than 25 million key values. Unspecified indicates no KeyScale value is used."
+                  name="KeyScale"
+                  typeConverter="KeyScaleType">0</property>
+                <property
+                  dataType="System.Null"
+                  description="Specifies the exact number of group by keys that the aggregation produces. If a KeyScale value is specified, the value in Keys takes precedence."
+                  name="Keys" />
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the approximate number of distinct values in a column that the aggregation counts distinctly. Low indicates 500,000 key values, Medium indicates 5 million key values, and High indicates more than 25 million key values. Unspecified indicates no CountDistinctScale value is used."
+                  name="CountDistinctScale"
+                  typeConverter="KeyScaleType">0</property>
+                <property
+                  dataType="System.Null"
+                  description="Specifies the exact number of distinct values in a column that the aggregation counts distinctly. If a CountDistinctScale value is specified, the value in CountDistinctKeys takes precedence."
+                  name="CountDistinctKeys" />
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage by which memory can be extended during the aggregation. Valid values are between 1 and 100."
+                  name="AutoExtendFactor">25</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Load Google Trends into DW\Aggregate.Inputs[Aggregate Input 1]"
+                  name="Aggregate Input 1">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load Google Trends into DW\Aggregate.Inputs[Aggregate Input 1].Columns[date]"
+                      cachedCodepage="65001"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="date"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\Load Google Trends into DW\Sort.Outputs[Sort Output].Columns[date]" />
+                    <inputColumn
+                      refId="Package\Load Google Trends into DW\Aggregate.Inputs[Aggregate Input 1].Columns[Prepare for date aggregation.netflix]"
+                      cachedDataType="decimal"
+                      cachedName="Prepare for date aggregation.netflix"
+                      lineageId="Package\Load Google Trends into DW\Sort.Outputs[Sort Output].Columns[Prepare for date aggregation.netflix]" />
+                    <inputColumn
+                      refId="Package\Load Google Trends into DW\Aggregate.Inputs[Aggregate Input 1].Columns[Prepare for date aggregation.amazon]"
+                      cachedDataType="decimal"
+                      cachedName="Prepare for date aggregation.amazon"
+                      lineageId="Package\Load Google Trends into DW\Sort.Outputs[Sort Output].Columns[Prepare for date aggregation.amazon]" />
+                    <inputColumn
+                      refId="Package\Load Google Trends into DW\Aggregate.Inputs[Aggregate Input 1].Columns[Prepare for date aggregation.hulu]"
+                      cachedDataType="decimal"
+                      cachedName="Prepare for date aggregation.hulu"
+                      lineageId="Package\Load Google Trends into DW\Sort.Outputs[Sort Output].Columns[Prepare for date aggregation.hulu]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load Google Trends into DW\Aggregate.Outputs[Aggregate Output 1]"
+                  name="Aggregate Output 1">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the approximate number of group by keys that the aggregation produces. Low indicates 500,000 key values, Medium indicates 5 million key values, and High indicates more than 25 million key values. Unspecified indicates no KeyScale value is used."
+                      name="KeyScale"
+                      typeConverter="KeyScaleType">0</property>
+                    <property
+                      dataType="System.Null"
+                      description="Specifies the exact number of group by keys that the aggregation produces. If a KeyScale value is specified, the value in Keys takes precedence."
+                      name="Keys" />
+                  </properties>
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Google Trends into DW\Aggregate.Outputs[Aggregate Output 1].Columns[date]"
+                      codePage="65001"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Load Google Trends into DW\Aggregate.Outputs[Aggregate Output 1].Columns[date]"
+                      name="date">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\Load Google Trends into DW\Sort.Outputs[Sort Output].Columns[date]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load Google Trends into DW\Aggregate.Outputs[Aggregate Output 1].Columns[netflix]"
+                      dataType="decimal"
+                      lineageId="Package\Load Google Trends into DW\Aggregate.Outputs[Aggregate Output 1].Columns[netflix]"
+                      name="netflix">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\Load Google Trends into DW\Sort.Outputs[Sort Output].Columns[Prepare for date aggregation.netflix]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">4</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load Google Trends into DW\Aggregate.Outputs[Aggregate Output 1].Columns[amazon]"
+                      dataType="decimal"
+                      lineageId="Package\Load Google Trends into DW\Aggregate.Outputs[Aggregate Output 1].Columns[amazon]"
+                      name="amazon">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\Load Google Trends into DW\Sort.Outputs[Sort Output].Columns[Prepare for date aggregation.amazon]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">4</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load Google Trends into DW\Aggregate.Outputs[Aggregate Output 1].Columns[hulu]"
+                      dataType="decimal"
+                      lineageId="Package\Load Google Trends into DW\Aggregate.Outputs[Aggregate Output 1].Columns[hulu]"
+                      name="hulu">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\Load Google Trends into DW\Sort.Outputs[Sort Output].Columns[Prepare for date aggregation.hulu]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">4</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load Google Trends into DW\Convert to decimal"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Data Conversion"
+              name="Convert to decimal"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Load Google Trends into DW\Convert to decimal.Inputs[Data Conversion Input]"
+                  name="Data Conversion Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load Google Trends into DW\Convert to decimal.Inputs[Data Conversion Input].Columns[netflix]"
+                      cachedCodepage="65001"
+                      cachedDataType="str"
+                      cachedLength="255"
+                      cachedName="netflix"
+                      lineageId="Package\Load Google Trends into DW\Google Trends parse CSV.Outputs[Flat File Source Output].Columns[netflix]" />
+                    <inputColumn
+                      refId="Package\Load Google Trends into DW\Convert to decimal.Inputs[Data Conversion Input].Columns[amazon]"
+                      cachedCodepage="65001"
+                      cachedDataType="str"
+                      cachedLength="255"
+                      cachedName="amazon"
+                      lineageId="Package\Load Google Trends into DW\Google Trends parse CSV.Outputs[Flat File Source Output].Columns[amazon]" />
+                    <inputColumn
+                      refId="Package\Load Google Trends into DW\Convert to decimal.Inputs[Data Conversion Input].Columns[hulu]"
+                      cachedCodepage="65001"
+                      cachedDataType="str"
+                      cachedLength="255"
+                      cachedName="hulu"
+                      lineageId="Package\Load Google Trends into DW\Google Trends parse CSV.Outputs[Flat File Source Output].Columns[hulu]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load Google Trends into DW\Convert to decimal.Outputs[Data Conversion Output]"
+                  exclusionGroup="1"
+                  name="Data Conversion Output"
+                  synchronousInputId="Package\Load Google Trends into DW\Convert to decimal.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Google Trends into DW\Convert to decimal.Outputs[Data Conversion Output].Columns[netflix]"
+                      dataType="decimal"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Load Google Trends into DW\Convert to decimal.Outputs[Data Conversion Output].Columns[netflix]"
+                      name="netflix"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Load Google Trends into DW\Google Trends parse CSV.Outputs[Flat File Source Output].Columns[netflix]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load Google Trends into DW\Convert to decimal.Outputs[Data Conversion Output].Columns[amazon]"
+                      dataType="decimal"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Load Google Trends into DW\Convert to decimal.Outputs[Data Conversion Output].Columns[amazon]"
+                      name="amazon"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Load Google Trends into DW\Google Trends parse CSV.Outputs[Flat File Source Output].Columns[amazon]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load Google Trends into DW\Convert to decimal.Outputs[Data Conversion Output].Columns[hulu]"
+                      dataType="decimal"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Load Google Trends into DW\Convert to decimal.Outputs[Data Conversion Output].Columns[hulu]"
+                      name="hulu"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Load Google Trends into DW\Google Trends parse CSV.Outputs[Flat File Source Output].Columns[hulu]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load Google Trends into DW\Convert to decimal.Outputs[Data Conversion Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Data Conversion Error Output"
+                  synchronousInputId="Package\Load Google Trends into DW\Convert to decimal.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Google Trends into DW\Convert to decimal.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load Google Trends into DW\Convert to decimal.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load Google Trends into DW\Convert to decimal.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load Google Trends into DW\Convert to decimal.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load Google Trends into DW\Google Trends parse CSV"
+              componentClassID="Microsoft.FlatFileSource"
+              contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Flat File Source"
+              localeId="2057"
+              name="Google Trends parse CSV"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether zero-length columns are treated as null."
+                  name="RetainNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of an output column containing the file name. If no name is specified, no output column containing the file name will be generated."
+                  name="FileNameColumnName"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load Google Trends into DW\Google Trends parse CSV.Connections[FlatFileConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Google Trends]"
+                  connectionManagerRefId="Package.ConnectionManagers[Google Trends]"
+                  name="FlatFileConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Load Google Trends into DW\Google Trends parse CSV.Outputs[Flat File Source Output]"
+                  name="Flat File Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Google Trends into DW\Google Trends parse CSV.Outputs[Flat File Source Output].Columns[date]"
+                      codePage="65001"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Google Trends into DW\Google Trends parse CSV.Outputs[Flat File Source Output].ExternalColumns[date]"
+                      length="50"
+                      lineageId="Package\Load Google Trends into DW\Google Trends parse CSV.Outputs[Flat File Source Output].Columns[date]"
+                      name="date"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load Google Trends into DW\Google Trends parse CSV.Outputs[Flat File Source Output].Columns[netflix]"
+                      codePage="65001"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Google Trends into DW\Google Trends parse CSV.Outputs[Flat File Source Output].ExternalColumns[netflix]"
+                      length="255"
+                      lineageId="Package\Load Google Trends into DW\Google Trends parse CSV.Outputs[Flat File Source Output].Columns[netflix]"
+                      name="netflix"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load Google Trends into DW\Google Trends parse CSV.Outputs[Flat File Source Output].Columns[amazon]"
+                      codePage="65001"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Google Trends into DW\Google Trends parse CSV.Outputs[Flat File Source Output].ExternalColumns[amazon]"
+                      length="255"
+                      lineageId="Package\Load Google Trends into DW\Google Trends parse CSV.Outputs[Flat File Source Output].Columns[amazon]"
+                      name="amazon"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load Google Trends into DW\Google Trends parse CSV.Outputs[Flat File Source Output].Columns[hulu]"
+                      codePage="65001"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load Google Trends into DW\Google Trends parse CSV.Outputs[Flat File Source Output].ExternalColumns[hulu]"
+                      length="255"
+                      lineageId="Package\Load Google Trends into DW\Google Trends parse CSV.Outputs[Flat File Source Output].Columns[hulu]"
+                      name="hulu"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load Google Trends into DW\Google Trends parse CSV.Outputs[Flat File Source Output].ExternalColumns[date]"
+                      codePage="65001"
+                      dataType="str"
+                      length="50"
+                      name="date" />
+                    <externalMetadataColumn
+                      refId="Package\Load Google Trends into DW\Google Trends parse CSV.Outputs[Flat File Source Output].ExternalColumns[netflix]"
+                      codePage="65001"
+                      dataType="str"
+                      length="255"
+                      name="netflix" />
+                    <externalMetadataColumn
+                      refId="Package\Load Google Trends into DW\Google Trends parse CSV.Outputs[Flat File Source Output].ExternalColumns[amazon]"
+                      codePage="65001"
+                      dataType="str"
+                      length="255"
+                      name="amazon" />
+                    <externalMetadataColumn
+                      refId="Package\Load Google Trends into DW\Google Trends parse CSV.Outputs[Flat File Source Output].ExternalColumns[hulu]"
+                      codePage="65001"
+                      dataType="str"
+                      length="255"
+                      name="hulu" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Load Google Trends into DW\Google Trends parse CSV.Outputs[Flat File Source Error Output]"
+                  isErrorOut="true"
+                  name="Flat File Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Google Trends into DW\Google Trends parse CSV.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      codePage="65001"
+                      dataType="text"
+                      description="Flat File Source Error Output Column"
+                      lineageId="Package\Load Google Trends into DW\Google Trends parse CSV.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      name="Flat File Source Error Output Column" />
+                    <outputColumn
+                      refId="Package\Load Google Trends into DW\Google Trends parse CSV.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load Google Trends into DW\Google Trends parse CSV.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load Google Trends into DW\Google Trends parse CSV.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load Google Trends into DW\Google Trends parse CSV.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load Google Trends into DW\Prepare for date aggregation"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="Includes and runs custom script code. For example, apply a business rule that limits the range of valid values in an &quot;income&quot; column or add values in two columns and calculate the average of the sum.;Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;13"
+              description="Includes and runs custom script code. For example, apply a business rule that limits the range of valid values in an &quot;income&quot; column or add values in two columns and calculate the average of the sum."
+              name="Prepare for date aggregation"
+              version="13">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Stores the source code of the component"
+                  isArray="true"
+                  name="SourceCode"
+                  state="cdata">
+                  <arrayElements
+                    arrayElementCount="30">
+                    <arrayElement
+                      dataType="System.String"><![CDATA[ComponentWrapper.cs]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[/* THIS IS AUTO-GENERATED CODE THAT WILL BE OVERWRITTEN! DO NOT EDIT!
+*  Microsoft SQL Server Integration Services component wrapper
+*  This module defines the base class for your component
+*  THIS IS AUTO-GENERATED CODE THAT WILL BE OVERWRITTEN! DO NOT EDIT! */
+
+using System;
+using System.Data;
+using Microsoft.SqlServer.Dts.Pipeline;
+using Microsoft.SqlServer.Dts.Pipeline.Wrapper;
+using Microsoft.SqlServer.Dts.Runtime.Wrapper;
+
+public class UserComponent: ScriptComponent
+{
+    public Connections Connections;
+    public Variables Variables;
+    public UserComponent()
+    {
+        Connections = new Connections(this);
+        Variables = new Variables(this);
+    }
+
+    public override void ProcessInput(int InputID, string InputName, PipelineBuffer Buffer, OutputNameMap OutputMap)
+    {
+
+        if (InputName.Equals(@"Input 0", StringComparison.Ordinal))
+        {
+            Input0_ProcessInput(new Input0Buffer(Buffer, GetColumnIndexes(InputID), OutputMap));
+        }
+
+    }
+
+    public virtual void Input0_ProcessInput(Input0Buffer Buffer)
+    {
+        while (Buffer.NextRow())
+        {
+            Input0_ProcessInputRow(Buffer);
+        }
+    }
+
+    public virtual void Input0_ProcessInputRow(Input0Buffer Row)
+    {
+    }
+
+}
+
+public class Connections
+{
+    ScriptComponent ParentComponent;
+
+    public Connections(ScriptComponent Component)
+    {
+        ParentComponent = Component;
+    }
+
+}
+
+public class Variables
+{
+    ScriptComponent ParentComponent;
+
+    public Variables(ScriptComponent Component)
+    {
+        ParentComponent = Component;
+    }
+
+}
+]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[Properties\Resources.resx]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+</root>]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[main.cs]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[#region Help:  Introduction to the Script Component
+/* The Script Component allows you to perform virtually any operation that can be accomplished in
+ * a .Net application within the context of an Integration Services data flow.
+ *
+ * Expand the other regions which have "Help" prefixes for examples of specific ways to use
+ * Integration Services features within this script component. */
+#endregion
+
+#region Namespaces
+using System;
+using System.Data;
+using Microsoft.SqlServer.Dts.Pipeline.Wrapper;
+using Microsoft.SqlServer.Dts.Runtime.Wrapper;
+#endregion
+
+/// <summary>
+/// This is the class to which to add your code.  Do not change the name, attributes, or parent
+/// of this class.
+/// </summary>
+[Microsoft.SqlServer.Dts.Pipeline.SSISScriptComponentEntryPointAttribute]
+public class ScriptMain : UserComponent
+{
+    #region Help:  Using Integration Services variables and parameters
+    /* To use a variable in this script, first ensure that the variable has been added to
+     * either the list contained in the ReadOnlyVariables property or the list contained in
+     * the ReadWriteVariables property of this script component, according to whether or not your
+     * code needs to write into the variable.  To do so, save this script, close this instance of
+     * Visual Studio, and update the ReadOnlyVariables and ReadWriteVariables properties in the
+     * Script Transformation Editor window.
+     * To use a parameter in this script, follow the same steps. Parameters are always read-only.
+     *
+     * Example of reading from a variable or parameter:
+     *  DateTime startTime = Variables.MyStartTime;
+     *
+     * Example of writing to a variable:
+     *  Variables.myStringVariable = "new value";
+     */
+    #endregion
+
+    #region Help:  Using Integration Services Connnection Managers
+    /* Some types of connection managers can be used in this script component.  See the help topic
+     * "Working with Connection Managers Programatically" for details.
+     *
+     * To use a connection manager in this script, first ensure that the connection manager has
+     * been added to either the list of connection managers on the Connection Managers page of the
+     * script component editor.  To add the connection manager, save this script, close this instance of
+     * Visual Studio, and add the Connection Manager to the list.
+     *
+     * If the component needs to hold a connection open while processing rows, override the
+     * AcquireConnections and ReleaseConnections methods.
+     * 
+     * Example of using an ADO.Net connection manager to acquire a SqlConnection:
+     *  object rawConnection = Connections.SalesDB.AcquireConnection(transaction);
+     *  SqlConnection salesDBConn = (SqlConnection)rawConnection;
+     *
+     * Example of using a File connection manager to acquire a file path:
+     *  object rawConnection = Connections.Prices_zip.AcquireConnection(transaction);
+     *  string filePath = (string)rawConnection;
+     *
+     * Example of releasing a connection manager:
+     *  Connections.SalesDB.ReleaseConnection(rawConnection);
+     */
+    #endregion
+
+    #region Help:  Firing Integration Services Events
+    /* This script component can fire events.
+     *
+     * Example of firing an error event:
+     *  ComponentMetaData.FireError(10, "Process Values", "Bad value", "", 0, out cancel);
+     *
+     * Example of firing an information event:
+     *  ComponentMetaData.FireInformation(10, "Process Values", "Processing has started", "", 0, fireAgain);
+     *
+     * Example of firing a warning event:
+     *  ComponentMetaData.FireWarning(10, "Process Values", "No rows were received", "", 0);
+     */
+    #endregion
+
+    /// <summary>
+    /// This method is called once, before rows begin to be processed in the data flow.
+    ///
+    /// You can remove this method if you don't need to do anything here.
+    /// </summary>
+    public override void PreExecute()
+    {
+        base.PreExecute();
+        /*
+         * Add your code here
+         */
+    }
+
+    /// <summary>
+    /// This method is called after all the rows have passed through this component.
+    ///
+    /// You can delete this method if you don't need to do anything here.
+    /// </summary>
+    public override void PostExecute()
+    {
+        base.PostExecute();
+        /*
+         * Add your code here
+         */
+    }
+
+    /// <summary>
+    /// This method is called once for every row that passes through the component from Input0.
+    ///
+    /// Example of reading a value from a column in the the row:
+    ///  string zipCode = Row.ZipCode
+    ///
+    /// Example of writing a value to a column in the row:
+    ///  Row.ZipCode = zipCode
+    /// </summary>
+    /// <param name="Row">The row that is currently passing through the component</param>
+    public override void Input0_ProcessInputRow(Input0Buffer Row)
+    {
+        if (!Row.date_IsNull) {
+            Row.date = Row.date.Split('-')[0];
+        }
+    }
+
+}
+]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[BufferWrapper.cs]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[/* THIS IS AUTO-GENERATED CODE THAT WILL BE OVERWRITTEN! DO NOT EDIT!
+*  Microsoft SQL Server Integration Services buffer wrappers
+*  This module defines classes for accessing data flow buffers
+*  THIS IS AUTO-GENERATED CODE THAT WILL BE OVERWRITTEN! DO NOT EDIT! */
+
+
+
+using System;
+using System.Data;
+using Microsoft.SqlServer.Dts.Pipeline;
+using Microsoft.SqlServer.Dts.Pipeline.Wrapper;
+
+public class Input0Buffer: ScriptBuffer
+
+{
+    public Input0Buffer(PipelineBuffer Buffer, int[] BufferColumnIndexes, OutputNameMap OutputMap)
+        : base(Buffer, BufferColumnIndexes, OutputMap)
+    {
+    }
+
+    public String date
+    {
+        get
+        {
+            return Buffer.GetString(BufferColumnIndexes[0]);
+        }
+        set
+        {
+            this[0] = value;
+        }
+    }
+    public bool date_IsNull
+    {
+        get
+        {
+            return IsNull(0);
+        }
+        set
+        {
+            if (value)
+            {
+                SetNull(0);
+            }
+            else
+            {
+                throw new InvalidOperationException("IsNull property cannot be set to False. Assign a value to the column instead.");
+            }
+        }
+    }
+
+    public Decimal netflix
+    {
+        get
+        {
+            return Buffer.GetDecimal(BufferColumnIndexes[1]);
+        }
+    }
+    public bool netflix_IsNull
+    {
+        get
+        {
+            return IsNull(1);
+        }
+    }
+
+    public Decimal amazon
+    {
+        get
+        {
+            return Buffer.GetDecimal(BufferColumnIndexes[2]);
+        }
+    }
+    public bool amazon_IsNull
+    {
+        get
+        {
+            return IsNull(2);
+        }
+    }
+
+    public Decimal hulu
+    {
+        get
+        {
+            return Buffer.GetDecimal(BufferColumnIndexes[3]);
+        }
+    }
+    public bool hulu_IsNull
+    {
+        get
+        {
+            return IsNull(3);
+        }
+    }
+
+    new public bool NextRow()
+    {
+        return base.NextRow();
+    }
+
+    new public bool EndOfRowset()
+    {
+        return base.EndOfRowset();
+    }
+
+}
+]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[Properties\Settings.Designer.cs]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="SC_349e6ba4942d48deb5b383d418257f1e.Properties.Settings.get_Default():SC_349e6ba4942d48deb5b383d418257f1e.Properties.Sett" +
+    "ings")]
+
+namespace SC_349e6ba4942d48deb5b383d418257f1e.Properties {
+    
+    
+    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
+        
+        [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
+        private static Settings defaultInstance = new Settings();
+        
+        public static Settings Default {
+            get {
+                return defaultInstance;
+            }
+        }
+    }
+}
+]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[Project]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF16LE]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[<?xml version="1.0" encoding="UTF-16" standalone="yes"?>
+<c:Project xmlns:c="http://schemas.microsoft.com/codeprojectml/2010/08/main" xmlns:msb="http://schemas.microsoft.com/developer/msbuild/2003" runtimeVersion="4.0" schemaVersion="1.0">
+  <msb:PropertyGroup>
+    <msb:CodeName>SC_349e6ba4942d48deb5b383d418257f1e</msb:CodeName>
+    <msb:Language>msBuild</msb:Language>
+    <msb:DisplayName>SC_349e6ba4942d48deb5b383d418257f1e</msb:DisplayName>
+    <msb:ProjectId>{C1CE01D2-C282-44BB-8CC1-B4F646B95557}</msb:ProjectId>
+  </msb:PropertyGroup>
+  <msb:ItemGroup>
+    <msb:Project Include="SC_349e6ba4942d48deb5b383d418257f1e.csproj" />
+    <msb:File Include="Properties\Settings.settings" />
+    <msb:File Include="Properties\AssemblyInfo.cs" />
+    <msb:File Include="main.cs" />
+    <msb:File Include="BufferWrapper.cs" />
+    <msb:File Include="ComponentWrapper.cs" />
+    <msb:File Include="Properties\Resources.resx" />
+    <msb:File Include="Properties\Resources.Designer.cs" />
+    <msb:File Include="Properties\Settings.Designer.cs" />
+  </msb:ItemGroup>
+</c:Project>]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[Properties\AssemblyInfo.cs]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[using System.Reflection;
+using System.Runtime.CompilerServices;
+
+//
+// General Information about an assembly is controlled through the following 
+// set of attributes. Change these attribute values to modify the information
+// associated with an assembly.
+//
+[assembly: AssemblyTitle("SC_349e6ba4942d48deb5b383d418257f1e")]
+[assembly: AssemblyDescription("")]
+[assembly: AssemblyConfiguration("")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("SC_349e6ba4942d48deb5b383d418257f1e")]
+[assembly: AssemblyCopyright("Copyright @  2023")]
+[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCulture("")]
+//
+// Version information for an assembly consists of the following four values:
+//
+//      Major Version
+//      Minor Version 
+//      Build Number
+//      Revision
+//
+// You can specify all the values or you can default the Revision and Build Numbers 
+// by using the '*' as shown below:
+
+[assembly: AssemblyVersion("1.0.0.0")]
+]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[SC_349e6ba4942d48deb5b383d418257f1e.csproj]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectTypeGuids>{30D016F9-3734-4E33-A861-5E7D899E18F3};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{8739423a-d753-4401-92ed-abded0d972d0}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SC_349e6ba4942d48deb5b383d418257f1e</RootNamespace>
+    <AssemblyName>SC_349e6ba4942d48deb5b383d418257f1e</AssemblyName>
+    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch>true</ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch>
+    <TargetFrameworkProfile></TargetFrameworkProfile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>.\bin\Debug\</OutputPath>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>false</DebugSymbols>
+    <Optimize>true</Optimize>
+    <OutputPath>.\bin\Release\</OutputPath>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.SqlServer.TxScript, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.SqlServer.DTSRuntimeWrap, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.SqlServer.DTSPipelineWrap, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.SqlServer.PipelineHost, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Compile Include="main.cs" />
+    <Compile Include="BufferWrapper.cs" />
+    <Compile Include="ComponentWrapper.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <AppDesigner Include="Properties\" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <!-- Include the build rules for a C# project.-->
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- This section defines VSTA properties that describe the host-changable project properties. -->
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{30D016F9-3734-4E33-A861-5E7D899E18F3}">
+        <ProjectProperties HostName="ScriptComponent" HostPackage="{B3A685AA-7EAF-4BC6-9940-57959FA5AC07}" ApplicationType="usd" Language="cs" TemplatesPath="" DebugInfoExeName="" DebugInfoCommandLine="" DebugInfoWorkingDir="" IconImageList="" />
+        <Host Name="ScriptComponent" GeneratedNamespace="SC_349e6ba4942d48deb5b383d418257f1e" IconIndex="0"></Host>
+        <ProjectClient>
+          <HostIdentifier>SSIS_SC160</HostIdentifier>
+        </ProjectClient>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[Properties\Settings.settings]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
+<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
+  <Profiles>
+    <Profile Name="(Default)" />
+  </Profiles>
+  <Settings />
+</SettingsFile>]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[Properties\Resources.Designer.cs]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="SC_349e6ba4942d48deb5b383d418257f1e.Properties.Resources.get_ResourceManager():System.Resources.Resou" +
+    "rceManager")]
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="SC_349e6ba4942d48deb5b383d418257f1e.Properties.Resources.get_Culture():System.Globalization.CultureIn" +
+    "fo")]
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="SC_349e6ba4942d48deb5b383d418257f1e.Properties.Resources.set_Culture(System.Globalization.CultureInfo" +
+    "):Void")]
+
+namespace SC_349e6ba4942d48deb5b383d418257f1e.Properties {
+    
+    
+    /// <summary>
+    ///   A strongly-typed resource class, for looking up localized strings, etc.
+    /// </summary>
+    // This class was auto-generated by the StronglyTypedResourceBuilder
+    // class via a tool like ResGen or Visual Studio.
+    // To add or remove a member, edit your .ResX file then rerun ResGen
+    // with the /str option, or rebuild your VS project.
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+    internal class Resources {
+        
+        private static global::System.Resources.ResourceManager resourceMan;
+        
+        private static global::System.Globalization.CultureInfo resourceCulture;
+        
+        [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
+        internal Resources() {
+        }
+        
+        /// <summary>
+        ///   Returns the cached ResourceManager instance used by this class.
+        /// </summary>
+        [global::System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        internal static global::System.Resources.ResourceManager ResourceManager {
+            get {
+                if ((resourceMan == null)) {
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("SC_349e6ba4942d48deb5b383d418257f1e.Properties.Resources", typeof(Resources).Assembly);
+                    resourceMan = temp;
+                }
+                return resourceMan;
+            }
+        }
+        
+        /// <summary>
+        ///   Overrides the current thread's CurrentUICulture property for all
+        ///   resource lookups using this strongly typed resource class.
+        /// </summary>
+        [global::System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        internal static global::System.Globalization.CultureInfo Culture {
+            get {
+                return resourceCulture;
+            }
+            set {
+                resourceCulture = value;
+            }
+        }
+    }
+}
+]]></arrayElement>
+                  </arrayElements>
+                </property>
+                <property
+                  dataType="System.String"
+                  description="Stores the binary representation of the component"
+                  isArray="true"
+                  name="BinaryCode"
+                  state="cdata">
+                  <arrayElements
+                    arrayElementCount="2">
+                    <arrayElement
+                      dataType="System.String"><![CDATA[SC_349e6ba4942d48deb5b383d418257f1e.dll]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[TVqQAAMAAAAEAAAA//8AALgAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAgAAAAA4fug4AtAnNIbgBTM0hVGhpcyBwcm9ncmFtIGNhbm5vdCBiZSBydW4gaW4gRE9TIG1v
+ZGUuDQ0KJAAAAAAAAABQRQAATAEDAGFoc2UAAAAAAAAAAOAAIiALATAAABQAAAAIAAAAAAAAHjMA
+AAAgAAAAQAAAAAAAEAAgAAAAAgAABAAAAAAAAAAGAAAAAAAAAACAAAAAAgAAAAAAAAMAYIUAABAA
+ABAAAAAAEAAAEAAAAAAAABAAAAAAAAAAAAAAAMwyAABPAAAAAEAAAEgEAAAAAAAAAAAAAAAAAAAA
+AAAAAGAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAIAAACAAAAAAAAAAAAAAACCAAAEgAAAAAAAAAAAAAAC50ZXh0AAAAJBMAAAAgAAAAFAAAAAIA
+AAAAAAAAAAAAAAAAACAAAGAucnNyYwAAAEgEAAAAQAAAAAYAAAAWAAAAAAAAAAAAAAAAAABAAABA
+LnJlbG9jAAAMAAAAAGAAAAACAAAAHAAAAAAAAAAAAAAAAAAAQAAAQgAAAAAAAAAAAAAAAAAAAAAA
+MwAAAAAAAEgAAAACAAUAHCIAAPgPAAABAAAAAAAAABQyAAC4AAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAB4CKBAAAAoqHgIoEQAACiqeA28IAAAGLR4DA28GAAAGF40b
+AAABJRYfLZ1vEgAAChaabwcAAAYqHgIoEgAABioqAgMEBSgTAAAKKlICexQAAAoCexUAAAoWlG8W
+AAAKKiYCFgMoFwAACioiAhYoGAAACipaAywIAhYoGQAACipyAQAAcHMaAAAKelICexQAAAoCexUA
+AAoXlG8bAAAKKiICFygYAAAKKlICexQAAAoCexUAAAoYlG8bAAAKKiICGCgYAAAKKlICexQAAAoC
+exUAAAoZlG8bAAAKKiICGSgYAAAKKh4CKBwAAAoqHgIoHQAACip+AigeAAAKAgJzFgAABn0BAAAE
+AgJzFwAABn0CAAAEKpIEcp4AAHAabx8AAAosFQIFAgMoIAAACg4EcwUAAAZvFAAABipKKwcCA28V
+AAAGA28QAAAGLfEqBio6AighAAAKAgN9AwAABCo6AighAAAKAgN9BAAABCoeAighAAAKKq5+BQAA
+BC0ecq4AAHDQBwAAAigiAAAKbyMAAApzJAAACoAFAAAEfgUAAAQqGn4GAAAEKh4CgAYAAAQqGn4H
+AAAEKh4CKCUAAAoqLnMdAAAGgAcAAAQqAABCU0pCAQABAAAAAAAMAAAAdjQuMC4zMDMxOQAAAAAF
+AGwAAAAMBgAAI34AAHgGAACUBgAAI1N0cmluZ3MAAAAADA0AACABAAAjVVMALA4AABAAAAAjR1VJ
+RAAAADwOAAC8AQAAI0Jsb2IAAAAAAAAAAgAAAVcVoAEJAQAAAPoBMwAWAAABAAAAIQAAAAgAAAAH
+AAAAHgAAAA8AAAAlAAAAEAAAAAMAAAALAAAADgAAAAEAAAAEAAAAAQAAAAAACgMBAAAAAAAGAPYB
+rgQGAIoCrgQGAEIBmwQPACIFAAAGAG8B4AMGANkB4AMGALoB4AMGAHEC4AMGABYC4AMGAC8C4AMG
+AIYB4AMGAKEBxQIKAEoCfQAKAG0EfQAOAF4EfQAKADQEfQAGAOwCmAMKAO4FfQAGAKsFmAMGACUB
+mwQGAH4EzgQGACgEywMSAPUA9AISAFYB9AISAMsAtgMGAAoBrgQGAEwEmAMGAOICmAMGAPIDmAMG
+AAwEmAMGAJ4AmAMGAE8AmAMGAIgG4AMAAAAAAQAAAAAAAQABAAEAEACrAwAAEAABAAEAAQAQAFEE
+AAA5AAEABQABABAA0AUAAEkAAQASAAEAEACfBQAATQADABYAAQAQAGAFAABNAAQAFwAAABAA1QQx
+BU0ABQAYAAABEACPBTEFZQAHABwABgCfBYMABgBgBYcAAQDeBYsAAQDeBYsAEQCfA48AEQC7AJMA
+EQA/AJcAUCAAAAAAxgCoAgYAAQBYIAAAAADGALMCBgABAGAgAAAAAMYAWQabAAEAiCAAAAAAhhiO
+BAYAAgCQIAAAAACGGI4EIgACAJsgAAAAAIYI4wChAAUAsCAAAAAAhgjsABAABQC6IAAAAACGCDID
+SgAGAMMgAAAAAIYIQgOlAAYA2iAAAAAAhgh4BqoABwDvIAAAAACGCHQDSgAHAPggAAAAAIYIHQSq
+AAcADSEAAAAAhghSA0oABwAWIQAAAACGCFAGqgAHACshAAAAAIYIZANKAAcANCEAAAAAhgBwBkoA
+BwA8IQAAAACGALIFSgAHAEQhAAAAAIYYjgQGAAcAZCEAAAAAxgBDBq8ABwCJIQAAAADGATwGmwAL
+AJwhAAAAAMYBWQabAAwAniEAAAAAhhiOBLkADQCtIQAAAACGGI4EuQAOALwhAAAAAIMYjgQGAA8A
+xCEAAAAAkwh6BL8ADwDwIQAAAACTCKMAxAAPAPchAAAAAJMIrwDJAA8A/yEAAAAAlgjEBc8AEAAG
+IgAAAACGGI4EBgAQAA4iAAAAAJEYlATUABAAAAABAHQGAAABAHMEAAACAGoFAAADAEIEAAABAL8C
+AAABAL8CAAABAAoAAAACAHMAAAADAHMEAAAEAEIEAAABAHMEAAABAHQGAAABAPQFAAABAPQFAAAB
+AL8CCQCOBAEAEQCOBAYAGQCOBAoAKQCOBBAAMQCOBBAAOQCOBBAAQQCOBBAASQCOBBAAUQCOBBAA
+WQCOBBAAYQCOBBAAaQCOBAYAoQCOBAYAwQCOBBUA0QCOBAYAkQCoAgYAkQCzAgYA4QC+BRsAcQCO
+BCIAcQBzBCwAcQBqBTAAeQDfAjQAcQCPAzkAcQCAAz8AcQCHAwEA6QCOBBAAeQDpAkQAcQBwBkoA
+cQCyBUoAkQCOBAYA4QCYBU4AkQB+BVUAmQCOBAYA+QBhAFsA+QCEBmMAqQCOBGkAyQCOBAYALgAL
+APQALgATAP0ALgAbABwBLgAjACUBLgArAE4BLgAzAE4BLgA7AE4BLgBDACUBLgBLAFQBLgBTAE4B
+LgBbAGsBQwBjALUB4QB7ALUB4wBrALUBKQFzABwBSQFzABwBAwABAAcACQAIAAsAAADwANgAAABG
+A9wAAAB8BuAAAAB4A9wAAAAhBOAAAABWA9wAAABUBuAAAABoA9wAAAB+BOUAAADDAOoAAADIBe8A
+AgAGAAMAAQAHAAMAAgAIAAUAAQAJAAUAAgAKAAcAAgALAAkAAgAMAAsAAgANAA0AAgAOAA8AAgAP
+ABEAAgAZABMAAgAaABUAAQAbABUAAgAcABcABIAAAAEAAAAAAAAAAAAAAAAAGwAAAAQAAAAAAAAA
+AAAAAHEAEgAAAAAAEAAAAAAAAAAAAAAAegD+BQAAAAAQAAAAAAAAAAAAAAB6ABsGAAAAAAQAAAAA
+AAAAAAAAAHEAmAMAAAAAAAAAAAEAAADfBAAAAAAAPE1vZHVsZT4ASW5wdXRJRABtc2NvcmxpYgBT
+Q18zNDllNmJhNDk0MmQ0OGRlYjViMzgzZDQxODI1N2YxZQBkZWZhdWx0SW5zdGFuY2UAUnVudGlt
+ZVR5cGVIYW5kbGUAR2V0VHlwZUZyb21IYW5kbGUASW5wdXROYW1lAE1pY3Jvc29mdC5TcWxTZXJ2
+ZXIuRHRzLlBpcGVsaW5lAFR5cGUAZ2V0X0N1bHR1cmUAc2V0X0N1bHR1cmUAcmVzb3VyY2VDdWx0
+dXJlAEFwcGxpY2F0aW9uU2V0dGluZ3NCYXNlAGdldF9kYXRlAHNldF9kYXRlAEVkaXRvckJyb3dz
+YWJsZVN0YXRlAENvbXBpbGVyR2VuZXJhdGVkQXR0cmlidXRlAERlYnVnZ2VyTm9uVXNlckNvZGVB
+dHRyaWJ1dGUARGVidWdnYWJsZUF0dHJpYnV0ZQBFZGl0b3JCcm93c2FibGVBdHRyaWJ1dGUAQXNz
+ZW1ibHlUaXRsZUF0dHJpYnV0ZQBBc3NlbWJseVRyYWRlbWFya0F0dHJpYnV0ZQBUYXJnZXRGcmFt
+ZXdvcmtBdHRyaWJ1dGUAQXNzZW1ibHlDb25maWd1cmF0aW9uQXR0cmlidXRlAEFzc2VtYmx5RGVz
+Y3JpcHRpb25BdHRyaWJ1dGUAQ29tcGlsYXRpb25SZWxheGF0aW9uc0F0dHJpYnV0ZQBBc3NlbWJs
+eVByb2R1Y3RBdHRyaWJ1dGUAQXNzZW1ibHlDb3B5cmlnaHRBdHRyaWJ1dGUAU1NJU1NjcmlwdENv
+bXBvbmVudEVudHJ5UG9pbnRBdHRyaWJ1dGUAQXNzZW1ibHlDb21wYW55QXR0cmlidXRlAFJ1bnRp
+bWVDb21wYXRpYmlsaXR5QXR0cmlidXRlAFByZUV4ZWN1dGUAUG9zdEV4ZWN1dGUAdmFsdWUAU3lz
+dGVtLlJ1bnRpbWUuVmVyc2lvbmluZwBHZXRTdHJpbmcAR2V0RGVjaW1hbABTeXN0ZW0uQ29tcG9u
+ZW50TW9kZWwAU0NfMzQ5ZTZiYTQ5NDJkNDhkZWI1YjM4M2Q0MTgyNTdmMWUuZGxsAGdldF9kYXRl
+X0lzTnVsbABzZXRfZGF0ZV9Jc051bGwAZ2V0X2FtYXpvbl9Jc051bGwAZ2V0X2h1bHVfSXNOdWxs
+AGdldF9uZXRmbGl4X0lzTnVsbABTZXROdWxsAHNldF9JdGVtAFN5c3RlbQByZXNvdXJjZU1hbgBT
+Y3JpcHRNYWluAFN5c3RlbS5Db25maWd1cmF0aW9uAFN5c3RlbS5HbG9iYWxpemF0aW9uAFN5c3Rl
+bS5SZWZsZWN0aW9uAEludmFsaWRPcGVyYXRpb25FeGNlcHRpb24AU3RyaW5nQ29tcGFyaXNvbgBn
+ZXRfYW1hem9uAEN1bHR1cmVJbmZvAE91dHB1dE5hbWVNYXAAT3V0cHV0TWFwAENoYXIASW5wdXQw
+QnVmZmVyAFBpcGVsaW5lQnVmZmVyAFNjcmlwdEJ1ZmZlcgBnZXRfUmVzb3VyY2VNYW5hZ2VyAC5j
+dG9yAC5jY3RvcgBTeXN0ZW0uRGlhZ25vc3RpY3MAU3lzdGVtLlJ1bnRpbWUuQ29tcGlsZXJTZXJ2
+aWNlcwBTeXN0ZW0uUmVzb3VyY2VzAFNDXzM0OWU2YmE0OTQyZDQ4ZGViNWIzODNkNDE4MjU3ZjFl
+LlByb3BlcnRpZXMuUmVzb3VyY2VzLnJlc291cmNlcwBEZWJ1Z2dpbmdNb2RlcwBTQ18zNDllNmJh
+NDk0MmQ0OGRlYjViMzgzZDQxODI1N2YxZS5Qcm9wZXJ0aWVzAFZhcmlhYmxlcwBCdWZmZXJDb2x1
+bW5JbmRleGVzAEdldENvbHVtbkluZGV4ZXMAU2V0dGluZ3MARXF1YWxzAENvbm5lY3Rpb25zAE9i
+amVjdABFbmRPZlJvd3NldABTcGxpdABnZXRfRGVmYXVsdABVc2VyQ29tcG9uZW50AFBhcmVudENv
+bXBvbmVudABTY3JpcHRDb21wb25lbnQATWljcm9zb2Z0LlNxbFNlcnZlci5UeFNjcmlwdABNaWNy
+b3NvZnQuU3FsU2VydmVyLlBpcGVsaW5lSG9zdABJbnB1dDBfUHJvY2Vzc0lucHV0AGdldF9odWx1
+AElucHV0MF9Qcm9jZXNzSW5wdXRSb3cATmV4dFJvdwBnZXRfbmV0ZmxpeABnZXRfQXNzZW1ibHkA
+AAAAAICbSQBzAE4AdQBsAGwAIABwAHIAbwBwAGUAcgB0AHkAIABjAGEAbgBuAG8AdAAgAGIAZQAg
+AHMAZQB0ACAAdABvACAARgBhAGwAcwBlAC4AIABBAHMAcwBpAGcAbgAgAGEAIAB2AGEAbAB1AGUA
+IAB0AG8AIAB0AGgAZQAgAGMAbwBsAHUAbQBuACAAaQBuAHMAdABlAGEAZAAuAAAPSQBuAHAAdQB0
+ACAAMAAAcVMAQwBfADMANAA5AGUANgBiAGEANAA5ADQAMgBkADQAOABkAGUAYgA1AGIAMwA4ADMA
+ZAA0ADEAOAAyADUANwBmADEAZQAuAFAAcgBvAHAAZQByAHQAaQBlAHMALgBSAGUAcwBvAHUAcgBj
+AGUAcwAAxz/z5J2gvEGo52Ez6qm7/AAEIAEBCAMgAAEFIAEBEREEIAEBDgUgAQERXQYgAR0OHQMJ
+IAMBEj0dCBJBAwYSPQMGHQgEIAEOCAUgAgEIHAQgAQIIBSABEUUIAyAAAgYgAgIOEXkFIAEdCAgH
+AAESfRGAgQUgABKAhQcgAgEOEoCFCLd6XFYZNOCJCImEXc2AgMyRAwYSFAMGEhgDBhJJAwYSVQMG
+ElkDBhIgBSABARIMAyAADgQgAQECBCAAEUUJIAQBCA4SPRJBBSABARJJBAAAElUEAAASWQUAAQES
+WQQAABIgAwAAAQMoAA4DKAACBCgAEUUECAASVQQIABJZBAgAEiAIAQAIAAAAAAAeAQABAFQCFldy
+YXBOb25FeGNlcHRpb25UaHJvd3MBCAEAAgAAAAAAKAEAI1NDXzM0OWU2YmE0OTQyZDQ4ZGViNWIz
+ODNkNDE4MjU3ZjFlAAAFAQAAAAAWAQARQ29weXJpZ2h0IEAgIDIwMjMAAEkBABouTkVURnJhbWV3
+b3JrLFZlcnNpb249djQuNwEAVA4URnJhbWV3b3JrRGlzcGxheU5hbWUSLk5FVCBGcmFtZXdvcmsg
+NC43BAEAAAAAALQAAADOyu++AQAAAJEAAABsU3lzdGVtLlJlc291cmNlcy5SZXNvdXJjZVJlYWRl
+ciwgbXNjb3JsaWIsIFZlcnNpb249NC4wLjAuMCwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlU
+b2tlbj1iNzdhNWM1NjE5MzRlMDg5I1N5c3RlbS5SZXNvdXJjZXMuUnVudGltZVJlc291cmNlU2V0
+AgAAAAAAAAAAAAAAUEFEUEFEULQAAAD0MgAAAAAAAAAAAAAOMwAAACAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAADMAAAAAAAAAAAAAAABfQ29yRGxsTWFpbgBtc2NvcmVlLmRsbAAAAAAA/yUAIAAQAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAQAQAAAAGAAAgAAAAAAAAAAAAAAAAAAAAQABAAAAMAAAgAAAAAAAAAAAAAAAAAAAAQAAAAAA
+SAAAAFhAAADsAwAAAAAAAAAAAADsAzQAAABWAFMAXwBWAEUAUgBTAEkATwBOAF8ASQBOAEYATwAA
+AAAAvQTv/gAAAQAAAAEAAAAAAAAAAQAAAAAAPwAAAAAAAAAEAAAAAgAAAAAAAAAAAAAAAAAAAEQA
+AAABAFYAYQByAEYAaQBsAGUASQBuAGYAbwAAAAAAJAAEAAAAVAByAGEAbgBzAGwAYQB0AGkAbwBu
+AAAAAAAAALAETAMAAAEAUwB0AHIAaQBuAGcARgBpAGwAZQBJAG4AZgBvAAAAKAMAAAEAMAAwADAA
+MAAwADQAYgAwAAAAGgABAAEAQwBvAG0AbQBlAG4AdABzAAAAAAAAACIAAQABAEMAbwBtAHAAYQBu
+AHkATgBhAG0AZQAAAAAAAAAAAHAAJAABAEYAaQBsAGUARABlAHMAYwByAGkAcAB0AGkAbwBuAAAA
+AABTAEMAXwAzADQAOQBlADYAYgBhADQAOQA0ADIAZAA0ADgAZABlAGIANQBiADMAOAAzAGQANAAx
+ADgAMgA1ADcAZgAxAGUAAAAwAAgAAQBGAGkAbABlAFYAZQByAHMAaQBvAG4AAAAAADEALgAwAC4A
+MAAuADAAAABwACgAAQBJAG4AdABlAHIAbgBhAGwATgBhAG0AZQAAAFMAQwBfADMANAA5AGUANgBi
+AGEANAA5ADQAMgBkADQAOABkAGUAYgA1AGIAMwA4ADMAZAA0ADEAOAAyADUANwBmADEAZQAuAGQA
+bABsAAAASAASAAEATABlAGcAYQBsAEMAbwBwAHkAcgBpAGcAaAB0AAAAQwBvAHAAeQByAGkAZwBo
+AHQAIABAACAAIAAyADAAMgAzAAAAKgABAAEATABlAGcAYQBsAFQAcgBhAGQAZQBtAGEAcgBrAHMA
+AAAAAAAAAAB4ACgAAQBPAHIAaQBnAGkAbgBhAGwARgBpAGwAZQBuAGEAbQBlAAAAUwBDAF8AMwA0
+ADkAZQA2AGIAYQA0ADkANAAyAGQANAA4AGQAZQBiADUAYgAzADgAMwBkADQAMQA4ADIANQA3AGYA
+MQBlAC4AZABsAGwAAABoACQAAQBQAHIAbwBkAHUAYwB0AE4AYQBtAGUAAAAAAFMAQwBfADMANAA5
+AGUANgBiAGEANAA5ADQAMgBkADQAOABkAGUAYgA1AGIAMwA4ADMAZAA0ADEAOAAyADUANwBmADEA
+ZQAAADQACAABAFAAcgBvAGQAdQBjAHQAVgBlAHIAcwBpAG8AbgAAADEALgAwAC4AMAAuADAAAAA4
+AAgAAQBBAHMAcwBlAG0AYgBsAHkAIABWAGUAcgBzAGkAbwBuAAAAMQAuADAALgAwAC4AMAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwAAAMAAAAIDMAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
+                  </arrayElements>
+                </property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the Microsoft Visual Studio Tools for Applications project. Project names must be unique within a package."
+                  name="VSTAProjectName"
+                  typeConverter="NOTBROWSABLE">SC_349e6ba4942d48deb5b383d418257f1e</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the programming language used by the script."
+                  name="ScriptLanguage"
+                  typeConverter="Microsoft.SqlServer.VSTAHosting.ScriptingLanguages">CSharp</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a comma-separated list of read-only variables."
+                  name="ReadOnlyVariables"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ScriptUIVariablePickerDlg"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a comma-separated list of read/write variables."
+                  name="ReadWriteVariables"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ScriptUIWriteableVariablePickerDlg"></property>
+                <property
+                  dataType="System.String"
+                  description="List of breakpoints present on the script."
+                  isArray="true"
+                  name="BreakpointCollection"
+                  typeConverter="NOTBROWSABLE">
+                  <arrayElements
+                    arrayElementCount="0" />
+                </property>
+                <property
+                  dataType="System.String"
+                  description="Checksum to match component metedata against compiled codes."
+                  name="MetadataChecksum140"
+                  typeConverter="NOTBROWSABLE">45</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.ScriptComponentHost</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Load Google Trends into DW\Prepare for date aggregation.Inputs[Input 0]"
+                  hasSideEffects="true"
+                  name="Input 0">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load Google Trends into DW\Prepare for date aggregation.Inputs[Input 0].Columns[date]"
+                      cachedCodepage="65001"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="date"
+                      lineageId="Package\Load Google Trends into DW\Google Trends parse CSV.Outputs[Flat File Source Output].Columns[date]"
+                      usageType="readWrite" />
+                    <inputColumn
+                      refId="Package\Load Google Trends into DW\Prepare for date aggregation.Inputs[Input 0].Columns[netflix]"
+                      cachedDataType="decimal"
+                      cachedName="netflix"
+                      lineageId="Package\Load Google Trends into DW\Convert to decimal.Outputs[Data Conversion Output].Columns[netflix]"
+                      name="netflix" />
+                    <inputColumn
+                      refId="Package\Load Google Trends into DW\Prepare for date aggregation.Inputs[Input 0].Columns[amazon]"
+                      cachedDataType="decimal"
+                      cachedName="amazon"
+                      lineageId="Package\Load Google Trends into DW\Convert to decimal.Outputs[Data Conversion Output].Columns[amazon]"
+                      name="amazon" />
+                    <inputColumn
+                      refId="Package\Load Google Trends into DW\Prepare for date aggregation.Inputs[Input 0].Columns[hulu]"
+                      cachedDataType="decimal"
+                      cachedName="hulu"
+                      lineageId="Package\Load Google Trends into DW\Convert to decimal.Outputs[Data Conversion Output].Columns[hulu]"
+                      name="hulu" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load Google Trends into DW\Prepare for date aggregation.Outputs[Output 0]"
+                  name="Output 0"
+                  synchronousInputId="Package\Load Google Trends into DW\Prepare for date aggregation.Inputs[Input 0]">
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load Google Trends into DW\Replace &lt;1 in data"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Replace &lt;1 in data"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Load Google Trends into DW\Replace &lt;1 in data.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load Google Trends into DW\Replace &lt;1 in data.Inputs[Derived Column Input].Columns[netflix]"
+                      cachedCodepage="65001"
+                      cachedDataType="str"
+                      cachedLength="255"
+                      cachedName="netflix"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Load Google Trends into DW\Google Trends parse CSV.Outputs[Flat File Source Output].Columns[netflix]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[REPLACE](#{Package\Load Google Trends into DW\Google Trends parse CSV.Outputs[Flat File Source Output].Columns[netflix]},"&lt;1","0")</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">REPLACE(netflix,"&lt;1","0")</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load Google Trends into DW\Replace &lt;1 in data.Inputs[Derived Column Input].Columns[amazon]"
+                      cachedCodepage="65001"
+                      cachedDataType="str"
+                      cachedLength="255"
+                      cachedName="amazon"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Load Google Trends into DW\Google Trends parse CSV.Outputs[Flat File Source Output].Columns[amazon]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[REPLACE](#{Package\Load Google Trends into DW\Google Trends parse CSV.Outputs[Flat File Source Output].Columns[amazon]},"&lt;1","0")</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">REPLACE(amazon,"&lt;1","0")</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load Google Trends into DW\Replace &lt;1 in data.Inputs[Derived Column Input].Columns[hulu]"
+                      cachedCodepage="65001"
+                      cachedDataType="str"
+                      cachedLength="255"
+                      cachedName="hulu"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Load Google Trends into DW\Google Trends parse CSV.Outputs[Flat File Source Output].Columns[hulu]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[REPLACE](#{Package\Load Google Trends into DW\Google Trends parse CSV.Outputs[Flat File Source Output].Columns[hulu]},"&lt;1","0")</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">REPLACE(hulu,"&lt;1","0")</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load Google Trends into DW\Replace &lt;1 in data.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Load Google Trends into DW\Replace &lt;1 in data.Inputs[Derived Column Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load Google Trends into DW\Replace &lt;1 in data.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Load Google Trends into DW\Replace &lt;1 in data.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Google Trends into DW\Replace &lt;1 in data.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load Google Trends into DW\Replace &lt;1 in data.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load Google Trends into DW\Replace &lt;1 in data.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load Google Trends into DW\Replace &lt;1 in data.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load Google Trends into DW\Sort"
+              componentClassID="Microsoft.Sort"
+              contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
+              name="Sort"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the Sort transformation removes rows with duplicate sort values."
+                  name="EliminateDuplicates">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the maximum number of threads to use for sorting."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Load Google Trends into DW\Sort.Inputs[Sort Input]"
+                  name="Sort Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load Google Trends into DW\Sort.Inputs[Sort Input].Columns[date]"
+                      cachedCodepage="65001"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="date"
+                      lineageId="Package\Load Google Trends into DW\Google Trends parse CSV.Outputs[Flat File Source Output].Columns[date]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">1</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load Google Trends into DW\Sort.Inputs[Sort Input].Columns[netflix]"
+                      cachedDataType="decimal"
+                      cachedName="netflix"
+                      lineageId="Package\Load Google Trends into DW\Convert to decimal.Outputs[Data Conversion Output].Columns[netflix]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load Google Trends into DW\Sort.Inputs[Sort Input].Columns[amazon]"
+                      cachedDataType="decimal"
+                      cachedName="amazon"
+                      lineageId="Package\Load Google Trends into DW\Convert to decimal.Outputs[Data Conversion Output].Columns[amazon]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load Google Trends into DW\Sort.Inputs[Sort Input].Columns[hulu]"
+                      cachedDataType="decimal"
+                      cachedName="hulu"
+                      lineageId="Package\Load Google Trends into DW\Convert to decimal.Outputs[Data Conversion Output].Columns[hulu]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load Google Trends into DW\Sort.Outputs[Sort Output]"
+                  isSorted="true"
+                  name="Sort Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load Google Trends into DW\Sort.Outputs[Sort Output].Columns[date]"
+                      codePage="65001"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Load Google Trends into DW\Sort.Outputs[Sort Output].Columns[date]"
+                      name="date"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Load Google Trends into DW\Google Trends parse CSV.Outputs[Flat File Source Output].Columns[date]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load Google Trends into DW\Sort.Outputs[Sort Output].Columns[Prepare for date aggregation.netflix]"
+                      dataType="decimal"
+                      lineageId="Package\Load Google Trends into DW\Sort.Outputs[Sort Output].Columns[Prepare for date aggregation.netflix]"
+                      name="Prepare for date aggregation.netflix">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Load Google Trends into DW\Convert to decimal.Outputs[Data Conversion Output].Columns[netflix]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load Google Trends into DW\Sort.Outputs[Sort Output].Columns[Prepare for date aggregation.amazon]"
+                      dataType="decimal"
+                      lineageId="Package\Load Google Trends into DW\Sort.Outputs[Sort Output].Columns[Prepare for date aggregation.amazon]"
+                      name="Prepare for date aggregation.amazon">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Load Google Trends into DW\Convert to decimal.Outputs[Data Conversion Output].Columns[amazon]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load Google Trends into DW\Sort.Outputs[Sort Output].Columns[Prepare for date aggregation.hulu]"
+                      dataType="decimal"
+                      lineageId="Package\Load Google Trends into DW\Sort.Outputs[Sort Output].Columns[Prepare for date aggregation.hulu]"
+                      name="Prepare for date aggregation.hulu">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Load Google Trends into DW\Convert to decimal.Outputs[Data Conversion Output].Columns[hulu]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Load Google Trends into DW.Paths[Aggregate Output 1]"
+              endId="Package\Load Google Trends into DW\ADO NET Destination.Inputs[ADO NET Destination Input]"
+              name="Aggregate Output 1"
+              startId="Package\Load Google Trends into DW\Aggregate.Outputs[Aggregate Output 1]" />
+            <path
+              refId="Package\Load Google Trends into DW.Paths[Data Conversion Output]"
+              endId="Package\Load Google Trends into DW\Prepare for date aggregation.Inputs[Input 0]"
+              name="Data Conversion Output"
+              startId="Package\Load Google Trends into DW\Convert to decimal.Outputs[Data Conversion Output]" />
+            <path
+              refId="Package\Load Google Trends into DW.Paths[Derived Column Output]"
+              endId="Package\Load Google Trends into DW\Convert to decimal.Inputs[Data Conversion Input]"
+              name="Derived Column Output"
+              startId="Package\Load Google Trends into DW\Replace &lt;1 in data.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Load Google Trends into DW.Paths[Flat File Source Output]"
+              endId="Package\Load Google Trends into DW\Replace &lt;1 in data.Inputs[Derived Column Input]"
+              name="Flat File Source Output"
+              startId="Package\Load Google Trends into DW\Google Trends parse CSV.Outputs[Flat File Source Output]" />
+            <path
+              refId="Package\Load Google Trends into DW.Paths[Output 0]"
+              endId="Package\Load Google Trends into DW\Sort.Inputs[Sort Input]"
+              name="Output 0"
+              startId="Package\Load Google Trends into DW\Prepare for date aggregation.Outputs[Output 0]" />
+            <path
+              refId="Package\Load Google Trends into DW.Paths[Sort Output]"
+              endId="Package\Load Google Trends into DW\Aggregate.Inputs[Aggregate Input 1]"
+              name="Sort Output"
+              startId="Package\Load Google Trends into DW\Sort.Outputs[Sort Output]" />
+          </paths>
+        </pipeline>
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -6172,7 +8135,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{BAD1F268-B297-4A7C-BB39-7ED5930A747C}"
-          SQLTask:SqlStatementSource="truncate table [NetflixTitles];&#xA;truncate table [NetflixStats];&#xA;truncate table [NetflixGenres];&#xA;truncate table [NetflixRatings];&#xA;truncate table [NetflixKPI];" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="truncate table [NetflixTitles];&#xA;truncate table [NetflixStats];&#xA;truncate table [NetflixGenres];&#xA;truncate table [NetflixRatings];&#xA;truncate table [NetflixKPI];&#xA;truncate table [GoogleTrends];" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -6250,6 +8213,22 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 6"
       DTS:To="Package\Data change showcase" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 7]"
+      DTS:CreationName=""
+      DTS:DTSID="{CE077FB6-A932-438F-B397-FE7382A0904E}"
+      DTS:From="Package\purge DB"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 7"
+      DTS:To="Package\Load Google Trends into DW" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 8]"
+      DTS:CreationName=""
+      DTS:DTSID="{2CBF65E0-DA94-4283-AF3C-CF410E1E913F}"
+      DTS:From="Package\Load Google Trends into DW"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 8"
+      DTS:To="Package\Calculate KPI" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
@@ -6262,7 +8241,15 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="141.6,41.6"
+          Id="Package\Calculate KPI"
+          TopLeft="769.166624641254,242.666664979193" />
+        <NodeLayout
+          Size="186.4,41.6"
+          Id="Package\Data change showcase"
+          TopLeft="954.666614806489,247.299998318553" />
         <NodeLayout
           Size="159.2,41.6"
           Id="Package\Load IMDb data to DW"
@@ -6278,25 +8265,37 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
         <NodeLayout
           Size="122.4,41.6"
           Id="Package\purge DB"
-          TopLeft="156.666658106778,189.799998680154" />
+          TopLeft="53.8888859445302,177.281480248688" />
         <NodeLayout
           Size="141.6,41.6"
           Id="Package\purge staging"
-          TopLeft="145.499993989865,290.299998228153" />
+          TopLeft="138.09258698718,255.633331802554" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="279.066658106778,213.883332218395">
+          TopLeft="176.28888594453,198.081480248688">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="86.4333255019452,0"
+              EndConnector="189.211097664193,19.0851855079482"
               Start="0,0"
-              End="78.9333255019452,0">
+              End="181.711097664193,19.0851855079482">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="78.9333255019452,0" />
+                    End="90.6055488320964,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="90.6055488320964,0"
+                    Point2="94.6055488320964,0"
+                    Point3="94.6055488320964,4" />
+                  <mssgle:LineSegment
+                    End="94.6055488320964,15.0851855079482" />
+                  <mssgle:CubicBezierSegment
+                    Point1="94.6055488320964,15.0851855079482"
+                    Point2="94.6055488320964,19.0851855079482"
+                    Point3="98.6055488320964,19.0851855079482" />
+                  <mssgle:LineSegment
+                    End="181.711097664193,19.0851855079482" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -6307,18 +8306,30 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="287.099993989865,313.433331440952">
+          TopLeft="279.69258698718,276.433331802554">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="79.233319628405,0"
+              EndConnector="86.6407266310896,39.333332851198"
               Start="0,0"
-              End="71.733319628405,0">
+              End="79.1407266310896,39.333332851198">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="71.733319628405,0" />
+                    End="39.3203633155448,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="39.3203633155448,0"
+                    Point2="43.3203633155448,0"
+                    Point3="43.3203633155448,4" />
+                  <mssgle:LineSegment
+                    End="43.3203633155448,35.333332851198" />
+                  <mssgle:CubicBezierSegment
+                    Point1="43.3203633155448,35.333332851198"
+                    Point2="43.3203633155448,39.333332851198"
+                    Point3="47.3203633155448,39.333332851198" />
+                  <mssgle:LineSegment
+                    End="79.1407266310896,39.333332851198" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -6351,18 +8362,30 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 3]"
-          TopLeft="217.083326048321,231.399998680154">
+          TopLeft="115.08888594453,218.881480248688">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,58.8999995479984"
+              EndConnector="93.8037010426502,36.7518515538662"
               Start="0,0"
-              End="0,51.3999995479984">
+              End="93.8037010426502,29.2518515538662">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,51.3999995479984" />
+                    End="0,14.3759257769331" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,14.3759257769331"
+                    Point2="0,18.3759257769331"
+                    Point3="4,18.3759257769331" />
+                  <mssgle:LineSegment
+                    End="89.8037010426502,18.3759257769331" />
+                  <mssgle:CubicBezierSegment
+                    Point1="89.8037010426502,18.3759257769331"
+                    Point2="93.8037010426502,18.3759257769331"
+                    Point3="93.8037010426502,22.3759257769331" />
+                  <mssgle:LineSegment
+                    End="93.8037010426502,29.2518515538662" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -6371,10 +8394,6 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="141.6,41.6"
-          Id="Package\Calculate KPI"
-          TopLeft="769.166624641254,242.666664979193" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 4]"
           TopLeft="732.533302007782,319.799997920791">
@@ -6443,10 +8462,6 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="186.4,41.6"
-          Id="Package\Data change showcase"
-          TopLeft="954.666614806489,247.299998318553" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 6]"
           TopLeft="910.766624641254,265.783331648873">
@@ -6469,14 +8484,406 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <NodeLayout
+          Size="212.8,41.6"
+          Id="Package\Load Google Trends into DW"
+          TopLeft="371.296276009562,83.7777771951974" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 7]"
+          TopLeft="115.08888594453,177.281480248688">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="328.474056731699,-51.9037030534903"
+              Start="0,0"
+              End="328.474056731699,-44.4037030534903">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,-26.9098171915562" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,-26.9098171915562"
+                    Point2="0,-30.9098171915562"
+                    Point3="4,-30.9098171915562" />
+                  <mssgle:LineSegment
+                    End="324.474056731699,-30.9098171915562" />
+                  <mssgle:CubicBezierSegment
+                    Point1="324.474056731699,-30.9098171915562"
+                    Point2="328.474056731699,-30.9098171915562"
+                    Point3="328.474056731699,-34.9098171915562" />
+                  <mssgle:LineSegment
+                    End="328.474056731699,-44.4037030534903" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 8]"
+          TopLeft="511.829609342895,125.377777195197">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="328.137015298359,117.288887783996"
+              Start="0,0"
+              End="328.137015298359,109.788887783996">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,43.4407292380042" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,43.4407292380042"
+                    Point2="0,47.4407292380042"
+                    Point3="4,47.4407292380042" />
+                  <mssgle:LineSegment
+                    End="324.137015298359,47.4407292380042" />
+                  <mssgle:CubicBezierSegment
+                    Point1="324.137015298359,47.4407292380042"
+                    Point2="328.137015298359,47.4407292380042"
+                    Point3="328.137015298359,51.4407292380042" />
+                  <mssgle:LineSegment
+                    End="328.137015298359,109.788887783996" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </Package>
   <TaskHost
+    design-time-name="Package\Calculate KPI">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="97.6,41.6"
+          Id="Package\Calculate KPI\Sort"
+          TopLeft="321.999995201826,356.999994680285" />
+        <NodeLayout
+          Size="106.4,41.6"
+          Id="Package\Calculate KPI\Sort 1"
+          TopLeft="510.999992385507,404.99999396503" />
+        <NodeLayout
+          Size="119.2,41.6"
+          Id="Package\Calculate KPI\Multicast"
+          TopLeft="374.999994412065,266.99999602139" />
+        <NodeLayout
+          Size="129.6,41.6"
+          Id="Package\Calculate KPI\Merge Join"
+          TopLeft="423.999993681908,478.999992862344" />
+        <NodeLayout
+          Size="161.6,41.6"
+          Id="Package\Calculate KPI\Script Component"
+          TopLeft="542.999991908669,339.999994933605" />
+        <NodeLayout
+          Size="152.8,41.6"
+          Id="Package\Calculate KPI\Derived Column"
+          TopLeft="527.999992132187,548.999991819263" />
+        <NodeLayout
+          Size="179.2,41.6"
+          Id="Package\Calculate KPI\ADO NET Destination"
+          TopLeft="521.499992311001,628.499990716577" />
+        <NodeLayout
+          Size="160,41.6"
+          Id="Package\Calculate KPI\ADO NET Source"
+          TopLeft="354.999994710088,174.999997392297" />
+        <EdgeLayout
+          Id="Package\Calculate KPI.Paths[Sort Output1]"
+          TopLeft="564.199992385507,446.59999396503">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-55.1333320369325,32.3999988973142"
+              Start="0,0"
+              End="-55.1333320369325,24.8999988973142">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,15.2029261757252" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,15.2029261757252"
+                    Point2="0,19.2029261757252"
+                    Point3="-4,19.2029261757252" />
+                  <mssgle:LineSegment
+                    End="-51.1333320369325,19.2029261757252" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-51.1333320369325,19.2029261757252"
+                    Point2="-55.1333320369325,19.2029261757252"
+                    Point3="-55.1333320369325,23.2029261757252" />
+                  <mssgle:LineSegment
+                    End="-55.1333320369325,24.8999988973142" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Calculate KPI.Paths[Sort Output]"
+          TopLeft="370.799995201826,398.599994680285">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="117.999998480082,80.3999981820584"
+              Start="0,0"
+              End="117.999998480082,72.8999981820584">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,36.1999990910292" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,36.1999990910292"
+                    Point2="0,40.1999990910292"
+                    Point3="4,40.1999990910292" />
+                  <mssgle:LineSegment
+                    End="113.999998480082,40.1999990910292" />
+                  <mssgle:CubicBezierSegment
+                    Point1="113.999998480082,40.1999990910292"
+                    Point2="117.999998480082,40.1999990910292"
+                    Point3="117.999998480082,44.1999990910292" />
+                  <mssgle:LineSegment
+                    End="117.999998480082,72.8999981820584" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Calculate KPI.Paths[Output 0]"
+          TopLeft="623.799991908669,381.599994933605">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-59.5999995231625,23.3999990314246"
+              Start="0,0"
+              End="-59.5999995231625,15.8999990314246">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,7.69999951571229" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,7.69999951571229"
+                    Point2="0,11.6999995157123"
+                    Point3="-4,11.6999995157123" />
+                  <mssgle:LineSegment
+                    End="-55.5999995231625,11.6999995157123" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-55.5999995231625,11.6999995157123"
+                    Point2="-59.5999995231625,11.6999995157123"
+                    Point3="-59.5999995231625,15.6999995157123" />
+                  <mssgle:LineSegment
+                    End="-59.5999995231625,15.8999990314246" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Calculate KPI.Paths[Multicast Output 2]"
+          TopLeft="416.066661078731,308.59999602139">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-45.2666658769051,48.3999986588955"
+              Start="0,0"
+              End="-45.2666658769051,40.8999986588955">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,15.7446352144898" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,15.7446352144898"
+                    Point2="0,19.7446352144898"
+                    Point3="-4,19.7446352144898" />
+                  <mssgle:LineSegment
+                    End="-41.2666658769051,19.7446352144898" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-41.2666658769051,19.7446352144898"
+                    Point2="-45.2666658769051,19.7446352144898"
+                    Point3="-45.2666658769051,23.7446352144898" />
+                  <mssgle:LineSegment
+                    End="-45.2666658769051,40.8999986588955" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Calculate KPI.Paths[Multicast Output 1]"
+          TopLeft="434.599994412065,308.59999602139">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="189.199997496605,31.3999989122151"
+              Start="0,0"
+              End="189.199997496605,23.8999989122151">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,11.6999994561075" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,11.6999994561075"
+                    Point2="0,15.6999994561075"
+                    Point3="4,15.6999994561075" />
+                  <mssgle:LineSegment
+                    End="185.199997496605,15.6999994561075" />
+                  <mssgle:CubicBezierSegment
+                    Point1="185.199997496605,15.6999994561075"
+                    Point2="189.199997496605,15.6999994561075"
+                    Point3="189.199997496605,19.6999994561075" />
+                  <mssgle:LineSegment
+                    End="189.199997496605,23.8999989122151" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Calculate KPI.Paths[Merge Join Output]"
+          TopLeft="488.799993681908,520.599992862344">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="115.599998450279,28.3999989569187"
+              Start="0,0"
+              End="115.599998450279,20.8999989569187">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,10.1999994784593" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,10.1999994784593"
+                    Point2="0,14.1999994784593"
+                    Point3="4,14.1999994784593" />
+                  <mssgle:LineSegment
+                    End="111.599998450279,14.1999994784593" />
+                  <mssgle:CubicBezierSegment
+                    Point1="111.599998450279,14.1999994784593"
+                    Point2="115.599998450279,14.1999994784593"
+                    Point3="115.599998450279,18.1999994784593" />
+                  <mssgle:LineSegment
+                    End="115.599998450279,20.8999989569187" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Calculate KPI.Paths[Derived Column Output]"
+          TopLeft="607.749992221594,590.599991819263">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,37.8999988973143"
+              Start="0,0"
+              End="0,30.3999988973143">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,30.3999988973143" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Calculate KPI.Paths[ADO NET Source Output]"
+          TopLeft="434.799994561076,216.599997392297">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,50.3999986290931"
+              Start="0,0"
+              End="0,42.8999986290931">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,42.8999986290931" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Calculate KPI\ADO NET Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Calculate KPI\ADO NET Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
     design-time-name="Package\Load IMDb data to DW">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="160,41.6"
           Id="Package\Load IMDb data to DW\ADO NET Source"
@@ -6516,7 +8923,9 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -6542,7 +8951,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
     design-time-name="Package\Load IMDb data to staging">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="188,41.6"
           Id="Package\Load IMDb data to staging\ADO NET Destination 3"
@@ -6590,7 +8999,9 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -6624,7 +9035,9 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -6652,57 +9065,61 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
       <GraphLayout
         Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="129.6,41.6"
-          Id="Package\Load some data to DW\Merge Join"
-          TopLeft="550.833303237128,396.066663912469" />
-        <NodeLayout
-          Size="164.8,41.6"
-          Id="Package\Load some data to DW\Netflix Subscribers"
-          TopLeft="657.499964075785,118.733332507677" />
-        <NodeLayout
-          Size="97.6,41.6"
-          Id="Package\Load some data to DW\Sort"
-          TopLeft="495.833306242195,231.399998390873" />
-        <NodeLayout
           Size="188,41.6"
-          Id="Package\Load some data to DW\ADO NET Destination 1"
-          TopLeft="514.999971861642,487.266663623187" />
+          Id="Package\Load some data to DW\ADO NET Destination 2"
+          TopLeft="962.499947411321,456.99999752303" />
         <NodeLayout
           Size="106.4,41.6"
           Id="Package\Load some data to DW\Sort 2"
           TopLeft="1003.33327851362,280.399998228153" />
         <NodeLayout
-          Size="153.6,41.6"
-          Id="Package\Load some data to DW\Conditional Split"
-          TopLeft="149.999991804362,252.199998246233" />
+          Size="162.4,41.6"
+          Id="Package\Load some data to DW\Conditional Split 1"
+          TopLeft="486.666640076373,146.466665648156" />
         <NodeLayout
-          Size="156.8,41.6"
-          Id="Package\Load some data to DW\Netflix Revenues"
-          TopLeft="485.833306788571,37.2666664075193" />
+          Size="188,41.6"
+          Id="Package\Load some data to DW\ADO NET Destination 1"
+          TopLeft="514.999971861642,487.266663623187" />
+        <NodeLayout
+          Size="161.6,41.6"
+          Id="Package\Load some data to DW\Script Component"
+          TopLeft="986.666612757579,203.933332616157" />
         <NodeLayout
           Size="188,41.6"
           Id="Package\Load some data to DW\Netflix Titles CSV parse"
           TopLeft="218.166663232777,125.233331562943" />
         <NodeLayout
-          Size="188,41.6"
-          Id="Package\Load some data to DW\Netflix Titles CSV parse 1"
-          TopLeft="968.333280425935,90.4000000723202" />
+          Size="153.6,41.6"
+          Id="Package\Load some data to DW\Conditional Split"
+          TopLeft="149.999991804362,252.199998246233" />
+        <NodeLayout
+          Size="164.8,41.6"
+          Id="Package\Load some data to DW\Netflix Subscribers"
+          TopLeft="657.499964075785,118.733332507677" />
         <NodeLayout
           Size="106.4,41.6"
           Id="Package\Load some data to DW\Sort 1"
           TopLeft="695.833295314678,226.199998427034" />
         <NodeLayout
+          Size="156.8,41.6"
+          Id="Package\Load some data to DW\Netflix Revenues"
+          TopLeft="485.833306788571,37.2666664075193" />
+        <NodeLayout
+          Size="129.6,41.6"
+          Id="Package\Load some data to DW\Merge Join"
+          TopLeft="550.833303237128,396.066663912469" />
+        <NodeLayout
           Size="188,41.6"
-          Id="Package\Load some data to DW\ADO NET Destination 2"
-          TopLeft="962.499947411321,456.99999752303" />
+          Id="Package\Load some data to DW\Netflix Titles CSV parse 1"
+          TopLeft="968.333280425935,90.4000000723202" />
+        <NodeLayout
+          Size="97.6,41.6"
+          Id="Package\Load some data to DW\Sort"
+          TopLeft="495.833306242195,231.399998390873" />
         <NodeLayout
           Size="179.2,41.6"
           Id="Package\Load some data to DW\ADO NET Destination"
           TopLeft="180.166665008499,473.799994861484" />
-        <NodeLayout
-          Size="161.6,41.6"
-          Id="Package\Load some data to DW\Script Component"
-          TopLeft="986.666612757579,203.933332616157" />
         <EdgeLayout
           Id="Package\Load some data to DW.Paths[Valid added Date]"
           TopLeft="226.799991804362,293.799998246233">
@@ -6758,7 +9175,9 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -6792,7 +9211,9 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -6826,7 +9247,9 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -6860,7 +9283,9 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -6882,7 +9307,33 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load some data to DW.Paths[Flat File Source Output3]"
+          TopLeft="566.049973432472,78.8666664075193">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,67.5999992406365"
+              Start="0,0"
+              End="0,60.0999992406365">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,60.0999992406365" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -6904,7 +9355,9 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -6938,7 +9391,9 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -6972,33 +9427,9 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="162.4,41.6"
-          Id="Package\Load some data to DW\Conditional Split 1"
-          TopLeft="486.666640076373,146.466665648156" />
-        <EdgeLayout
-          Id="Package\Load some data to DW.Paths[Flat File Source Output3]"
-          TopLeft="566.049973432472,78.8666664075193">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,67.5999992406365"
-              Start="0,0"
-              End="0,60.0999992406365">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,60.0999992406365" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -7041,7 +9472,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Load some data to DW\ADO NET Destination 1">
+    design-time-name="Package\Load some data to DW\ADO NET Destination 2">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -7049,7 +9480,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Load some data to DW\ADO NET Destination 2">
+    design-time-name="Package\Load some data to DW\ADO NET Destination 1">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -7065,36 +9496,32 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
     </Properties>
   </PipelineComponentMetadata>
   <TaskHost
-    design-time-name="Package\Calculate KPI">
+    design-time-name="Package\Load Google Trends into DW">
     <LayoutInfo>
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="160,41.6"
-          Id="Package\Calculate KPI\ADO NET Source"
-          TopLeft="354.999994710088,174.999997392297" />
+          Size="200,41.6"
+          Id="Package\Load Google Trends into DW\Google Trends parse CSV"
+          TopLeft="394.16664513035,51.9999996383985" />
         <NodeLayout
-          Size="179.2,41.6"
-          Id="Package\Calculate KPI\ADO NET Destination"
-          TopLeft="521.499992311001,628.499990716577" />
-        <NodeLayout
-          Size="119.2,41.6"
-          Id="Package\Calculate KPI\Multicast"
-          TopLeft="374.999994412065,266.99999602139" />
+          Size="164.8,41.6"
+          Id="Package\Load Google Trends into DW\Replace &lt;1 in data"
+          TopLeft="404.999977871777,122.199999150236" />
         <EdgeLayout
-          Id="Package\Calculate KPI.Paths[ADO NET Source Output]"
-          TopLeft="434.799994561076,216.599997392297">
+          Id="Package\Load Google Trends into DW.Paths[Flat File Source Output]"
+          TopLeft="490.783311501064,93.5999996383985">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,50.3999986290931"
+              EndConnector="0,28.5999995118379"
               Start="0,0"
-              End="0,42.8999986290931">
+              End="0,21.0999995118379">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,42.8999986290931" />
+                    End="0,21.0999995118379" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -7104,35 +9531,73 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <NodeLayout
-          Size="161.6,41.6"
-          Id="Package\Calculate KPI\Script Component"
-          TopLeft="542.999991908669,339.999994933605" />
+          Size="164.8,41.6"
+          Id="Package\Load Google Trends into DW\Convert to decimal"
+          TopLeft="433.333309657045,203.666665250394" />
         <EdgeLayout
-          Id="Package\Calculate KPI.Paths[Multicast Output 1]"
-          TopLeft="434.599994412065,308.59999602139">
+          Id="Package\Load Google Trends into DW.Paths[Derived Column Output]"
+          TopLeft="487.399977871777,163.799999150236">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="189.199997496605,31.3999989122151"
+              EndConnector="28.3333317852685,39.8666661001577"
               Start="0,0"
-              End="189.199997496605,23.8999989122151">
+              End="28.3333317852685,32.3666661001577">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,11.6999994561075" />
+                    End="0,15.9333330500788" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,11.6999994561075"
-                    Point2="0,15.6999994561075"
-                    Point3="4,15.6999994561075" />
+                    Point1="0,15.9333330500788"
+                    Point2="0,19.9333330500788"
+                    Point3="4,19.9333330500788" />
                   <mssgle:LineSegment
-                    End="185.199997496605,15.6999994561075" />
+                    End="24.3333317852685,19.9333330500788" />
                   <mssgle:CubicBezierSegment
-                    Point1="185.199997496605,15.6999994561075"
-                    Point2="189.199997496605,15.6999994561075"
-                    Point3="189.199997496605,19.6999994561075" />
+                    Point1="24.3333317852685,19.9333330500788"
+                    Point2="28.3333317852685,19.9333330500788"
+                    Point3="28.3333317852685,23.9333330500788" />
                   <mssgle:LineSegment
-                    End="189.199997496605,23.8999989122151" />
+                    End="28.3333317852685,32.3666661001577" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="211.2,41.6"
+          Id="Package\Load Google Trends into DW\Prepare for date aggregation"
+          TopLeft="431.666643081441,279.933331386712" />
+        <EdgeLayout
+          Id="Package\Load Google Trends into DW.Paths[Data Conversion Output]"
+          TopLeft="515.733309657045,245.266665250394">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="21.5333334243959,34.6666661363178"
+              Start="0,0"
+              End="21.5333334243959,27.1666661363178">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,13.3333330681589" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,13.3333330681589"
+                    Point2="0,17.3333330681589"
+                    Point3="4,17.3333330681589" />
+                  <mssgle:LineSegment
+                    End="17.5333334243959,17.3333330681589" />
+                  <mssgle:CubicBezierSegment
+                    Point1="17.5333334243959,17.3333330681589"
+                    Point2="21.5333334243959,17.3333330681589"
+                    Point3="21.5333334243959,21.3333330681589" />
+                  <mssgle:LineSegment
+                    End="21.5333334243959,27.1666661363178" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -7143,34 +9608,34 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
         </EdgeLayout>
         <NodeLayout
           Size="97.6,41.6"
-          Id="Package\Calculate KPI\Sort"
-          TopLeft="321.999995201826,356.999994680285" />
+          Id="Package\Load Google Trends into DW\Sort"
+          TopLeft="471.428545670851,370.190473616218" />
         <EdgeLayout
-          Id="Package\Calculate KPI.Paths[Multicast Output 2]"
-          TopLeft="416.066661078731,308.59999602139">
+          Id="Package\Load Google Trends into DW.Paths[Output 0]"
+          TopLeft="537.266643081441,321.533331386712">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-45.2666658769051,48.3999986588955"
+              EndConnector="-17.0380974105898,48.657142229506"
               Start="0,0"
-              End="-45.2666658769051,40.8999986588955">
+              End="-17.0380974105898,41.157142229506">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,15.7446352144898" />
+                    End="0,20.328571114753" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,15.7446352144898"
-                    Point2="0,19.7446352144898"
-                    Point3="-4,19.7446352144898" />
+                    Point1="0,20.328571114753"
+                    Point2="0,24.328571114753"
+                    Point3="-4,24.328571114753" />
                   <mssgle:LineSegment
-                    End="-41.2666658769051,19.7446352144898" />
+                    End="-13.0380974105898,24.328571114753" />
                   <mssgle:CubicBezierSegment
-                    Point1="-41.2666658769051,19.7446352144898"
-                    Point2="-45.2666658769051,19.7446352144898"
-                    Point3="-45.2666658769051,23.7446352144898" />
+                    Point1="-13.0380974105898,24.328571114753"
+                    Point2="-17.0380974105898,24.328571114753"
+                    Point3="-17.0380974105898,28.328571114753" />
                   <mssgle:LineSegment
-                    End="-45.2666658769051,40.8999986588955" />
+                    End="-17.0380974105898,41.157142229506" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -7180,35 +9645,35 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <NodeLayout
-          Size="106.4,41.6"
-          Id="Package\Calculate KPI\Sort 1"
-          TopLeft="510.999992385507,404.99999396503" />
+          Size="126.4,41.6"
+          Id="Package\Load Google Trends into DW\Aggregate"
+          TopLeft="515.476162311815,467.999996745586" />
         <EdgeLayout
-          Id="Package\Calculate KPI.Paths[Output 0]"
-          TopLeft="623.799991908669,381.599994933605">
+          Id="Package\Load Google Trends into DW.Paths[Sort Output]"
+          TopLeft="520.228545670851,411.790473616218">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-59.5999995231625,23.3999990314246"
+              EndConnector="58.4476166409636,56.2095231293686"
               Start="0,0"
-              End="-59.5999995231625,15.8999990314246">
+              End="58.4476166409636,48.7095231293686">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,7.69999951571229" />
+                    End="0,24.1047615646843" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,7.69999951571229"
-                    Point2="0,11.6999995157123"
-                    Point3="-4,11.6999995157123" />
+                    Point1="0,24.1047615646843"
+                    Point2="0,28.1047615646843"
+                    Point3="4,28.1047615646843" />
                   <mssgle:LineSegment
-                    End="-55.5999995231625,11.6999995157123" />
+                    End="54.4476166409636,28.1047615646843" />
                   <mssgle:CubicBezierSegment
-                    Point1="-55.5999995231625,11.6999995157123"
-                    Point2="-59.5999995231625,11.6999995157123"
-                    Point3="-59.5999995231625,15.6999995157123" />
+                    Point1="54.4476166409636,28.1047615646843"
+                    Point2="58.4476166409636,28.1047615646843"
+                    Point3="58.4476166409636,32.1047615646843" />
                   <mssgle:LineSegment
-                    End="-59.5999995231625,15.8999990314246" />
+                    End="58.4476166409636,48.7095231293686" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -7218,129 +9683,35 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <NodeLayout
-          Size="129.6,41.6"
-          Id="Package\Calculate KPI\Merge Join"
-          TopLeft="423.999993681908,478.999992862344" />
+          Size="179.2,41.6"
+          Id="Package\Load Google Trends into DW\ADO NET Destination"
+          TopLeft="508.333305559226,573.238091251869" />
         <EdgeLayout
-          Id="Package\Calculate KPI.Paths[Sort Output]"
-          TopLeft="370.799995201826,398.599994680285">
+          Id="Package\Load Google Trends into DW.Paths[Aggregate Output 1]"
+          TopLeft="578.676162311815,509.599996745587">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="117.999998480082,80.3999981820584"
+              EndConnector="19.2571432474112,63.6380945062828"
               Start="0,0"
-              End="117.999998480082,72.8999981820584">
+              End="19.2571432474112,56.1380945062828">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,36.1999990910292" />
+                    End="0,27.8190472531414" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,36.1999990910292"
-                    Point2="0,40.1999990910292"
-                    Point3="4,40.1999990910292" />
+                    Point1="0,27.8190472531414"
+                    Point2="0,31.8190472531414"
+                    Point3="4,31.8190472531414" />
                   <mssgle:LineSegment
-                    End="113.999998480082,40.1999990910292" />
+                    End="15.2571432474112,31.8190472531414" />
                   <mssgle:CubicBezierSegment
-                    Point1="113.999998480082,40.1999990910292"
-                    Point2="117.999998480082,40.1999990910292"
-                    Point3="117.999998480082,44.1999990910292" />
+                    Point1="15.2571432474112,31.8190472531414"
+                    Point2="19.2571432474112,31.8190472531414"
+                    Point3="19.2571432474112,35.8190472531414" />
                   <mssgle:LineSegment
-                    End="117.999998480082,72.8999981820584" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Calculate KPI.Paths[Sort Output1]"
-          TopLeft="564.199992385507,446.59999396503">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-55.1333320369325,32.3999988973142"
-              Start="0,0"
-              End="-55.1333320369325,24.8999988973142">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,15.2029261757252" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,15.2029261757252"
-                    Point2="0,19.2029261757252"
-                    Point3="-4,19.2029261757252" />
-                  <mssgle:LineSegment
-                    End="-51.1333320369325,19.2029261757252" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-51.1333320369325,19.2029261757252"
-                    Point2="-55.1333320369325,19.2029261757252"
-                    Point3="-55.1333320369325,23.2029261757252" />
-                  <mssgle:LineSegment
-                    End="-55.1333320369325,24.8999988973142" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="152.8,41.6"
-          Id="Package\Calculate KPI\Derived Column"
-          TopLeft="527.999992132187,548.999991819263" />
-        <EdgeLayout
-          Id="Package\Calculate KPI.Paths[Merge Join Output]"
-          TopLeft="488.799993681908,520.599992862344">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="115.599998450279,28.3999989569187"
-              Start="0,0"
-              End="115.599998450279,20.8999989569187">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,10.1999994784593" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,10.1999994784593"
-                    Point2="0,14.1999994784593"
-                    Point3="4,14.1999994784593" />
-                  <mssgle:LineSegment
-                    End="111.599998450279,14.1999994784593" />
-                  <mssgle:CubicBezierSegment
-                    Point1="111.599998450279,14.1999994784593"
-                    Point2="115.599998450279,14.1999994784593"
-                    Point3="115.599998450279,18.1999994784593" />
-                  <mssgle:LineSegment
-                    End="115.599998450279,20.8999989569187" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Calculate KPI.Paths[Derived Column Output]"
-          TopLeft="607.749992221594,590.599991819263">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,37.8999988973143"
-              Start="0,0"
-              End="0,30.3999988973143">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,30.3999988973143" />
+                    End="19.2571432474112,56.1380945062828" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -7353,15 +9724,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Calculate KPI\ADO NET Source">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Calculate KPI\ADO NET Destination">
+    design-time-name="Package\Load Google Trends into DW\ADO NET Destination">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>

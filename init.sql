@@ -33,3 +33,11 @@ create table [NetflixKPI](
 [kpi] decimal,
 [last_year_kpi] decimal
 )
+GO
+create table [GoogleTrends](
+	[year] decimal,
+	[netflix] decimal,
+	[amazon] decimal,
+	[hulu] decimal,
+)
+GO

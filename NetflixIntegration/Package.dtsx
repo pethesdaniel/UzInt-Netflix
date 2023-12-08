@@ -11,8 +11,8 @@
   DTS:LocaleID="2057"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="91"
-  DTS:VersionGUID="{8656443F-B477-416E-A9A7-098B7CDAACFA}">
+  DTS:VersionBuild="94"
+  DTS:VersionGUID="{2C6786D9-6006-4A25-B668-5A18A534BC00}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -1962,6 +1962,24 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
               startId="Package\Calculate KPI\Sort 1.Outputs[Sort Output]" />
           </paths>
         </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Data change showcase"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:Disabled="True"
+      DTS:DTSID="{D848B835-8606-437B-B3B3-9FF79DBAF410}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Data change showcase"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{BAD1F268-B297-4A7C-BB39-7ED5930A747C}"
+          SQLTask:SqlStatementSource="DELETE FROM NetflixKPI&#xA;WHERE [year] &gt; 2018&#xA;&#xA;DELETE FROM NetflixStats&#xA;WHERE [year] &gt; 2018&#xA;&#xA;DELETE FROM NetflixTitles&#xA;WHERE YEAR(date_added) &gt; 2018" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -6216,6 +6234,22 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 4"
       DTS:To="Package\Calculate KPI" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 5]"
+      DTS:CreationName=""
+      DTS:DTSID="{989C11A8-57EA-4AA6-9011-5AE0760C1EBF}"
+      DTS:From="Package\Load some data to DW"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 5"
+      DTS:To="Package\Calculate KPI" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 6]"
+      DTS:CreationName=""
+      DTS:DTSID="{C6F9DF01-DECE-4E0E-BE77-4DC83E51EE7D}"
+      DTS:From="Package\Calculate KPI"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 6"
+      DTS:To="Package\Data change showcase" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
@@ -6340,21 +6374,93 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
         <NodeLayout
           Size="141.6,41.6"
           Id="Package\Calculate KPI"
-          TopLeft="799.166623002127,296.399997938871" />
+          TopLeft="769.166624641254,242.666664979193" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 4]"
-          TopLeft="732.533302007782,318.499997929831">
+          TopLeft="732.533302007782,319.799997920791">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="66.6333209943448,0"
+              EndConnector="36.6333226334725,-50.733332941598"
               Start="0,0"
-              End="59.1333209943448,0">
+              End="29.1333226334725,-50.733332941598">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="59.1333209943448,0" />
+                    End="17.1659197437841,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="17.1659197437841,0"
+                    Point2="21.1659197437841,0"
+                    Point3="21.1659197437841,-4" />
+                  <mssgle:LineSegment
+                    End="21.1659197437841,-46.733332941598" />
+                  <mssgle:CubicBezierSegment
+                    Point1="21.1659197437841,-46.733332941598"
+                    Point2="21.1659197437841,-50.733332941598"
+                    Point3="25.1659197437841,-50.733332941598" />
+                  <mssgle:LineSegment
+                    End="29.1333226334725,-50.733332941598" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 5]"
+          TopLeft="515.899983608723,217.166665756636">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="253.266641032531,40.699999222557"
+              Start="0,0"
+              End="245.766641032531,40.699999222557">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="142.331837041018,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="142.331837041018,0"
+                    Point2="146.331837041018,0"
+                    Point3="146.331837041018,4" />
+                  <mssgle:LineSegment
+                    End="146.331837041018,36.699999222557" />
+                  <mssgle:CubicBezierSegment
+                    Point1="146.331837041018,36.699999222557"
+                    Point2="146.331837041018,40.699999222557"
+                    Point3="150.331837041018,40.699999222557" />
+                  <mssgle:LineSegment
+                    End="245.766641032531,40.699999222557" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="186.4,41.6"
+          Id="Package\Data change showcase"
+          TopLeft="954.666614806489,247.299998318553" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 6]"
+          TopLeft="910.766624641254,265.783331648873">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="43.8999901652345,0"
+              Start="0,0"
+              End="36.3999901652345,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="36.3999901652345,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>

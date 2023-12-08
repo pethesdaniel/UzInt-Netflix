@@ -21,9 +21,15 @@ genre nvarchar(max)
 )
 GO
 
-CREATE TABLE [dbo].[NetflixRatings](
+CREATE TABLE [NetflixRatings](
 	[show_id] nvarchar(max),
 	[rating] float,
 	[num_of_votes] decimal,
 )
 GO
+
+create table [NetflixKPI](
+[year] decimal,
+[kpi] decimal,
+[last_year_kpi] decimal
+)

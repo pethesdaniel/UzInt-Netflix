@@ -11,8 +11,8 @@
   DTS:LocaleID="2057"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="71"
-  DTS:VersionGUID="{1EF7E1B8-2C71-43A9-BF81-AF395DE6960A}">
+  DTS:VersionBuild="72"
+  DTS:VersionGUID="{973A3CCA-2D3C-4C2E-BD23-BEA4DD62873D}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -319,7 +319,7 @@ inner join imdbtitles t on t.tconst = r.tconst;</property>
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\Generate CSV\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[primaryTitle]"
-                      length="250"
+                      length="500"
                       lineageId="Package\Generate CSV\ADO NET Source.Outputs[ADO NET Source Output].Columns[primaryTitle]"
                       name="primaryTitle"
                       truncationRowDisposition="FailComponent" />
@@ -363,7 +363,7 @@ inner join imdbtitles t on t.tconst = r.tconst;</property>
                     <externalMetadataColumn
                       refId="Package\Generate CSV\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[primaryTitle]"
                       dataType="wstr"
-                      length="250"
+                      length="500"
                       name="primaryTitle" />
                     <externalMetadataColumn
                       refId="Package\Generate CSV\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[startYear]"
@@ -395,7 +395,7 @@ inner join imdbtitles t on t.tconst = r.tconst;</property>
                     <outputColumn
                       refId="Package\Generate CSV\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[primaryTitle]"
                       dataType="wstr"
-                      length="250"
+                      length="500"
                       lineageId="Package\Generate CSV\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[primaryTitle]"
                       name="primaryTitle" />
                     <outputColumn
@@ -471,7 +471,7 @@ inner join imdbtitles t on t.tconst = r.tconst;</property>
                     <inputColumn
                       refId="Package\Generate CSV\Flat File Destination.Inputs[Flat File Destination Input].Columns[primaryTitle]"
                       cachedDataType="wstr"
-                      cachedLength="250"
+                      cachedLength="500"
                       cachedName="primaryTitle"
                       externalMetadataColumnId="Package\Generate CSV\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[title]"
                       lineageId="Package\Generate CSV\ADO NET Source.Outputs[ADO NET Source Output].Columns[primaryTitle]" />
@@ -1469,13 +1469,13 @@ inner join imdbtitles t on t.tconst = r.tconst;</property>
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="157.6,41.6"
-          Id="Package\Load into staging"
-          TopLeft="437.499976096055,146.466665648156" />
-        <NodeLayout
           Size="145.6,41.6"
           Id="Package\Generate CSV"
           TopLeft="686.666629148856,146.466665648156" />
+        <NodeLayout
+          Size="157.6,41.6"
+          Id="Package\Load into staging"
+          TopLeft="437.499976096055,146.466665648156" />
         <NodeLayout
           Size="119.2,41.6"
           Id="Package\purge db"
@@ -1539,6 +1539,56 @@ inner join imdbtitles t on t.tconst = r.tconst;</property>
       </GraphLayout>
     </LayoutInfo>
   </Package>
+  <TaskHost
+    design-time-name="Package\Generate CSV">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="170.4,41.6"
+          Id="Package\Generate CSV\Flat File Destination"
+          TopLeft="617.999990791082,209.999996870756" />
+        <NodeLayout
+          Size="160,41.6"
+          Id="Package\Generate CSV\ADO NET Source"
+          TopLeft="351.666647452448,242.666664979193" />
+        <EdgeLayout
+          Id="Package\Generate CSV.Paths[ADO NET Source Output]"
+          TopLeft="511.666647452448,263.466664979193">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="106.333343338634,-32.6666681084369"
+              Start="0,0"
+              End="98.8333433386341,-32.6666681084369">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="49.166671669317,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="49.166671669317,0"
+                    Point2="53.166671669317,0"
+                    Point3="53.166671669317,-4" />
+                  <mssgle:LineSegment
+                    End="53.166671669317,-28.6666681084369" />
+                  <mssgle:CubicBezierSegment
+                    Point1="53.166671669317,-28.6666681084369"
+                    Point2="53.166671669317,-32.6666681084369"
+                    Point3="57.166671669317,-32.6666681084369" />
+                  <mssgle:LineSegment
+                    End="98.8333433386341,-32.6666681084369" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
   <TaskHost
     design-time-name="Package\Load into staging">
     <LayoutInfo>
@@ -1687,56 +1737,6 @@ inner join imdbtitles t on t.tconst = r.tconst;</property>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
-  <TaskHost
-    design-time-name="Package\Generate CSV">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="160,41.6"
-          Id="Package\Generate CSV\ADO NET Source"
-          TopLeft="358.999994650483,225.999996632338" />
-        <NodeLayout
-          Size="170.4,41.6"
-          Id="Package\Generate CSV\Flat File Destination"
-          TopLeft="617.999990791082,209.999996870756" />
-        <EdgeLayout
-          Id="Package\Generate CSV.Paths[ADO NET Source Output]"
-          TopLeft="518.999994650483,246.799996632338">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="98.9999961405994,-15.9999997615815"
-              Start="0,0"
-              End="91.4999961405994,-15.9999997615815">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="45.4999980702997,0" />
-                  <mssgle:CubicBezierSegment
-                    Point1="45.4999980702997,0"
-                    Point2="49.4999980702997,0"
-                    Point3="49.4999980702997,-4" />
-                  <mssgle:LineSegment
-                    End="49.4999980702997,-11.9999997615815" />
-                  <mssgle:CubicBezierSegment
-                    Point1="49.4999980702997,-11.9999997615815"
-                    Point2="49.4999980702997,-15.9999997615815"
-                    Point3="53.4999980702997,-15.9999997615815" />
-                  <mssgle:LineSegment
-                    End="91.4999961405994,-15.9999997615815" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
   <PipelineComponentMetadata
     design-time-name="Package\Generate CSV\ADO NET Source">
     <Properties>

@@ -11,8 +11,8 @@
   DTS:LocaleID="2057"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="119"
-  DTS:VersionGUID="{CCD4F0F4-8D23-4C97-9C5B-E75912872F66}">
+  DTS:VersionBuild="127"
+  DTS:VersionGUID="{CB111791-3182-45A4-838B-EFA71D7D83E2}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -200,6 +200,168 @@
               DTS:TextQualified="True"
               DTS:ObjectName="description"
               DTS:DTSID="{78619196-BEB0-4D8A-8A9E-93695C7C4ADC}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[IMDb data]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{3E68C2AB-DB64-412F-8236-F722F0E542EB}"
+      DTS:ObjectName="IMDb data">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="2057"
+          DTS:HeaderRowDelimiter="_x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="65001"
+          DTS:ConnectionString="P:\BME\UzInt\csv\title.data.tsv.csv">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="15"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="tconst"
+              DTS:DTSID="{EC7E24CE-B732-4B3D-B51E-C85CD6D9F85E}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="15"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="titleType"
+              DTS:DTSID="{28308FA4-9865-4690-AA82-2807B7DBE375}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="500"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="primaryTitle"
+              DTS:DTSID="{1F48855D-D759-4E29-ADFC-1FF22FC86D1B}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="500"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="originalTitle"
+              DTS:DTSID="{47561740-5E31-4822-A041-9266A12CB16E}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:DataType="14"
+              DTS:TextQualified="True"
+              DTS:ObjectName="isAdult"
+              DTS:DTSID="{C3F75DA1-831F-4096-8259-6AAEF34DC4EB}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:DataType="14"
+              DTS:TextQualified="True"
+              DTS:ObjectName="startYear"
+              DTS:DTSID="{BC99A8B6-1E89-4517-AAB8-1617A531DC95}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:DataType="14"
+              DTS:TextQualified="True"
+              DTS:ObjectName="endYear"
+              DTS:DTSID="{F7FED0A0-4312-4492-9367-67565450671B}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="30"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="runtimeMinutes"
+              DTS:DTSID="{A26B78B2-356D-4656-BD6F-BB179A7E59A7}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000A_"
+              DTS:MaximumWidth="250"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="genres"
+              DTS:DTSID="{951B352B-0D32-4C77-917F-371EA7D09715}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[IMDb processed csv]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{2F1B9244-3431-4A14-A333-0B84B321DD2B}"
+      DTS:ObjectName="IMDb processed csv">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="2057"
+          DTS:Unicode="True"
+          DTS:HeaderRowDelimiter="_x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="65001"
+          DTS:ConnectionString="P:\BME\UzInt\csv\result.csv">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="15"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="id"
+              DTS:DTSID="{C8360056-0218-4902-9BBB-37D6A48C83AF}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="2000"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="title"
+              DTS:DTSID="{D7A95696-BED7-4C34-A8C8-C8D95CE233AC}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:DataType="14"
+              DTS:TextQualified="True"
+              DTS:ObjectName="year"
+              DTS:DTSID="{A3FFB705-F8A1-4AB6-9F3F-631DAD9138DE}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:DataType="5"
+              DTS:TextQualified="True"
+              DTS:ObjectName="rating"
+              DTS:DTSID="{E6C92227-8C37-49D0-ABE1-CA2BD1CF1A84}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000A_"
+              DTS:DataType="131"
+              DTS:DataPrecision="18"
+              DTS:TextQualified="True"
+              DTS:ObjectName="number_of_votes"
+              DTS:DTSID="{2220CA6B-7B1E-4246-A422-216E706EE387}"
               DTS:CreationName="" />
           </DTS:FlatFileColumns>
         </DTS:ConnectionManager>
@@ -471,6 +633,51 @@
               DTS:TextQualified="True"
               DTS:ObjectName="description"
               DTS:DTSID="{E8AE368A-83E2-472A-8C7B-8007E2575B55}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Ratings]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{5B2135D0-FCD9-4E1D-8D65-7D457EDE357A}"
+      DTS:ObjectName="Ratings">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="2057"
+          DTS:HeaderRowDelimiter="_x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="65001"
+          DTS:ConnectionString="P:\BME\UzInt\csv\title.ratings.tsv.csv">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="15"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="tconst"
+              DTS:DTSID="{A18649EE-4CAC-40DD-A680-F56F08B67AC1}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:DataType="4"
+              DTS:TextQualified="True"
+              DTS:ObjectName="averageRating"
+              DTS:DTSID="{310C52C1-42BD-4F86-84E3-9057C52AF520}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000A_"
+              DTS:DataType="14"
+              DTS:TextQualified="True"
+              DTS:ObjectName="numVotes"
+              DTS:DTSID="{DCE3EA5F-8907-459F-939A-55BD077FE643}"
               DTS:CreationName="" />
           </DTS:FlatFileColumns>
         </DTS:ConnectionManager>
@@ -2160,6 +2367,1213 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
           SQLTask:Connection="{BAD1F268-B297-4A7C-BB39-7ED5930A747C}"
           SQLTask:SqlStatementSource="DELETE FROM NetflixKPI&#xA;WHERE [year] &gt; 2018&#xA;&#xA;DELETE FROM NetflixStats&#xA;WHERE [year] &gt; 2018&#xA;&#xA;DELETE FROM NetflixTitles&#xA;WHERE YEAR(date_added) &gt; 2018&#xA;&#xA;DELETE FROM GoogleTrends&#xA;WHERE  [year] &gt; 2018&#xA;&#xA;DELETE FROM HuluIntersect&#xA;WHERE YEAR(date_added) &gt; 2018" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\IMDb data parse"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:Disabled="True"
+      DTS:DTSID="{E1D19A92-3A01-414D-B867-396D83496B56}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="IMDb data parse">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\IMDb data parse\Generate CSV"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{423f7330-3591-4ba4-aba7-aae0c066d75d}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Generate CSV"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\IMDb data parse\Generate CSV\ADO NET Source"
+                  componentClassID="Microsoft.ManagedComponentHost"
+                  contactInfo="Consumes data from SQL Server, OLE DB, ODBC, or Oracle, using the corresponding .NET Framework data provider. Use a Transact-SQL statement to define the result set. For example, extract data from SQL Server with the .NET Framework data provider for SQL Server.;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="Consumes data from SQL Server, OLE DB, ODBC, or Oracle, using the corresponding .NET Framework data provider. Use a Transact-SQL statement to define the result set. For example, extract data from SQL Server with the .NET Framework data provider for SQL Server."
+                  name="ADO NET Source"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the SQL statement used by the component to extract data."
+                      expressionType="Notify"
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select r.tconst, primaryTitle, startYear, averageRating, numVotes
+from imdbratings as r
+inner join imdbtitles t on t.tconst = r.tconst;</property>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">30</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether to allow non-string external columns to be implicitly converted to strings at the output columns."
+                      name="AllowImplicitStringConversion">true</property>
+                    <property
+                      dataType="System.String"
+                      description="The Source database table name."
+                      expressionType="Notify"
+                      name="TableOrViewName"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specify the mode to retrieve external column information"
+                      name="AccessMode"
+                      typeConverter="Microsoft.SqlServer.Dts.Pipeline.DataReaderSourceAdapter+EnumToStringConverter">2</property>
+                    <property
+                      dataType="System.String"
+                      name="UserComponentTypeName">Microsoft.DataReaderSourceAdapter</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\IMDb data parse\Generate CSV\ADO NET Source.Connections[IDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[NAZUNA.Staging]"
+                      connectionManagerRefId="Package.ConnectionManagers[NAZUNA.Staging]"
+                      description="Managed connection manager"
+                      name="IDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\IMDb data parse\Generate CSV\ADO NET Source.Outputs[ADO NET Source Output]"
+                      name="ADO NET Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\IMDb data parse\Generate CSV\ADO NET Source.Outputs[ADO NET Source Output].Columns[tconst]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\IMDb data parse\Generate CSV\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[tconst]"
+                          length="15"
+                          lineageId="Package\IMDb data parse\Generate CSV\ADO NET Source.Outputs[ADO NET Source Output].Columns[tconst]"
+                          name="tconst"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\IMDb data parse\Generate CSV\ADO NET Source.Outputs[ADO NET Source Output].Columns[primaryTitle]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\IMDb data parse\Generate CSV\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[primaryTitle]"
+                          length="500"
+                          lineageId="Package\IMDb data parse\Generate CSV\ADO NET Source.Outputs[ADO NET Source Output].Columns[primaryTitle]"
+                          name="primaryTitle"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\IMDb data parse\Generate CSV\ADO NET Source.Outputs[ADO NET Source Output].Columns[startYear]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\IMDb data parse\Generate CSV\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[startYear]"
+                          lineageId="Package\IMDb data parse\Generate CSV\ADO NET Source.Outputs[ADO NET Source Output].Columns[startYear]"
+                          name="startYear"
+                          precision="18"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\IMDb data parse\Generate CSV\ADO NET Source.Outputs[ADO NET Source Output].Columns[averageRating]"
+                          dataType="r8"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\IMDb data parse\Generate CSV\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[averageRating]"
+                          lineageId="Package\IMDb data parse\Generate CSV\ADO NET Source.Outputs[ADO NET Source Output].Columns[averageRating]"
+                          name="averageRating"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\IMDb data parse\Generate CSV\ADO NET Source.Outputs[ADO NET Source Output].Columns[numVotes]"
+                          dataType="numeric"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\IMDb data parse\Generate CSV\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[numVotes]"
+                          lineageId="Package\IMDb data parse\Generate CSV\ADO NET Source.Outputs[ADO NET Source Output].Columns[numVotes]"
+                          name="numVotes"
+                          precision="18"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\IMDb data parse\Generate CSV\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[tconst]"
+                          dataType="wstr"
+                          length="15"
+                          name="tconst" />
+                        <externalMetadataColumn
+                          refId="Package\IMDb data parse\Generate CSV\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[primaryTitle]"
+                          dataType="wstr"
+                          length="500"
+                          name="primaryTitle" />
+                        <externalMetadataColumn
+                          refId="Package\IMDb data parse\Generate CSV\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[startYear]"
+                          dataType="numeric"
+                          name="startYear"
+                          precision="18" />
+                        <externalMetadataColumn
+                          refId="Package\IMDb data parse\Generate CSV\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[averageRating]"
+                          dataType="r8"
+                          name="averageRating" />
+                        <externalMetadataColumn
+                          refId="Package\IMDb data parse\Generate CSV\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[numVotes]"
+                          dataType="numeric"
+                          name="numVotes"
+                          precision="18" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\IMDb data parse\Generate CSV\ADO NET Source.Outputs[ADO NET Source Error Output]"
+                      isErrorOut="true"
+                      name="ADO NET Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\IMDb data parse\Generate CSV\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[tconst]"
+                          dataType="wstr"
+                          length="15"
+                          lineageId="Package\IMDb data parse\Generate CSV\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[tconst]"
+                          name="tconst" />
+                        <outputColumn
+                          refId="Package\IMDb data parse\Generate CSV\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[primaryTitle]"
+                          dataType="wstr"
+                          length="500"
+                          lineageId="Package\IMDb data parse\Generate CSV\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[primaryTitle]"
+                          name="primaryTitle" />
+                        <outputColumn
+                          refId="Package\IMDb data parse\Generate CSV\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[startYear]"
+                          dataType="numeric"
+                          lineageId="Package\IMDb data parse\Generate CSV\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[startYear]"
+                          name="startYear"
+                          precision="18" />
+                        <outputColumn
+                          refId="Package\IMDb data parse\Generate CSV\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[averageRating]"
+                          dataType="r8"
+                          lineageId="Package\IMDb data parse\Generate CSV\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[averageRating]"
+                          name="averageRating" />
+                        <outputColumn
+                          refId="Package\IMDb data parse\Generate CSV\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[numVotes]"
+                          dataType="numeric"
+                          lineageId="Package\IMDb data parse\Generate CSV\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[numVotes]"
+                          name="numVotes"
+                          precision="18" />
+                        <outputColumn
+                          refId="Package\IMDb data parse\Generate CSV\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\IMDb data parse\Generate CSV\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\IMDb data parse\Generate CSV\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\IMDb data parse\Generate CSV\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\IMDb data parse\Generate CSV\Flat File Destination"
+                  componentClassID="Microsoft.FlatFileDestination"
+                  contactInfo="Flat File Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+                  description="Flat File Destination"
+                  localeId="2057"
+                  name="Flat File Destination"
+                  version="1">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      description="Specifies whether the data will overwrite or append to the destination file."
+                      name="Overwrite">true</property>
+                    <property
+                      dataType="System.Null"
+                      description="Specifies the text to write to the destination file before any data is written."
+                      expressionType="Notify"
+                      name="Header" />
+                    <property
+                      dataType="System.Boolean"
+                      description="When text qualifier is enabled, specifies whether the text qualifier in the data written to the destination file will be escaped or not."
+                      name="EscapeQualifier">false</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\IMDb data parse\Generate CSV\Flat File Destination.Connections[FlatFileConnection]"
+                      connectionManagerID="Package.ConnectionManagers[IMDb processed csv]"
+                      connectionManagerRefId="Package.ConnectionManagers[IMDb processed csv]"
+                      name="FlatFileConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\IMDb data parse\Generate CSV\Flat File Destination.Inputs[Flat File Destination Input]"
+                      hasSideEffects="true"
+                      name="Flat File Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\IMDb data parse\Generate CSV\Flat File Destination.Inputs[Flat File Destination Input].Columns[primaryTitle]"
+                          cachedDataType="wstr"
+                          cachedLength="500"
+                          cachedName="primaryTitle"
+                          externalMetadataColumnId="Package\IMDb data parse\Generate CSV\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[title]"
+                          lineageId="Package\IMDb data parse\Generate CSV\ADO NET Source.Outputs[ADO NET Source Output].Columns[primaryTitle]" />
+                        <inputColumn
+                          refId="Package\IMDb data parse\Generate CSV\Flat File Destination.Inputs[Flat File Destination Input].Columns[averageRating]"
+                          cachedDataType="r8"
+                          cachedName="averageRating"
+                          externalMetadataColumnId="Package\IMDb data parse\Generate CSV\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[rating]"
+                          lineageId="Package\IMDb data parse\Generate CSV\ADO NET Source.Outputs[ADO NET Source Output].Columns[averageRating]" />
+                        <inputColumn
+                          refId="Package\IMDb data parse\Generate CSV\Flat File Destination.Inputs[Flat File Destination Input].Columns[numVotes]"
+                          cachedDataType="numeric"
+                          cachedName="numVotes"
+                          cachedPrecision="18"
+                          externalMetadataColumnId="Package\IMDb data parse\Generate CSV\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[number_of_votes]"
+                          lineageId="Package\IMDb data parse\Generate CSV\ADO NET Source.Outputs[ADO NET Source Output].Columns[numVotes]" />
+                        <inputColumn
+                          refId="Package\IMDb data parse\Generate CSV\Flat File Destination.Inputs[Flat File Destination Input].Columns[tconst]"
+                          cachedDataType="wstr"
+                          cachedLength="15"
+                          cachedName="tconst"
+                          externalMetadataColumnId="Package\IMDb data parse\Generate CSV\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[id]"
+                          lineageId="Package\IMDb data parse\Generate CSV\ADO NET Source.Outputs[ADO NET Source Output].Columns[tconst]" />
+                        <inputColumn
+                          refId="Package\IMDb data parse\Generate CSV\Flat File Destination.Inputs[Flat File Destination Input].Columns[startYear]"
+                          cachedDataType="numeric"
+                          cachedName="startYear"
+                          cachedPrecision="18"
+                          externalMetadataColumnId="Package\IMDb data parse\Generate CSV\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[year]"
+                          lineageId="Package\IMDb data parse\Generate CSV\ADO NET Source.Outputs[ADO NET Source Output].Columns[startYear]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\IMDb data parse\Generate CSV\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[title]"
+                          dataType="wstr"
+                          length="2000"
+                          name="title" />
+                        <externalMetadataColumn
+                          refId="Package\IMDb data parse\Generate CSV\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[rating]"
+                          dataType="r8"
+                          name="rating" />
+                        <externalMetadataColumn
+                          refId="Package\IMDb data parse\Generate CSV\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[number_of_votes]"
+                          dataType="numeric"
+                          name="number_of_votes"
+                          precision="18" />
+                        <externalMetadataColumn
+                          refId="Package\IMDb data parse\Generate CSV\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[id]"
+                          dataType="wstr"
+                          length="15"
+                          name="id" />
+                        <externalMetadataColumn
+                          refId="Package\IMDb data parse\Generate CSV\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[year]"
+                          dataType="decimal"
+                          name="year" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\IMDb data parse\Generate CSV.Paths[ADO NET Source Output]"
+                  endId="Package\IMDb data parse\Generate CSV\Flat File Destination.Inputs[Flat File Destination Input]"
+                  name="ADO NET Source Output"
+                  startId="Package\IMDb data parse\Generate CSV\ADO NET Source.Outputs[ADO NET Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\IMDb data parse\Load into staging"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{02995bca-5475-4d2c-836a-385c344b02d0}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Load into staging"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\IMDb data parse\Load into staging\ADO NET Destination"
+                  componentClassID="Microsoft.ManagedComponentHost"
+                  contactInfo="Loads data into an ADO.NET-compliant database that uses a database table or view. Load data into a new or existing table. For example, use an ADO.NET provider for ODBC to load data into an ODBC destination.;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+                  description="Loads data into an ADO.NET-compliant database that uses a database table or view. Load data into a new or existing table. For example, use an ADO.NET provider for ODBC to load data into an ODBC destination."
+                  name="ADO NET Destination"
+                  usesDispositions="true"
+                  version="2">
+                  <properties>
+                    <property
+                      dataType="System.String"
+                      description="The Destination database table name."
+                      expressionType="Notify"
+                      name="TableOrViewName"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">"dbo"."imdbtitles"</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specify the number of rows per batch. The default is 0 which uses the same size as SSIS internal buffer. "
+                      expressionType="Notify"
+                      name="BatchSize">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out. A value of 0 indicates infinite time-out. "
+                      expressionType="Notify"
+                      name="CommandTimeout">30</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Specifies whether to use the SqlBulkCopy interface to improve the performance of bulk insert operations. Only certain providers support this interface."
+                      expressionType="Notify"
+                      name="UseBulkInsertWhenPossible">true</property>
+                    <property
+                      dataType="System.String"
+                      name="UserComponentTypeName">Microsoft.ADONETDestination</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\IMDb data parse\Load into staging\ADO NET Destination.Connections[IDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[NAZUNA.Staging]"
+                      connectionManagerRefId="Package.ConnectionManagers[NAZUNA.Staging]"
+                      description="Managed connection manager"
+                      name="IDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\IMDb data parse\Load into staging\ADO NET Destination.Inputs[ADO NET Destination Input]"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="ADO NET Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\IMDb data parse\Load into staging\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[tconst]"
+                          cachedCodepage="65001"
+                          cachedDataType="str"
+                          cachedLength="15"
+                          cachedName="tconst"
+                          externalMetadataColumnId="Package\IMDb data parse\Load into staging\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[tconst]"
+                          lineageId="Package\IMDb data parse\Load into staging\Flat File Source.Outputs[Flat File Source Output].Columns[tconst]" />
+                        <inputColumn
+                          refId="Package\IMDb data parse\Load into staging\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[titleType]"
+                          cachedCodepage="65001"
+                          cachedDataType="str"
+                          cachedLength="15"
+                          cachedName="titleType"
+                          externalMetadataColumnId="Package\IMDb data parse\Load into staging\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[titleType]"
+                          lineageId="Package\IMDb data parse\Load into staging\Flat File Source.Outputs[Flat File Source Output].Columns[titleType]" />
+                        <inputColumn
+                          refId="Package\IMDb data parse\Load into staging\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[primaryTitle]"
+                          cachedCodepage="65001"
+                          cachedDataType="str"
+                          cachedLength="500"
+                          cachedName="primaryTitle"
+                          externalMetadataColumnId="Package\IMDb data parse\Load into staging\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[primaryTitle]"
+                          lineageId="Package\IMDb data parse\Load into staging\Flat File Source.Outputs[Flat File Source Output].Columns[primaryTitle]" />
+                        <inputColumn
+                          refId="Package\IMDb data parse\Load into staging\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[originalTitle]"
+                          cachedCodepage="65001"
+                          cachedDataType="str"
+                          cachedLength="500"
+                          cachedName="originalTitle"
+                          externalMetadataColumnId="Package\IMDb data parse\Load into staging\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[originalTitle]"
+                          lineageId="Package\IMDb data parse\Load into staging\Flat File Source.Outputs[Flat File Source Output].Columns[originalTitle]" />
+                        <inputColumn
+                          refId="Package\IMDb data parse\Load into staging\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[isAdult]"
+                          cachedDataType="decimal"
+                          cachedName="isAdult"
+                          externalMetadataColumnId="Package\IMDb data parse\Load into staging\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[isAdult]"
+                          lineageId="Package\IMDb data parse\Load into staging\Flat File Source.Outputs[Flat File Source Output].Columns[isAdult]" />
+                        <inputColumn
+                          refId="Package\IMDb data parse\Load into staging\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[startYear]"
+                          cachedDataType="decimal"
+                          cachedName="startYear"
+                          externalMetadataColumnId="Package\IMDb data parse\Load into staging\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[startYear]"
+                          lineageId="Package\IMDb data parse\Load into staging\Flat File Source.Outputs[Flat File Source Output].Columns[startYear]" />
+                        <inputColumn
+                          refId="Package\IMDb data parse\Load into staging\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[endYear]"
+                          cachedDataType="decimal"
+                          cachedName="endYear"
+                          externalMetadataColumnId="Package\IMDb data parse\Load into staging\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[endYear]"
+                          lineageId="Package\IMDb data parse\Load into staging\Flat File Source.Outputs[Flat File Source Output].Columns[endYear]" />
+                        <inputColumn
+                          refId="Package\IMDb data parse\Load into staging\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[runtimeMinutes]"
+                          cachedCodepage="65001"
+                          cachedDataType="str"
+                          cachedLength="30"
+                          cachedName="runtimeMinutes"
+                          externalMetadataColumnId="Package\IMDb data parse\Load into staging\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[runtimeMinutes]"
+                          lineageId="Package\IMDb data parse\Load into staging\Flat File Source.Outputs[Flat File Source Output].Columns[runtimeMinutes]" />
+                        <inputColumn
+                          refId="Package\IMDb data parse\Load into staging\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[genres]"
+                          cachedCodepage="65001"
+                          cachedDataType="str"
+                          cachedLength="250"
+                          cachedName="genres"
+                          externalMetadataColumnId="Package\IMDb data parse\Load into staging\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[genres]"
+                          lineageId="Package\IMDb data parse\Load into staging\Flat File Source.Outputs[Flat File Source Output].Columns[genres]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\IMDb data parse\Load into staging\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[tconst]"
+                          dataType="wstr"
+                          length="15"
+                          name="tconst" />
+                        <externalMetadataColumn
+                          refId="Package\IMDb data parse\Load into staging\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[titleType]"
+                          dataType="wstr"
+                          length="15"
+                          name="titleType" />
+                        <externalMetadataColumn
+                          refId="Package\IMDb data parse\Load into staging\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[primaryTitle]"
+                          dataType="wstr"
+                          length="500"
+                          name="primaryTitle" />
+                        <externalMetadataColumn
+                          refId="Package\IMDb data parse\Load into staging\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[originalTitle]"
+                          dataType="wstr"
+                          length="500"
+                          name="originalTitle" />
+                        <externalMetadataColumn
+                          refId="Package\IMDb data parse\Load into staging\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[isAdult]"
+                          dataType="numeric"
+                          name="isAdult"
+                          precision="18" />
+                        <externalMetadataColumn
+                          refId="Package\IMDb data parse\Load into staging\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[startYear]"
+                          dataType="numeric"
+                          name="startYear"
+                          precision="18" />
+                        <externalMetadataColumn
+                          refId="Package\IMDb data parse\Load into staging\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[endYear]"
+                          dataType="numeric"
+                          name="endYear"
+                          precision="18" />
+                        <externalMetadataColumn
+                          refId="Package\IMDb data parse\Load into staging\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[runtimeMinutes]"
+                          dataType="wstr"
+                          length="30"
+                          name="runtimeMinutes" />
+                        <externalMetadataColumn
+                          refId="Package\IMDb data parse\Load into staging\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[genres]"
+                          dataType="wstr"
+                          length="250"
+                          name="genres" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\IMDb data parse\Load into staging\ADO NET Destination.Outputs[ADO NET Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="ADO NET Destination Error Output"
+                      synchronousInputId="Package\IMDb data parse\Load into staging\ADO NET Destination.Inputs[ADO NET Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\IMDb data parse\Load into staging\ADO NET Destination.Outputs[ADO NET Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\IMDb data parse\Load into staging\ADO NET Destination.Outputs[ADO NET Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\IMDb data parse\Load into staging\ADO NET Destination.Outputs[ADO NET Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\IMDb data parse\Load into staging\ADO NET Destination.Outputs[ADO NET Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\IMDb data parse\Load into staging\ADO NET Destination 1"
+                  componentClassID="Microsoft.ManagedComponentHost"
+                  contactInfo="Loads data into an ADO.NET-compliant database that uses a database table or view. Load data into a new or existing table. For example, use an ADO.NET provider for ODBC to load data into an ODBC destination.;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+                  description="Loads data into an ADO.NET-compliant database that uses a database table or view. Load data into a new or existing table. For example, use an ADO.NET provider for ODBC to load data into an ODBC destination."
+                  name="ADO NET Destination 1"
+                  usesDispositions="true"
+                  version="2">
+                  <properties>
+                    <property
+                      dataType="System.String"
+                      description="The Destination database table name."
+                      expressionType="Notify"
+                      name="TableOrViewName"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">"dbo"."imdbratings"</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specify the number of rows per batch. The default is 0 which uses the same size as SSIS internal buffer. "
+                      expressionType="Notify"
+                      name="BatchSize">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out. A value of 0 indicates infinite time-out. "
+                      expressionType="Notify"
+                      name="CommandTimeout">30</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Specifies whether to use the SqlBulkCopy interface to improve the performance of bulk insert operations. Only certain providers support this interface."
+                      expressionType="Notify"
+                      name="UseBulkInsertWhenPossible">true</property>
+                    <property
+                      dataType="System.String"
+                      name="UserComponentTypeName">Microsoft.ADONETDestination</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\IMDb data parse\Load into staging\ADO NET Destination 1.Connections[IDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[NAZUNA.Staging]"
+                      connectionManagerRefId="Package.ConnectionManagers[NAZUNA.Staging]"
+                      description="Managed connection manager"
+                      name="IDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\IMDb data parse\Load into staging\ADO NET Destination 1.Inputs[ADO NET Destination Input]"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="ADO NET Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\IMDb data parse\Load into staging\ADO NET Destination 1.Inputs[ADO NET Destination Input].Columns[tconst]"
+                          cachedCodepage="65001"
+                          cachedDataType="str"
+                          cachedLength="15"
+                          cachedName="tconst"
+                          externalMetadataColumnId="Package\IMDb data parse\Load into staging\ADO NET Destination 1.Inputs[ADO NET Destination Input].ExternalColumns[tconst]"
+                          lineageId="Package\IMDb data parse\Load into staging\Flat File Source 1.Outputs[Flat File Source Output].Columns[tconst]" />
+                        <inputColumn
+                          refId="Package\IMDb data parse\Load into staging\ADO NET Destination 1.Inputs[ADO NET Destination Input].Columns[averageRating]"
+                          cachedDataType="r4"
+                          cachedName="averageRating"
+                          externalMetadataColumnId="Package\IMDb data parse\Load into staging\ADO NET Destination 1.Inputs[ADO NET Destination Input].ExternalColumns[averageRating]"
+                          lineageId="Package\IMDb data parse\Load into staging\Flat File Source 1.Outputs[Flat File Source Output].Columns[averageRating]" />
+                        <inputColumn
+                          refId="Package\IMDb data parse\Load into staging\ADO NET Destination 1.Inputs[ADO NET Destination Input].Columns[numVotes]"
+                          cachedDataType="decimal"
+                          cachedName="numVotes"
+                          externalMetadataColumnId="Package\IMDb data parse\Load into staging\ADO NET Destination 1.Inputs[ADO NET Destination Input].ExternalColumns[numVotes]"
+                          lineageId="Package\IMDb data parse\Load into staging\Flat File Source 1.Outputs[Flat File Source Output].Columns[numVotes]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\IMDb data parse\Load into staging\ADO NET Destination 1.Inputs[ADO NET Destination Input].ExternalColumns[tconst]"
+                          dataType="wstr"
+                          length="15"
+                          name="tconst" />
+                        <externalMetadataColumn
+                          refId="Package\IMDb data parse\Load into staging\ADO NET Destination 1.Inputs[ADO NET Destination Input].ExternalColumns[averageRating]"
+                          dataType="r8"
+                          name="averageRating" />
+                        <externalMetadataColumn
+                          refId="Package\IMDb data parse\Load into staging\ADO NET Destination 1.Inputs[ADO NET Destination Input].ExternalColumns[numVotes]"
+                          dataType="numeric"
+                          name="numVotes"
+                          precision="18" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\IMDb data parse\Load into staging\ADO NET Destination 1.Outputs[ADO NET Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="ADO NET Destination Error Output"
+                      synchronousInputId="Package\IMDb data parse\Load into staging\ADO NET Destination 1.Inputs[ADO NET Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\IMDb data parse\Load into staging\ADO NET Destination 1.Outputs[ADO NET Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\IMDb data parse\Load into staging\ADO NET Destination 1.Outputs[ADO NET Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\IMDb data parse\Load into staging\ADO NET Destination 1.Outputs[ADO NET Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\IMDb data parse\Load into staging\ADO NET Destination 1.Outputs[ADO NET Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\IMDb data parse\Load into staging\Conditional Split"
+                  componentClassID="Microsoft.ConditionalSplit"
+                  contactInfo="Conditional Split;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Routes data rows to different outputs depending on the content of the data. Use conditions (SSIS expressions) to specify which rows are routed. For example, separate records that need to be cleaned from those that are ready to be loaded or route only a subset of records."
+                  name="Conditional Split"
+                  usesDispositions="true">
+                  <inputs>
+                    <input
+                      refId="Package\IMDb data parse\Load into staging\Conditional Split.Inputs[Conditional Split Input]"
+                      description="Input to the Conditional Split Transformation"
+                      name="Conditional Split Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\IMDb data parse\Load into staging\Conditional Split.Inputs[Conditional Split Input].Columns[titleType]"
+                          cachedCodepage="65001"
+                          cachedDataType="str"
+                          cachedLength="15"
+                          cachedName="titleType"
+                          lineageId="Package\IMDb data parse\Load into staging\Flat File Source.Outputs[Flat File Source Output].Columns[titleType]" />
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\IMDb data parse\Load into staging\Conditional Split.Outputs[Case 1]"
+                      description="Output 1 of the Conditional Split Transformation"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      exclusionGroup="1"
+                      name="Case 1"
+                      synchronousInputId="Package\IMDb data parse\Load into staging\Conditional Split.Inputs[Conditional Split Input]"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                          name="Expression">#{Package\IMDb data parse\Load into staging\Flat File Source.Outputs[Flat File Source Output].Columns[titleType]} != "short" &amp;&amp; #{Package\IMDb data parse\Load into staging\Flat File Source.Outputs[Flat File Source Output].Columns[titleType]} != "tvepisode"</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Specifies the friendly version of the expression. This expression version uses column names."
+                          expressionType="Notify"
+                          name="FriendlyExpression">titleType != "short" &amp;&amp; titleType != "tvepisode"</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                          name="EvaluationOrder">0</property>
+                      </properties>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\IMDb data parse\Load into staging\Conditional Split.Outputs[Conditional Split Default Output]"
+                      description="Default Output of the Conditional Split Transformation"
+                      exclusionGroup="1"
+                      name="Conditional Split Default Output"
+                      synchronousInputId="Package\IMDb data parse\Load into staging\Conditional Split.Inputs[Conditional Split Input]">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsDefaultOut">true</property>
+                      </properties>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\IMDb data parse\Load into staging\Conditional Split.Outputs[Conditional Split Error Output]"
+                      description="Error Output of the Conditional Split Transformation"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Conditional Split Error Output"
+                      synchronousInputId="Package\IMDb data parse\Load into staging\Conditional Split.Inputs[Conditional Split Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\IMDb data parse\Load into staging\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\IMDb data parse\Load into staging\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\IMDb data parse\Load into staging\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\IMDb data parse\Load into staging\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\IMDb data parse\Load into staging\Flat File Source"
+                  componentClassID="Microsoft.FlatFileSource"
+                  contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+                  description="Flat File Source"
+                  localeId="2057"
+                  name="Flat File Source"
+                  usesDispositions="true"
+                  version="1">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      description="Specifies whether zero-length columns are treated as null."
+                      name="RetainNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of an output column containing the file name. If no name is specified, no output column containing the file name will be generated."
+                      name="FileNameColumnName"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\IMDb data parse\Load into staging\Flat File Source.Connections[FlatFileConnection]"
+                      connectionManagerID="Package.ConnectionManagers[IMDb data]"
+                      connectionManagerRefId="Package.ConnectionManagers[IMDb data]"
+                      name="FlatFileConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\IMDb data parse\Load into staging\Flat File Source.Outputs[Flat File Source Output]"
+                      name="Flat File Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\IMDb data parse\Load into staging\Flat File Source.Outputs[Flat File Source Output].Columns[tconst]"
+                          codePage="65001"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\IMDb data parse\Load into staging\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[tconst]"
+                          length="15"
+                          lineageId="Package\IMDb data parse\Load into staging\Flat File Source.Outputs[Flat File Source Output].Columns[tconst]"
+                          name="tconst"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\IMDb data parse\Load into staging\Flat File Source.Outputs[Flat File Source Output].Columns[titleType]"
+                          codePage="65001"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\IMDb data parse\Load into staging\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[titleType]"
+                          length="15"
+                          lineageId="Package\IMDb data parse\Load into staging\Flat File Source.Outputs[Flat File Source Output].Columns[titleType]"
+                          name="titleType"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\IMDb data parse\Load into staging\Flat File Source.Outputs[Flat File Source Output].Columns[primaryTitle]"
+                          codePage="65001"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\IMDb data parse\Load into staging\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[primaryTitle]"
+                          length="500"
+                          lineageId="Package\IMDb data parse\Load into staging\Flat File Source.Outputs[Flat File Source Output].Columns[primaryTitle]"
+                          name="primaryTitle"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\IMDb data parse\Load into staging\Flat File Source.Outputs[Flat File Source Output].Columns[originalTitle]"
+                          codePage="65001"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="IgnoreFailure"
+                          externalMetadataColumnId="Package\IMDb data parse\Load into staging\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[originalTitle]"
+                          length="500"
+                          lineageId="Package\IMDb data parse\Load into staging\Flat File Source.Outputs[Flat File Source Output].Columns[originalTitle]"
+                          name="originalTitle"
+                          truncationRowDisposition="IgnoreFailure">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\IMDb data parse\Load into staging\Flat File Source.Outputs[Flat File Source Output].Columns[isAdult]"
+                          dataType="decimal"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="IgnoreFailure"
+                          externalMetadataColumnId="Package\IMDb data parse\Load into staging\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[isAdult]"
+                          lineageId="Package\IMDb data parse\Load into staging\Flat File Source.Outputs[Flat File Source Output].Columns[isAdult]"
+                          name="isAdult"
+                          truncationRowDisposition="IgnoreFailure">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\IMDb data parse\Load into staging\Flat File Source.Outputs[Flat File Source Output].Columns[startYear]"
+                          dataType="decimal"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="IgnoreFailure"
+                          externalMetadataColumnId="Package\IMDb data parse\Load into staging\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[startYear]"
+                          lineageId="Package\IMDb data parse\Load into staging\Flat File Source.Outputs[Flat File Source Output].Columns[startYear]"
+                          name="startYear"
+                          truncationRowDisposition="IgnoreFailure">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\IMDb data parse\Load into staging\Flat File Source.Outputs[Flat File Source Output].Columns[endYear]"
+                          dataType="decimal"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="IgnoreFailure"
+                          externalMetadataColumnId="Package\IMDb data parse\Load into staging\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[endYear]"
+                          lineageId="Package\IMDb data parse\Load into staging\Flat File Source.Outputs[Flat File Source Output].Columns[endYear]"
+                          name="endYear"
+                          truncationRowDisposition="IgnoreFailure">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\IMDb data parse\Load into staging\Flat File Source.Outputs[Flat File Source Output].Columns[runtimeMinutes]"
+                          codePage="65001"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="IgnoreFailure"
+                          externalMetadataColumnId="Package\IMDb data parse\Load into staging\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[runtimeMinutes]"
+                          length="30"
+                          lineageId="Package\IMDb data parse\Load into staging\Flat File Source.Outputs[Flat File Source Output].Columns[runtimeMinutes]"
+                          name="runtimeMinutes"
+                          truncationRowDisposition="IgnoreFailure">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\IMDb data parse\Load into staging\Flat File Source.Outputs[Flat File Source Output].Columns[genres]"
+                          codePage="65001"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="IgnoreFailure"
+                          externalMetadataColumnId="Package\IMDb data parse\Load into staging\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[genres]"
+                          length="250"
+                          lineageId="Package\IMDb data parse\Load into staging\Flat File Source.Outputs[Flat File Source Output].Columns[genres]"
+                          name="genres"
+                          truncationRowDisposition="IgnoreFailure">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\IMDb data parse\Load into staging\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[tconst]"
+                          codePage="65001"
+                          dataType="str"
+                          length="15"
+                          name="tconst" />
+                        <externalMetadataColumn
+                          refId="Package\IMDb data parse\Load into staging\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[titleType]"
+                          codePage="65001"
+                          dataType="str"
+                          length="15"
+                          name="titleType" />
+                        <externalMetadataColumn
+                          refId="Package\IMDb data parse\Load into staging\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[primaryTitle]"
+                          codePage="65001"
+                          dataType="str"
+                          length="500"
+                          name="primaryTitle" />
+                        <externalMetadataColumn
+                          refId="Package\IMDb data parse\Load into staging\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[originalTitle]"
+                          codePage="65001"
+                          dataType="str"
+                          length="500"
+                          name="originalTitle" />
+                        <externalMetadataColumn
+                          refId="Package\IMDb data parse\Load into staging\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[isAdult]"
+                          dataType="decimal"
+                          name="isAdult" />
+                        <externalMetadataColumn
+                          refId="Package\IMDb data parse\Load into staging\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[startYear]"
+                          dataType="decimal"
+                          name="startYear" />
+                        <externalMetadataColumn
+                          refId="Package\IMDb data parse\Load into staging\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[endYear]"
+                          dataType="decimal"
+                          name="endYear" />
+                        <externalMetadataColumn
+                          refId="Package\IMDb data parse\Load into staging\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[runtimeMinutes]"
+                          codePage="65001"
+                          dataType="str"
+                          length="30"
+                          name="runtimeMinutes" />
+                        <externalMetadataColumn
+                          refId="Package\IMDb data parse\Load into staging\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[genres]"
+                          codePage="65001"
+                          dataType="str"
+                          length="250"
+                          name="genres" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\IMDb data parse\Load into staging\Flat File Source.Outputs[Flat File Source Error Output]"
+                      isErrorOut="true"
+                      name="Flat File Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\IMDb data parse\Load into staging\Flat File Source.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                          codePage="65001"
+                          dataType="text"
+                          description="Flat File Source Error Output Column"
+                          lineageId="Package\IMDb data parse\Load into staging\Flat File Source.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                          name="Flat File Source Error Output Column" />
+                        <outputColumn
+                          refId="Package\IMDb data parse\Load into staging\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\IMDb data parse\Load into staging\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\IMDb data parse\Load into staging\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\IMDb data parse\Load into staging\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\IMDb data parse\Load into staging\Flat File Source 1"
+                  componentClassID="Microsoft.FlatFileSource"
+                  contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+                  description="Flat File Source"
+                  localeId="2057"
+                  name="Flat File Source 1"
+                  usesDispositions="true"
+                  version="1">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      description="Specifies whether zero-length columns are treated as null."
+                      name="RetainNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of an output column containing the file name. If no name is specified, no output column containing the file name will be generated."
+                      name="FileNameColumnName"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\IMDb data parse\Load into staging\Flat File Source 1.Connections[FlatFileConnection]"
+                      connectionManagerID="Package.ConnectionManagers[Ratings]"
+                      connectionManagerRefId="Package.ConnectionManagers[Ratings]"
+                      name="FlatFileConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\IMDb data parse\Load into staging\Flat File Source 1.Outputs[Flat File Source Output]"
+                      name="Flat File Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\IMDb data parse\Load into staging\Flat File Source 1.Outputs[Flat File Source Output].Columns[tconst]"
+                          codePage="65001"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\IMDb data parse\Load into staging\Flat File Source 1.Outputs[Flat File Source Output].ExternalColumns[tconst]"
+                          length="15"
+                          lineageId="Package\IMDb data parse\Load into staging\Flat File Source 1.Outputs[Flat File Source Output].Columns[tconst]"
+                          name="tconst"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\IMDb data parse\Load into staging\Flat File Source 1.Outputs[Flat File Source Output].Columns[averageRating]"
+                          dataType="r4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\IMDb data parse\Load into staging\Flat File Source 1.Outputs[Flat File Source Output].ExternalColumns[averageRating]"
+                          lineageId="Package\IMDb data parse\Load into staging\Flat File Source 1.Outputs[Flat File Source Output].Columns[averageRating]"
+                          name="averageRating"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\IMDb data parse\Load into staging\Flat File Source 1.Outputs[Flat File Source Output].Columns[numVotes]"
+                          dataType="decimal"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\IMDb data parse\Load into staging\Flat File Source 1.Outputs[Flat File Source Output].ExternalColumns[numVotes]"
+                          lineageId="Package\IMDb data parse\Load into staging\Flat File Source 1.Outputs[Flat File Source Output].Columns[numVotes]"
+                          name="numVotes"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\IMDb data parse\Load into staging\Flat File Source 1.Outputs[Flat File Source Output].ExternalColumns[tconst]"
+                          codePage="65001"
+                          dataType="str"
+                          length="15"
+                          name="tconst" />
+                        <externalMetadataColumn
+                          refId="Package\IMDb data parse\Load into staging\Flat File Source 1.Outputs[Flat File Source Output].ExternalColumns[averageRating]"
+                          dataType="r4"
+                          name="averageRating" />
+                        <externalMetadataColumn
+                          refId="Package\IMDb data parse\Load into staging\Flat File Source 1.Outputs[Flat File Source Output].ExternalColumns[numVotes]"
+                          dataType="decimal"
+                          name="numVotes" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\IMDb data parse\Load into staging\Flat File Source 1.Outputs[Flat File Source Error Output]"
+                      isErrorOut="true"
+                      name="Flat File Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\IMDb data parse\Load into staging\Flat File Source 1.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                          codePage="65001"
+                          dataType="text"
+                          description="Flat File Source Error Output Column"
+                          lineageId="Package\IMDb data parse\Load into staging\Flat File Source 1.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                          name="Flat File Source Error Output Column" />
+                        <outputColumn
+                          refId="Package\IMDb data parse\Load into staging\Flat File Source 1.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\IMDb data parse\Load into staging\Flat File Source 1.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\IMDb data parse\Load into staging\Flat File Source 1.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\IMDb data parse\Load into staging\Flat File Source 1.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\IMDb data parse\Load into staging.Paths[Case 1]"
+                  endId="Package\IMDb data parse\Load into staging\ADO NET Destination.Inputs[ADO NET Destination Input]"
+                  name="Case 1"
+                  startId="Package\IMDb data parse\Load into staging\Conditional Split.Outputs[Case 1]" />
+                <path
+                  refId="Package\IMDb data parse\Load into staging.Paths[Flat File Source Output]"
+                  endId="Package\IMDb data parse\Load into staging\Conditional Split.Inputs[Conditional Split Input]"
+                  name="Flat File Source Output"
+                  startId="Package\IMDb data parse\Load into staging\Flat File Source.Outputs[Flat File Source Output]" />
+                <path
+                  refId="Package\IMDb data parse\Load into staging.Paths[Flat File Source Output1]"
+                  endId="Package\IMDb data parse\Load into staging\ADO NET Destination 1.Inputs[ADO NET Destination Input]"
+                  name="Flat File Source Output"
+                  startId="Package\IMDb data parse\Load into staging\Flat File Source 1.Outputs[Flat File Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\IMDb data parse.PrecedenceConstraints[Constraint 9]"
+          DTS:CreationName=""
+          DTS:DTSID="{a9a2b3e1-149a-4d65-ab42-b9510043950a}"
+          DTS:From="Package\IMDb data parse\Load into staging"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 9"
+          DTS:To="Package\IMDb data parse\Generate CSV" />
+      </DTS:PrecedenceConstraints>
     </DTS:Executable>
     <DTS:Executable
       DTS:refId="Package\Load Google Trends into DW"
@@ -9215,7 +10629,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{2CF80954-124C-4509-B20F-2C5C3CE3A25F}"
-          SQLTask:SqlStatementSource="truncate table dbo.ratings;&#xA;truncate table dbo.titles;&#xA;truncate table dbo.hulutitles;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="truncate table dbo.ratings;&#xA;truncate table dbo.titles;&#xA;truncate table dbo.hulutitles;&#xA;truncate table imdbratings;&#xA;truncate table imdbtitles;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
   </DTS:Executables>
@@ -9231,11 +10645,11 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
       DTS:CreationName=""
-      DTS:DTSID="{B5235ECB-FB0B-4C41-B25B-3062FAEB1BCD}"
+      DTS:DTSID="{8033D901-3716-436B-BF88-7A1FB5CD6134}"
       DTS:From="Package\purge staging"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 1"
-      DTS:To="Package\Load IMDb and Hulu into Staging" />
+      DTS:To="Package\IMDb data parse" />
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
       DTS:CreationName=""
@@ -9292,6 +10706,14 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 8"
       DTS:To="Package\Calculate KPI" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 9]"
+      DTS:CreationName=""
+      DTS:DTSID="{44C25D26-222C-4195-B88F-7333A489BA28}"
+      DTS:From="Package\IMDb data parse"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 9"
+      DTS:To="Package\Load IMDb and Hulu into Staging" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
@@ -9320,11 +10742,11 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
         <NodeLayout
           Size="212.8,41.6"
           Id="Package\Load IMDb and Hulu into DW"
-          TopLeft="573.333302007782,298.999997920791" />
+          TopLeft="758.333291899828,370.066664093269" />
         <NodeLayout
           Size="231.2,41.6"
           Id="Package\Load IMDb and Hulu into Staging"
-          TopLeft="297.166650730703,310.566664545272" />
+          TopLeft="622.999966261289,480.433330030707" />
         <NodeLayout
           Size="150.4,41.6"
           Id="Package\Load some data to DW"
@@ -9336,7 +10758,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
         <NodeLayout
           Size="141.6,41.6"
           Id="Package\purge staging"
-          TopLeft="138.09258698718,255.633331802554" />
+          TopLeft="108.092588626308,253.899998481274" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
           TopLeft="176.28888594453,198.081480248688">
@@ -9372,59 +10794,31 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="279.69258698718,276.433331802554">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="133.074063743523,34.1333327427175"
-              Start="0,0"
-              End="133.074063743523,26.6333327427175">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="129.074063743523,0" />
-                  <mssgle:CubicBezierSegment
-                    Point1="129.074063743523,0"
-                    Point2="133.074063743523,0"
-                    Point3="133.074063743523,4" />
-                  <mssgle:LineSegment
-                    End="133.074063743523,26.6333327427175" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 2]"
-          TopLeft="528.366650730703,331.366664545272">
+          TopLeft="775.799966261289,480.433330030707">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="44.9666512770788,-11.5666666244805"
+              EndConnector="88.9333256385394,-68.7666659374381"
               Start="0,0"
-              End="37.4666512770788,-11.5666666244805">
+              End="88.9333256385394,-61.2666659374381">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="18.4833256385394,0" />
+                    End="0,-23.7902402551296" />
                   <mssgle:CubicBezierSegment
-                    Point1="18.4833256385394,0"
-                    Point2="22.4833256385394,0"
-                    Point3="22.4833256385394,-4" />
+                    Point1="0,-23.7902402551296"
+                    Point2="0,-27.7902402551296"
+                    Point3="4,-27.7902402551296" />
                   <mssgle:LineSegment
-                    End="22.4833256385394,-7.56666662448055" />
+                    End="84.9333256385394,-27.7902402551296" />
                   <mssgle:CubicBezierSegment
-                    Point1="22.4833256385394,-7.56666662448055"
-                    Point2="22.4833256385394,-11.5666666244805"
-                    Point3="26.4833256385394,-11.5666666244805" />
+                    Point1="84.9333256385394,-27.7902402551296"
+                    Point2="88.9333256385394,-27.7902402551296"
+                    Point3="88.9333256385394,-31.7902402551296" />
                   <mssgle:LineSegment
-                    End="37.4666512770788,-11.5666666244805" />
+                    End="88.9333256385394,-61.2666659374381" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -9439,26 +10833,26 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="93.8037010426502,36.7518515538662"
+              EndConnector="63.8037026817774,35.018518232586"
               Start="0,0"
-              End="93.8037010426502,29.2518515538662">
+              End="63.8037026817774,27.518518232586">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,14.3759257769331" />
+                    End="0,13.509259116293" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,14.3759257769331"
-                    Point2="0,18.3759257769331"
-                    Point3="4,18.3759257769331" />
+                    Point1="0,13.509259116293"
+                    Point2="0,17.509259116293"
+                    Point3="4,17.509259116293" />
                   <mssgle:LineSegment
-                    End="89.8037010426502,18.3759257769331" />
+                    End="59.8037026817774,17.509259116293" />
                   <mssgle:CubicBezierSegment
-                    Point1="89.8037010426502,18.3759257769331"
-                    Point2="93.8037010426502,18.3759257769331"
-                    Point3="93.8037010426502,22.3759257769331" />
+                    Point1="59.8037026817774,17.509259116293"
+                    Point2="63.8037026817774,17.509259116293"
+                    Point3="63.8037026817774,21.509259116293" />
                   <mssgle:LineSegment
-                    End="93.8037010426502,29.2518515538662" />
+                    End="63.8037026817774,27.518518232586" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -9469,24 +10863,30 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 4]"
-          TopLeft="679.733302007782,298.999997920791">
+          TopLeft="864.733291899828,370.066664093269">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="89.433322633472,-29.933332941598"
+              EndConnector="-24.766667258574,-85.7999991140759"
               Start="0,0"
-              End="81.933322633472,-29.933332941598">
+              End="-24.766667258574,-78.2999991140759">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,-25.933332941598" />
+                    End="0,-38.899999557038" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,-25.933332941598"
-                    Point2="0,-29.933332941598"
-                    Point3="4,-29.933332941598" />
+                    Point1="0,-38.899999557038"
+                    Point2="0,-42.899999557038"
+                    Point3="-4,-42.899999557038" />
                   <mssgle:LineSegment
-                    End="81.933322633472,-29.933332941598" />
+                    End="-20.766667258574,-42.899999557038" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-20.766667258574,-42.899999557038"
+                    Point2="-24.766667258574,-42.899999557038"
+                    Point3="-24.766667258574,-46.899999557038" />
+                  <mssgle:LineSegment
+                    End="-24.766667258574,-78.2999991140759" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -9619,6 +11019,111 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <NodeLayout
+          Size="145.6,41.6"
+          Id="Package\IMDb data parse\Generate CSV"
+          TopLeft="245.788867504344,46.2999969625484" />
+        <EdgeLayout
+          Id="Package\IMDb data parse.PrecedenceConstraints[Constraint 9]"
+          TopLeft="195.888878841644,64.4999969806284">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="49.8999886627002,0"
+              Start="0,0"
+              End="42.3999886627002,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="42.3999886627002,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="157.6,41.6"
+          Id="Package\IMDb data parse\Load into staging"
+          TopLeft="38.2888788416437,41.0999969987085" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="472,143.2"
+          Size="472,186.4"
+          Id="Package\IMDb data parse"
+          TopLeft="30.8333316486743,387.399997306069" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="178.892588626308,295.499998481274">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="87.9407430223667,91.8999988247946"
+              Start="0,0"
+              End="87.9407430223667,84.3999988247946">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,41.9499994123973" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,41.9499994123973"
+                    Point2="0,45.9499994123973"
+                    Point3="4,45.9499994123973" />
+                  <mssgle:LineSegment
+                    End="83.9407430223667,45.9499994123973" />
+                  <mssgle:CubicBezierSegment
+                    Point1="83.9407430223667,45.9499994123973"
+                    Point2="87.9407430223667,45.9499994123973"
+                    Point3="87.9407430223667,49.9499994123973" />
+                  <mssgle:LineSegment
+                    End="87.9407430223667,84.3999988247946" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 9]"
+          TopLeft="502.833331648674,480.599997306069">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="120.166634612614,20.6333327246385"
+              Start="0,0"
+              End="112.666634612614,20.6333327246385">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="56.0833173063072,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="56.0833173063072,0"
+                    Point2="60.0833173063072,0"
+                    Point3="60.0833173063072,4" />
+                  <mssgle:LineSegment
+                    End="60.0833173063072,16.6333327246385" />
+                  <mssgle:CubicBezierSegment
+                    Point1="60.0833173063072,16.6333327246385"
+                    Point2="60.0833173063072,20.6333327246385"
+                    Point3="64.0833173063072,20.6333327246385" />
+                  <mssgle:LineSegment
+                    End="112.666634612614,20.6333327246385" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </Package>
@@ -9626,7 +11131,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
     design-time-name="Package\Calculate KPI">
     <LayoutInfo>
       <GraphLayout
-        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="97.6,41.6"
           Id="Package\Calculate KPI\Sort"
@@ -9690,7 +11195,9 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -9724,7 +11231,9 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -9758,7 +11267,9 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -9792,7 +11303,9 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -9826,7 +11339,9 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -9860,7 +11375,9 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -9882,7 +11399,9 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -9904,7 +11423,9 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -10178,49 +11699,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
     design-time-name="Package\Load IMDb and Hulu into DW">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="160,41.6"
-          Id="Package\Load IMDb and Hulu into DW\ADO NET Source"
-          TopLeft="244.999996349216,229.999996572733" />
-        <NodeLayout
-          Size="179.2,41.6"
-          Id="Package\Load IMDb and Hulu into DW\ADO NET Destination"
-          TopLeft="253.999996215105,332.999995037913" />
-        <EdgeLayout
-          Id="Package\Load IMDb and Hulu into DW.Paths[ADO NET Source Output]"
-          TopLeft="324.999996349216,271.599996572733">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="18.5999998658895,61.3999984651803"
-              Start="0,0"
-              End="18.5999998658895,53.8999984651803">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,26.6999992325902" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,26.6999992325902"
-                    Point2="0,30.6999992325902"
-                    Point3="4,30.6999992325902" />
-                  <mssgle:LineSegment
-                    End="14.5999998658895,30.6999992325902" />
-                  <mssgle:CubicBezierSegment
-                    Point1="14.5999998658895,30.6999992325902"
-                    Point2="18.5999998658895,30.6999992325902"
-                    Point3="18.5999998658895,34.6999992325902" />
-                  <mssgle:LineSegment
-                    End="18.5999998658895,53.8999984651803" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="168.8,41.6"
           Id="Package\Load IMDb and Hulu into DW\ADO NET Source 1"
@@ -10229,6 +11708,14 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
           Size="179.2,41.6"
           Id="Package\Load IMDb and Hulu into DW\ADO NET Destination 1"
           TopLeft="516.9999922961,322.599996706843" />
+        <NodeLayout
+          Size="179.2,41.6"
+          Id="Package\Load IMDb and Hulu into DW\ADO NET Destination"
+          TopLeft="253.999996215105,332.999995037913" />
+        <NodeLayout
+          Size="160,41.6"
+          Id="Package\Load IMDb and Hulu into DW\ADO NET Source"
+          TopLeft="244.999996349216,229.999996572733" />
         <EdgeLayout
           Id="Package\Load IMDb and Hulu into DW.Paths[ADO NET Source Output1]"
           TopLeft="592.399992430211,261.199998241663">
@@ -10260,12 +11747,66 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load IMDb and Hulu into DW.Paths[ADO NET Source Output]"
+          TopLeft="324.999996349216,271.599996572733">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="18.5999998658895,61.3999984651803"
+              Start="0,0"
+              End="18.5999998658895,53.8999984651803">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,26.6999992325902" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,26.6999992325902"
+                    Point2="0,30.6999992325902"
+                    Point3="4,30.6999992325902" />
+                  <mssgle:LineSegment
+                    End="14.5999998658895,30.6999992325902" />
+                  <mssgle:CubicBezierSegment
+                    Point1="14.5999998658895,30.6999992325902"
+                    Point2="18.5999998658895,30.6999992325902"
+                    Point3="18.5999998658895,34.6999992325902" />
+                  <mssgle:LineSegment
+                    End="18.5999998658895,53.8999984651803" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load IMDb and Hulu into DW\ADO NET Source 1">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load IMDb and Hulu into DW\ADO NET Destination 1">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\Load IMDb and Hulu into DW\ADO NET Destination">
     <Properties>
@@ -10286,11 +11827,15 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
     design-time-name="Package\Load IMDb and Hulu into Staging">
     <LayoutInfo>
       <GraphLayout
-        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="166.4,41.6"
-          Id="Package\Load IMDb and Hulu into Staging\Insert Staging titles"
-          TopLeft="331.499993768831,283.799996556242" />
+          Size="168,41.6"
+          Id="Package\Load IMDb and Hulu into Staging\Insert Staging imdb"
+          TopLeft="27.6666644000397,371.533331659701" />
+        <NodeLayout
+          Size="161.6,41.6"
+          Id="Package\Load IMDb and Hulu into Staging\Derived Column 1"
+          TopLeft="332.499981833002,157.733332236475" />
         <NodeLayout
           Size="184.8,41.6"
           Id="Package\Load IMDb and Hulu into Staging\IMDb ratings parse csv"
@@ -10300,17 +11845,21 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
           Id="Package\Load IMDb and Hulu into Staging\Netflix Titles CSV parse 2"
           TopLeft="308.224901318948,61.150169391284" />
         <NodeLayout
-          Size="147.2,41.6"
-          Id="Package\Load IMDb and Hulu into Staging\Hulu parse csv"
-          TopLeft="639.999990463257,64.5454535836523" />
-        <NodeLayout
-          Size="168,41.6"
-          Id="Package\Load IMDb and Hulu into Staging\Insert Staging imdb"
-          TopLeft="27.6666644000397,371.533331659701" />
+          Size="166.4,41.6"
+          Id="Package\Load IMDb and Hulu into Staging\Insert Staging titles"
+          TopLeft="331.499993768831,283.799996556242" />
         <NodeLayout
           Size="164.8,41.6"
           Id="Package\Load IMDb and Hulu into Staging\Insert Staging hulu"
           TopLeft="640.227263683849,242.59393609584" />
+        <NodeLayout
+          Size="147.2,41.6"
+          Id="Package\Load IMDb and Hulu into Staging\Hulu parse csv"
+          TopLeft="639.999990463257,64.5454535836523" />
+        <NodeLayout
+          Size="152.8,41.6"
+          Id="Package\Load IMDb and Hulu into Staging\Derived Column"
+          TopLeft="652.499964348974,132.599999077916" />
         <EdgeLayout
           Id="Package\Load IMDb and Hulu into Staging.Paths[Flat File Source Output]"
           TopLeft="152.4,101.6">
@@ -10342,45 +11891,33 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="152.8,41.6"
-          Id="Package\Load IMDb and Hulu into Staging\Derived Column"
-          TopLeft="652.499964348974,132.599999077916" />
         <EdgeLayout
-          Id="Package\Load IMDb and Hulu into Staging.Paths[Flat File Source Output1]"
-          TopLeft="713.599990463257,106.145453583652">
+          Id="Package\Load IMDb and Hulu into Staging.Paths[Derived Column Output1]"
+          TopLeft="413.999987800917,199.333332236475">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="15.2999738857166,26.4545454942638"
+              EndConnector="0,84.4666643197667"
               Start="0,0"
-              End="15.2999738857166,18.9545454942638">
+              End="0,76.9666643197667">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,9.22727274713192" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,9.22727274713192"
-                    Point2="0,13.2272727471319"
-                    Point3="4,13.2272727471319" />
-                  <mssgle:LineSegment
-                    End="11.2999738857166,13.2272727471319" />
-                  <mssgle:CubicBezierSegment
-                    Point1="11.2999738857166,13.2272727471319"
-                    Point2="15.2999738857166,13.2272727471319"
-                    Point3="15.2999738857166,17.2272727471319" />
-                  <mssgle:LineSegment
-                    End="15.2999738857166,18.9545454942638" />
+                    End="0,76.9666643197667" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -10402,13 +11939,11 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="161.6,41.6"
-          Id="Package\Load IMDb and Hulu into Staging\Derived Column 1"
-          TopLeft="332.499981833002,157.733332236475" />
         <EdgeLayout
           Id="Package\Load IMDb and Hulu into Staging.Paths[Flat File Source Output2]"
           TopLeft="402.224901318948,102.750169391284">
@@ -10440,36 +11975,52 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Load IMDb and Hulu into Staging.Paths[Derived Column Output1]"
-          TopLeft="413.999987800917,199.333332236475">
+          Id="Package\Load IMDb and Hulu into Staging.Paths[Flat File Source Output1]"
+          TopLeft="713.599990463257,106.145453583652">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,84.4666643197667"
+              EndConnector="15.2999738857166,26.4545454942638"
               Start="0,0"
-              End="0,76.9666643197667">
+              End="15.2999738857166,18.9545454942638">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,76.9666643197667" />
+                    End="0,9.22727274713192" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,9.22727274713192"
+                    Point2="0,13.2272727471319"
+                    Point3="4,13.2272727471319" />
+                  <mssgle:LineSegment
+                    End="11.2999738857166,13.2272727471319" />
+                  <mssgle:CubicBezierSegment
+                    Point1="11.2999738857166,13.2272727471319"
+                    Point2="15.2999738857166,13.2272727471319"
+                    Point3="15.2999738857166,17.2272727471319" />
+                  <mssgle:LineSegment
+                    End="15.2999738857166,18.9545454942638" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Load IMDb and Hulu into Staging\Insert Staging titles">
+    design-time-name="Package\Load IMDb and Hulu into Staging\Insert Staging imdb">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -10477,7 +12028,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Load IMDb and Hulu into Staging\Insert Staging imdb">
+    design-time-name="Package\Load IMDb and Hulu into Staging\Insert Staging titles">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -10498,281 +12049,61 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
       <GraphLayout
         Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="188,41.6"
-          Id="Package\Load some data to DW\ADO NET Destination 2"
-          TopLeft="962.499947411321,456.99999752303" />
+          Size="156.8,41.6"
+          Id="Package\Load some data to DW\Netflix Revenues"
+          TopLeft="485.833306788571,37.2666664075193" />
         <NodeLayout
-          Size="106.4,41.6"
-          Id="Package\Load some data to DW\Sort 2"
-          TopLeft="1003.33327851362,280.399998228153" />
+          Size="161.6,41.6"
+          Id="Package\Load some data to DW\Derived Column 1"
+          TopLeft="166.166665217115,269.866668376657" />
+        <NodeLayout
+          Size="188,41.6"
+          Id="Package\Load some data to DW\ADO NET Destination 1"
+          TopLeft="514.999971861642,487.266663623187" />
+        <NodeLayout
+          Size="188,41.6"
+          Id="Package\Load some data to DW\Netflix Titles CSV parse 1"
+          TopLeft="968.333280425935,90.4000000723202" />
+        <NodeLayout
+          Size="179.2,41.6"
+          Id="Package\Load some data to DW\ADO NET Destination"
+          TopLeft="180.166665008499,473.799994861484" />
+        <NodeLayout
+          Size="161.6,41.6"
+          Id="Package\Load some data to DW\Script Component"
+          TopLeft="986.666612757579,203.933332616157" />
         <NodeLayout
           Size="162.4,41.6"
           Id="Package\Load some data to DW\Conditional Split 1"
           TopLeft="486.666640076373,146.466665648156" />
         <NodeLayout
           Size="188,41.6"
-          Id="Package\Load some data to DW\ADO NET Destination 1"
-          TopLeft="514.999971861642,487.266663623187" />
-        <NodeLayout
-          Size="161.6,41.6"
-          Id="Package\Load some data to DW\Script Component"
-          TopLeft="986.666612757579,203.933332616157" />
-        <NodeLayout
-          Size="188,41.6"
           Id="Package\Load some data to DW\Netflix Titles CSV parse"
           TopLeft="218.166663232777,125.233331562943" />
         <NodeLayout
-          Size="164.8,41.6"
-          Id="Package\Load some data to DW\Netflix Subscribers"
-          TopLeft="657.499964075785,118.733332507677" />
+          Size="106.4,41.6"
+          Id="Package\Load some data to DW\Sort 2"
+          TopLeft="1003.33327851362,280.399998228153" />
         <NodeLayout
           Size="106.4,41.6"
           Id="Package\Load some data to DW\Sort 1"
           TopLeft="695.833295314678,226.199998427034" />
         <NodeLayout
-          Size="156.8,41.6"
-          Id="Package\Load some data to DW\Netflix Revenues"
-          TopLeft="485.833306788571,37.2666664075193" />
+          Size="188,41.6"
+          Id="Package\Load some data to DW\ADO NET Destination 2"
+          TopLeft="962.499947411321,456.99999752303" />
         <NodeLayout
           Size="129.6,41.6"
           Id="Package\Load some data to DW\Merge Join"
           TopLeft="550.833303237128,396.066663912469" />
         <NodeLayout
-          Size="188,41.6"
-          Id="Package\Load some data to DW\Netflix Titles CSV parse 1"
-          TopLeft="968.333280425935,90.4000000723202" />
+          Size="164.8,41.6"
+          Id="Package\Load some data to DW\Netflix Subscribers"
+          TopLeft="657.499964075785,118.733332507677" />
         <NodeLayout
           Size="97.6,41.6"
           Id="Package\Load some data to DW\Sort"
           TopLeft="495.833306242195,231.399998390873" />
-        <NodeLayout
-          Size="179.2,41.6"
-          Id="Package\Load some data to DW\ADO NET Destination"
-          TopLeft="180.166665008499,473.799994861484" />
-        <EdgeLayout
-          Id="Package\Load some data to DW.Paths[Sort Output2]"
-          TopLeft="1056.51661296247,321.999998228153">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,134.999999294877"
-              Start="0,0"
-              End="0,127.499999294877">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,127.499999294877" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Load some data to DW.Paths[Sort Output1]"
-          TopLeft="749.033295314678,267.799998427034">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-113.133325410883,128.266665485435"
-              Start="0,0"
-              End="-113.133325410883,120.766665485435">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,72.0214627145383" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,72.0214627145383"
-                    Point2="0,76.0214627145383"
-                    Point3="-4,76.0214627145383" />
-                  <mssgle:LineSegment
-                    End="-109.133325410883,76.0214627145383" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-109.133325410883,76.0214627145383"
-                    Point2="-113.133325410883,76.0214627145383"
-                    Point3="-113.133325410883,80.0214627145383" />
-                  <mssgle:LineSegment
-                    End="-113.133325410883,120.766665485435" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Load some data to DW.Paths[Sort Output]"
-          TopLeft="544.633306242195,272.999998390873">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="50.733330328266,123.066665521595"
-              Start="0,0"
-              End="50.733330328266,115.566665521595">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,68.9395115164577" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,68.9395115164577"
-                    Point2="0,72.9395115164577"
-                    Point3="4,72.9395115164577" />
-                  <mssgle:LineSegment
-                    End="46.733330328266,72.9395115164577" />
-                  <mssgle:CubicBezierSegment
-                    Point1="46.733330328266,72.9395115164577"
-                    Point2="50.733330328266,72.9395115164577"
-                    Point3="50.733330328266,76.9395115164577" />
-                  <mssgle:LineSegment
-                    End="50.733330328266,115.566665521595" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Load some data to DW.Paths[Output]"
-          TopLeft="1067.46661275758,245.533332616157">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-10.93333424396,34.8666656119956"
-              Start="0,0"
-              End="-10.93333424396,27.3666656119956">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,13.4333328059978" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,13.4333328059978"
-                    Point2="0,17.4333328059978"
-                    Point3="-4,17.4333328059978" />
-                  <mssgle:LineSegment
-                    End="-6.93333424395996,17.4333328059978" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-6.93333424395996,17.4333328059978"
-                    Point2="-10.93333424396,17.4333328059978"
-                    Point3="-10.93333424396,21.4333328059978" />
-                  <mssgle:LineSegment
-                    End="-10.93333424396,27.3666656119956" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Load some data to DW.Paths[Merge Join Output]"
-          TopLeft="612.316637549385,437.666663912469">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,49.5999997107187"
-              Start="0,0"
-              End="0,42.0999997107187">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,42.0999997107187" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Load some data to DW.Paths[Flat File Source Output2]"
-          TopLeft="566.049973432472,78.8666664075193">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,67.5999992406365"
-              Start="0,0"
-              End="0,60.0999992406365">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,60.0999992406365" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Load some data to DW.Paths[Flat File Source Output1]"
-          TopLeft="1064.89994659176,132.00000007232">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,71.9333325438368"
-              Start="0,0"
-              End="0,64.4333325438368">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,64.4333325438368" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Load some data to DW.Paths[Flat File Source Output]"
-          TopLeft="739.899964075785,160.333332507677">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="9.13333123889254,65.8666659193569"
-              Start="0,0"
-              End="9.13333123889254,58.3666659193569">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,28.9333329596785" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,28.9333329596785"
-                    Point2="0,32.9333329596785"
-                    Point3="4,32.9333329596785" />
-                  <mssgle:LineSegment
-                    End="5.13333123889254,32.9333329596785" />
-                  <mssgle:CubicBezierSegment
-                    Point1="5.13333123889254,32.9333329596785"
-                    Point2="9.13333123889254,32.9333329596785"
-                    Point3="9.13333123889254,36.9333329596785" />
-                  <mssgle:LineSegment
-                    End="9.13333123889254,58.3666659193569" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
         <EdgeLayout
           Id="Package\Load some data to DW.Paths[Case 1]"
           TopLeft="567.866640076373,188.066665648156">
@@ -10809,10 +12140,162 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="161.6,41.6"
-          Id="Package\Load some data to DW\Derived Column 1"
-          TopLeft="166.166665217115,269.866668376657" />
+        <EdgeLayout
+          Id="Package\Load some data to DW.Paths[Sort Output2]"
+          TopLeft="1056.51661296247,321.999998228153">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,134.999999294877"
+              Start="0,0"
+              End="0,127.499999294877">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,127.499999294877" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load some data to DW.Paths[Sort Output1]"
+          TopLeft="749.033295314678,267.799998427034">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-113.133325410883,128.266665485435"
+              Start="0,0"
+              End="-113.133325410883,120.766665485435">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,72.0214627145383" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,72.0214627145383"
+                    Point2="0,76.0214627145383"
+                    Point3="-4,76.0214627145383" />
+                  <mssgle:LineSegment
+                    End="-109.133325410883,76.0214627145383" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-109.133325410883,76.0214627145383"
+                    Point2="-113.133325410883,76.0214627145383"
+                    Point3="-113.133325410883,80.0214627145383" />
+                  <mssgle:LineSegment
+                    End="-113.133325410883,120.766665485435" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load some data to DW.Paths[Sort Output]"
+          TopLeft="544.633306242195,272.999998390873">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="50.733330328266,123.066665521595"
+              Start="0,0"
+              End="50.733330328266,115.566665521595">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,68.9395115164577" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,68.9395115164577"
+                    Point2="0,72.9395115164577"
+                    Point3="4,72.9395115164577" />
+                  <mssgle:LineSegment
+                    End="46.733330328266,72.9395115164577" />
+                  <mssgle:CubicBezierSegment
+                    Point1="46.733330328266,72.9395115164577"
+                    Point2="50.733330328266,72.9395115164577"
+                    Point3="50.733330328266,76.9395115164577" />
+                  <mssgle:LineSegment
+                    End="50.733330328266,115.566665521595" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load some data to DW.Paths[Output]"
+          TopLeft="1067.46661275758,245.533332616157">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-10.93333424396,34.8666656119956"
+              Start="0,0"
+              End="-10.93333424396,27.3666656119956">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,13.4333328059978" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,13.4333328059978"
+                    Point2="0,17.4333328059978"
+                    Point3="-4,17.4333328059978" />
+                  <mssgle:LineSegment
+                    End="-6.93333424395996,17.4333328059978" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-6.93333424395996,17.4333328059978"
+                    Point2="-10.93333424396,17.4333328059978"
+                    Point3="-10.93333424396,21.4333328059978" />
+                  <mssgle:LineSegment
+                    End="-10.93333424396,27.3666656119956" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load some data to DW.Paths[Merge Join Output]"
+          TopLeft="612.316637549385,437.666663912469">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,49.5999997107187"
+              Start="0,0"
+              End="0,42.0999997107187">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,42.0999997107187" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <EdgeLayout
           Id="Package\Load some data to DW.Paths[Flat File Source Output3]"
           TopLeft="312.166663232777,166.833331562943">
@@ -10844,7 +12327,93 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load some data to DW.Paths[Flat File Source Output2]"
+          TopLeft="566.049973432472,78.8666664075193">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,67.5999992406365"
+              Start="0,0"
+              End="0,60.0999992406365">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,60.0999992406365" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load some data to DW.Paths[Flat File Source Output1]"
+          TopLeft="1064.89994659176,132.00000007232">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,71.9333325438368"
+              Start="0,0"
+              End="0,64.4333325438368">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,64.4333325438368" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load some data to DW.Paths[Flat File Source Output]"
+          TopLeft="739.899964075785,160.333332507677">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="9.13333123889254,65.8666659193569"
+              Start="0,0"
+              End="9.13333123889254,58.3666659193569">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,28.9333329596785" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,28.9333329596785"
+                    Point2="0,32.9333329596785"
+                    Point3="4,32.9333329596785" />
+                  <mssgle:LineSegment
+                    End="5.13333123889254,32.9333329596785" />
+                  <mssgle:CubicBezierSegment
+                    Point1="5.13333123889254,32.9333329596785"
+                    Point2="9.13333123889254,32.9333329596785"
+                    Point3="9.13333123889254,36.9333329596785" />
+                  <mssgle:LineSegment
+                    End="9.13333123889254,58.3666659193569" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -10878,20 +12447,14 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\Load some data to DW\ADO NET Destination 2">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\Load some data to DW\ADO NET Destination 1">
     <Properties>
@@ -10909,7 +12472,205 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Load IMDb and Hulu into DW\ADO NET Source 1">
+    design-time-name="Package\Load some data to DW\ADO NET Destination 2">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\IMDb data parse\Generate CSV">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="160,41.6"
+          Id="Package\IMDb data parse\Generate CSV\ADO NET Source"
+          TopLeft="351.666647452448,242.666664979193" />
+        <NodeLayout
+          Size="170.4,41.6"
+          Id="Package\IMDb data parse\Generate CSV\Flat File Destination"
+          TopLeft="617.999990791082,209.999996870756" />
+        <EdgeLayout
+          Id="Package\IMDb data parse\Generate CSV.Paths[ADO NET Source Output]"
+          TopLeft="511.666647452448,263.466664979193">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="106.333343338634,-32.666668108437"
+              Start="0,0"
+              End="98.8333433386341,-32.666668108437">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="49.166671669317,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="49.166671669317,0"
+                    Point2="53.166671669317,0"
+                    Point3="53.166671669317,-4" />
+                  <mssgle:LineSegment
+                    End="53.166671669317,-28.666668108437" />
+                  <mssgle:CubicBezierSegment
+                    Point1="53.166671669317,-28.666668108437"
+                    Point2="53.166671669317,-32.666668108437"
+                    Point3="57.166671669317,-32.666668108437" />
+                  <mssgle:LineSegment
+                    End="98.8333433386341,-32.666668108437" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\IMDb data parse\Generate CSV\ADO NET Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\IMDb data parse\Load into staging">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="153.6,41.6"
+          Id="Package\IMDb data parse\Load into staging\Conditional Split"
+          TopLeft="464.99999307096,280.399995857477" />
+        <NodeLayout
+          Size="151.2,41.6"
+          Id="Package\IMDb data parse\Load into staging\Flat File Source"
+          TopLeft="512.499971998236,167.266665503515" />
+        <NodeLayout
+          Size="188,41.6"
+          Id="Package\IMDb data parse\Load into staging\ADO NET Destination 1"
+          TopLeft="630.833298866121,409.066663822068" />
+        <NodeLayout
+          Size="179.2,41.6"
+          Id="Package\IMDb data parse\Load into staging\ADO NET Destination"
+          TopLeft="414.166644037599,395.199997251829" />
+        <NodeLayout
+          Size="160,41.6"
+          Id="Package\IMDb data parse\Load into staging\Flat File Source 1"
+          TopLeft="679.166629558638,173.333332127995" />
+        <EdgeLayout
+          Id="Package\IMDb data parse\Load into staging.Paths[Flat File Source Output1]"
+          TopLeft="759.166629558638,214.933332127995">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-34.3333306925165,194.133331694073"
+              Start="0,0"
+              End="-34.3333306925165,186.633331694073">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,93.0666658470365" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,93.0666658470365"
+                    Point2="0,97.0666658470365"
+                    Point3="-4,97.0666658470365" />
+                  <mssgle:LineSegment
+                    End="-30.3333306925165,97.0666658470365" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-30.3333306925165,97.0666658470365"
+                    Point2="-34.3333306925165,97.0666658470365"
+                    Point3="-34.3333306925165,101.066665847037" />
+                  <mssgle:LineSegment
+                    End="-34.3333306925165,186.633331694073" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\IMDb data parse\Load into staging.Paths[Flat File Source Output]"
+          TopLeft="588.099971998236,208.866665503515">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-46.2999789272758,71.5333303539618"
+              Start="0,0"
+              End="-46.2999789272758,64.0333303539618">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31.7666651769809" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,31.7666651769809"
+                    Point2="0,35.7666651769809"
+                    Point3="-4,35.7666651769809" />
+                  <mssgle:LineSegment
+                    End="-42.2999789272758,35.7666651769809" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-42.2999789272758,35.7666651769809"
+                    Point2="-46.2999789272758,35.7666651769809"
+                    Point3="-46.2999789272758,39.7666651769809" />
+                  <mssgle:LineSegment
+                    End="-46.2999789272758,64.0333303539618" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\IMDb data parse\Load into staging.Paths[Case 1]"
+          TopLeft="541.79999307096,321.999995857477">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-38.033349033361,73.200001394352"
+              Start="0,0"
+              End="-38.033349033361,65.700001394352">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,32.600000697176" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,32.600000697176"
+                    Point2="0,36.600000697176"
+                    Point3="-4,36.600000697176" />
+                  <mssgle:LineSegment
+                    End="-34.033349033361,36.600000697176" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-34.033349033361,36.600000697176"
+                    Point2="-38.033349033361,36.600000697176"
+                    Point3="-38.033349033361,40.600000697176" />
+                  <mssgle:LineSegment
+                    End="-38.033349033361,65.700001394352" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-34.2347604541805,41.600000697176,30.436171875,9.5537109375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\IMDb data parse\Load into staging\ADO NET Destination 1">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -10917,7 +12678,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Load IMDb and Hulu into DW\ADO NET Destination 1">
+    design-time-name="Package\IMDb data parse\Load into staging\ADO NET Destination">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>

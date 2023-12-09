@@ -41,3 +41,9 @@ create table [GoogleTrends](
 	[hulu] decimal,
 )
 GO
+CREATE TABLE [HuluIntersect](
+	[show_id] [nvarchar](max),
+	[on_hulu] [decimal](1, 0),
+	[date_added] [datetime]
+)
+GO

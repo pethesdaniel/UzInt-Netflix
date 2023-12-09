@@ -11,8 +11,8 @@
   DTS:LocaleID="2057"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="127"
-  DTS:VersionGUID="{CB111791-3182-45A4-838B-EFA71D7D83E2}">
+  DTS:VersionBuild="139"
+  DTS:VersionGUID="{1F4192D2-19C5-4E39-98B5-262288829039}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -219,7 +219,7 @@
           DTS:RowDelimiter=""
           DTS:TextQualifier="_x003C_none_x003E_"
           DTS:CodePage="65001"
-          DTS:ConnectionString="P:\BME\UzInt\csv\title.data.tsv.csv">
+          DTS:ConnectionString="P:\BME\UzInt\csv_imdb\title.data.tsv.csv">
           <DTS:FlatFileColumns>
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -228,7 +228,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="tconst"
-              DTS:DTSID="{EC7E24CE-B732-4B3D-B51E-C85CD6D9F85E}"
+              DTS:DTSID="{79498C72-009B-41A0-9A8E-EC31F93154C2}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -237,7 +237,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="titleType"
-              DTS:DTSID="{28308FA4-9865-4690-AA82-2807B7DBE375}"
+              DTS:DTSID="{1DA1189F-6CC5-40B3-9C31-CB6F89BD14FE}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -246,7 +246,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="primaryTitle"
-              DTS:DTSID="{1F48855D-D759-4E29-ADFC-1FF22FC86D1B}"
+              DTS:DTSID="{6974CA6E-869E-4816-96E8-C272953E5C6B}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -255,7 +255,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="originalTitle"
-              DTS:DTSID="{47561740-5E31-4822-A041-9266A12CB16E}"
+              DTS:DTSID="{58719BFA-0E0C-4A96-9871-B76D80EA6EA1}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -263,7 +263,7 @@
               DTS:DataType="14"
               DTS:TextQualified="True"
               DTS:ObjectName="isAdult"
-              DTS:DTSID="{C3F75DA1-831F-4096-8259-6AAEF34DC4EB}"
+              DTS:DTSID="{294A9896-F9FE-4E61-974B-39894707F90B}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -271,7 +271,7 @@
               DTS:DataType="14"
               DTS:TextQualified="True"
               DTS:ObjectName="startYear"
-              DTS:DTSID="{BC99A8B6-1E89-4517-AAB8-1617A531DC95}"
+              DTS:DTSID="{550DB30C-69F1-48FD-A665-F74F11237A92}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -279,7 +279,7 @@
               DTS:DataType="14"
               DTS:TextQualified="True"
               DTS:ObjectName="endYear"
-              DTS:DTSID="{F7FED0A0-4312-4492-9367-67565450671B}"
+              DTS:DTSID="{AD5D7C09-6F38-45CA-BB92-28591348A6B1}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -288,7 +288,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="runtimeMinutes"
-              DTS:DTSID="{A26B78B2-356D-4656-BD6F-BB179A7E59A7}"
+              DTS:DTSID="{2ED2E32F-EEE8-4BD0-B426-39D6B136F446}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -297,7 +297,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="genres"
-              DTS:DTSID="{951B352B-0D32-4C77-917F-371EA7D09715}"
+              DTS:DTSID="{4D0F6104-9C46-4F44-A468-C693219AF7CB}"
               DTS:CreationName="" />
           </DTS:FlatFileColumns>
         </DTS:ConnectionManager>
@@ -318,7 +318,7 @@
           DTS:RowDelimiter=""
           DTS:TextQualifier="_x003C_none_x003E_"
           DTS:CodePage="65001"
-          DTS:ConnectionString="P:\BME\UzInt\csv\result.csv">
+          DTS:ConnectionString="P:\BME\UzInt\csv_imdb\result.csv">
           <DTS:FlatFileColumns>
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -327,7 +327,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="id"
-              DTS:DTSID="{C8360056-0218-4902-9BBB-37D6A48C83AF}"
+              DTS:DTSID="{795B31B5-1164-4B4D-A875-E08D427A8C6C}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -336,7 +336,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="title"
-              DTS:DTSID="{D7A95696-BED7-4C34-A8C8-C8D95CE233AC}"
+              DTS:DTSID="{A07AF18E-20C0-492D-A43D-8E82F1B0D42B}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -344,7 +344,7 @@
               DTS:DataType="14"
               DTS:TextQualified="True"
               DTS:ObjectName="year"
-              DTS:DTSID="{A3FFB705-F8A1-4AB6-9F3F-631DAD9138DE}"
+              DTS:DTSID="{400A8D48-233A-4D0B-A67B-00E576A0CAA4}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -352,7 +352,7 @@
               DTS:DataType="5"
               DTS:TextQualified="True"
               DTS:ObjectName="rating"
-              DTS:DTSID="{E6C92227-8C37-49D0-ABE1-CA2BD1CF1A84}"
+              DTS:DTSID="{53063789-E3C8-4193-AD54-6DC9271CF757}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -361,70 +361,52 @@
               DTS:DataPrecision="18"
               DTS:TextQualified="True"
               DTS:ObjectName="number_of_votes"
-              DTS:DTSID="{2220CA6B-7B1E-4246-A422-216E706EE387}"
+              DTS:DTSID="{580B834B-CBD1-418F-A378-ECF3571593DE}"
               DTS:CreationName="" />
           </DTS:FlatFileColumns>
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[IMDB ratings]"
+      DTS:refId="Package.ConnectionManagers[IMDb ratings]"
       DTS:CreationName="FLATFILE"
-      DTS:DTSID="{469A5962-716E-431A-85D4-AB9A14A79406}"
-      DTS:ObjectName="IMDB ratings">
+      DTS:DTSID="{5B2135D0-FCD9-4E1D-8D65-7D457EDE357A}"
+      DTS:ObjectName="IMDb ratings">
       <DTS:ObjectData>
         <DTS:ConnectionManager
           DTS:Format="Delimited"
           DTS:LocaleID="2057"
-          DTS:Unicode="True"
           DTS:HeaderRowDelimiter="_x000A_"
           DTS:ColumnNamesInFirstDataRow="True"
           DTS:RowDelimiter=""
           DTS:TextQualifier="_x003C_none_x003E_"
-          DTS:CodePage="1252"
-          DTS:ConnectionString="P:\BME\UzInt\csv\result.csv">
+          DTS:CodePage="65001"
+          DTS:ConnectionString="P:\BME\UzInt\csv_imdb\title.ratings.tsv.csv">
           <DTS:FlatFileColumns>
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
               DTS:ColumnDelimiter="_x0009_"
-              DTS:MaximumWidth="50"
-              DTS:DataType="130"
+              DTS:MaximumWidth="15"
+              DTS:DataType="129"
               DTS:TextQualified="True"
-              DTS:ObjectName="id"
-              DTS:DTSID="{28E32CEF-DC1F-40F5-834E-8C36B7B5A4C9}"
-              DTS:CreationName="" />
-            <DTS:FlatFileColumn
-              DTS:ColumnType="Delimited"
-              DTS:ColumnDelimiter="_x0009_"
-              DTS:MaximumWidth="150"
-              DTS:DataType="130"
-              DTS:TextQualified="True"
-              DTS:ObjectName="title"
-              DTS:DTSID="{6614CA94-DA6E-429A-8D25-21B4A3F07258}"
-              DTS:CreationName="" />
-            <DTS:FlatFileColumn
-              DTS:ColumnType="Delimited"
-              DTS:ColumnDelimiter="_x0009_"
-              DTS:DataType="14"
-              DTS:TextQualified="True"
-              DTS:ObjectName="year"
-              DTS:DTSID="{8D694BD7-B539-4EF4-828A-6BF46CF70FD2}"
+              DTS:ObjectName="tconst"
+              DTS:DTSID="{F56C242D-4752-4F5F-8A70-11CBE73AA1F4}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
               DTS:ColumnDelimiter="_x0009_"
               DTS:DataType="4"
               DTS:TextQualified="True"
-              DTS:ObjectName="rating"
-              DTS:DTSID="{4CB9AE47-6536-4657-97B9-6D47CC0DD0CD}"
+              DTS:ObjectName="averageRating"
+              DTS:DTSID="{74441EB8-34A6-4CFC-BDA5-1D0375E6E61D}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
               DTS:ColumnDelimiter="_x000A_"
               DTS:DataType="14"
               DTS:TextQualified="True"
-              DTS:ObjectName="number_of_votes"
-              DTS:DTSID="{16991D20-B678-4E4B-9315-B5401DCE0518}"
+              DTS:ObjectName="numVotes"
+              DTS:DTSID="{30A38F33-6982-48DC-AFCF-CF28DD19D591}"
               DTS:CreationName="" />
           </DTS:FlatFileColumns>
         </DTS:ConnectionManager>
@@ -638,51 +620,6 @@
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
-    <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[Ratings]"
-      DTS:CreationName="FLATFILE"
-      DTS:DTSID="{5B2135D0-FCD9-4E1D-8D65-7D457EDE357A}"
-      DTS:ObjectName="Ratings">
-      <DTS:ObjectData>
-        <DTS:ConnectionManager
-          DTS:Format="Delimited"
-          DTS:LocaleID="2057"
-          DTS:HeaderRowDelimiter="_x000A_"
-          DTS:ColumnNamesInFirstDataRow="True"
-          DTS:RowDelimiter=""
-          DTS:TextQualifier="_x003C_none_x003E_"
-          DTS:CodePage="65001"
-          DTS:ConnectionString="P:\BME\UzInt\csv\title.ratings.tsv.csv">
-          <DTS:FlatFileColumns>
-            <DTS:FlatFileColumn
-              DTS:ColumnType="Delimited"
-              DTS:ColumnDelimiter="_x0009_"
-              DTS:MaximumWidth="15"
-              DTS:DataType="129"
-              DTS:TextQualified="True"
-              DTS:ObjectName="tconst"
-              DTS:DTSID="{A18649EE-4CAC-40DD-A680-F56F08B67AC1}"
-              DTS:CreationName="" />
-            <DTS:FlatFileColumn
-              DTS:ColumnType="Delimited"
-              DTS:ColumnDelimiter="_x0009_"
-              DTS:DataType="4"
-              DTS:TextQualified="True"
-              DTS:ObjectName="averageRating"
-              DTS:DTSID="{310C52C1-42BD-4F86-84E3-9057C52AF520}"
-              DTS:CreationName="" />
-            <DTS:FlatFileColumn
-              DTS:ColumnType="Delimited"
-              DTS:ColumnDelimiter="_x000A_"
-              DTS:DataType="14"
-              DTS:TextQualified="True"
-              DTS:ObjectName="numVotes"
-              DTS:DTSID="{DCE3EA5F-8907-459F-939A-55BD077FE643}"
-              DTS:CreationName="" />
-          </DTS:FlatFileColumns>
-        </DTS:ConnectionManager>
-      </DTS:ObjectData>
-    </DTS:ConnectionManager>
   </DTS:ConnectionManagers>
   <DTS:Variables />
   <DTS:Executables>
@@ -828,12 +765,12 @@
                   description="Specifies the SQL statement used by the component to extract data."
                   expressionType="Notify"
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select s.year, COUNT(r.rating) as KPI
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select Year(t.date_added) as year, COUNT(r.rating) as KPI
 from NetflixRatings r
 inner join NetflixTitles t on t.show_id = r.show_id
-inner join NetflixStats s on s.year = t.release_year
 where r.rating &gt; 7.0
-group by s.year</property>
+group by Year(t.date_added)
+order by Year(t.date_added)</property>
                 <property
                   dataType="System.Int32"
                   description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
@@ -2360,7 +2297,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
       DTS:LocaleID="-1"
       DTS:ObjectName="Data change showcase"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="0">
+      DTS:ThreadHint="1">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -2372,7 +2309,6 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
       DTS:refId="Package\IMDb data parse"
       DTS:CreationName="STOCK:SEQUENCE"
       DTS:Description="Sequence Container"
-      DTS:Disabled="True"
       DTS:DTSID="{E1D19A92-3A01-414D-B867-396D83496B56}"
       DTS:ExecutableType="STOCK:SEQUENCE"
       DTS:LocaleID="-1"
@@ -3423,8 +3359,8 @@ inner join imdbtitles t on t.tconst = r.tconst;</property>
                   <connections>
                     <connection
                       refId="Package\IMDb data parse\Load into staging\Flat File Source 1.Connections[FlatFileConnection]"
-                      connectionManagerID="Package.ConnectionManagers[Ratings]"
-                      connectionManagerRefId="Package.ConnectionManagers[Ratings]"
+                      connectionManagerID="Package.ConnectionManagers[IMDb ratings]"
+                      connectionManagerRefId="Package.ConnectionManagers[IMDb ratings]"
                       name="FlatFileConnection" />
                   </connections>
                   <outputs>
@@ -6625,8 +6561,8 @@ where r.title is null</property>
               <connections>
                 <connection
                   refId="Package\Load IMDb and Hulu into Staging\IMDb ratings parse csv.Connections[FlatFileConnection]"
-                  connectionManagerID="Package.ConnectionManagers[IMDB ratings]"
-                  connectionManagerRefId="Package.ConnectionManagers[IMDB ratings]"
+                  connectionManagerID="Package.ConnectionManagers[IMDb processed csv]"
+                  connectionManagerRefId="Package.ConnectionManagers[IMDb processed csv]"
                   name="FlatFileConnection" />
               </connections>
               <outputs>
@@ -6742,21 +6678,22 @@ where r.title is null</property>
                     <externalMetadataColumn
                       refId="Package\Load IMDb and Hulu into Staging\IMDb ratings parse csv.Outputs[Flat File Source Output].ExternalColumns[id]"
                       dataType="wstr"
-                      length="50"
+                      length="15"
                       name="id" />
                     <externalMetadataColumn
                       refId="Package\Load IMDb and Hulu into Staging\IMDb ratings parse csv.Outputs[Flat File Source Output].ExternalColumns[title]"
                       dataType="wstr"
-                      length="150"
+                      length="2000"
                       name="title" />
                     <externalMetadataColumn
                       refId="Package\Load IMDb and Hulu into Staging\IMDb ratings parse csv.Outputs[Flat File Source Output].ExternalColumns[rating]"
-                      dataType="r4"
+                      dataType="r8"
                       name="rating" />
                     <externalMetadataColumn
                       refId="Package\Load IMDb and Hulu into Staging\IMDb ratings parse csv.Outputs[Flat File Source Output].ExternalColumns[number_of_votes]"
-                      dataType="decimal"
-                      name="number_of_votes" />
+                      dataType="numeric"
+                      name="number_of_votes"
+                      precision="18" />
                     <externalMetadataColumn
                       refId="Package\Load IMDb and Hulu into Staging\IMDb ratings parse csv.Outputs[Flat File Source Output].ExternalColumns[year]"
                       dataType="decimal"
@@ -10683,14 +10620,6 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
       DTS:ObjectName="Constraint 5"
       DTS:To="Package\Calculate KPI" />
     <DTS:PrecedenceConstraint
-      DTS:refId="Package.PrecedenceConstraints[Constraint 6]"
-      DTS:CreationName=""
-      DTS:DTSID="{C6F9DF01-DECE-4E0E-BE77-4DC83E51EE7D}"
-      DTS:From="Package\Calculate KPI"
-      DTS:LogicalAnd="True"
-      DTS:ObjectName="Constraint 6"
-      DTS:To="Package\Data change showcase" />
-    <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 7]"
       DTS:CreationName=""
       DTS:DTSID="{CE077FB6-A932-438F-B397-FE7382A0904E}"
@@ -10734,7 +10663,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
         <NodeLayout
           Size="186.4,41.6"
           Id="Package\Data change showcase"
-          TopLeft="954.666614806489,247.299998318553" />
+          TopLeft="40.4999980876844,632.966662303342" />
         <NodeLayout
           Size="212.8,41.6"
           Id="Package\Load Google Trends into DW"
@@ -10930,28 +10859,6 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 6]"
-          TopLeft="910.766624641254,265.783331648873">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="43.8999901652345,0"
-              Start="0,0"
-              End="36.3999901652345,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="36.3999901652345,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 7]"
           TopLeft="115.08888594453,177.281480248688">
           <EdgeLayout.Curve>
@@ -11131,7 +11038,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
     design-time-name="Package\Calculate KPI">
     <LayoutInfo>
       <GraphLayout
-        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="97.6,41.6"
           Id="Package\Calculate KPI\Sort"
@@ -11170,34 +11077,32 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-55.1333320369325,32.3999988973142"
+              EndConnector="-55.1333320369325,32.399998897314"
               Start="0,0"
-              End="-55.1333320369325,24.8999988973142">
+              End="-55.1333320369325,24.899998897314">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,15.2029261757252" />
+                    End="0,15.2029261757251" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,15.2029261757252"
-                    Point2="0,19.2029261757252"
-                    Point3="-4,19.2029261757252" />
+                    Point1="0,15.2029261757251"
+                    Point2="0,19.2029261757251"
+                    Point3="-4,19.2029261757251" />
                   <mssgle:LineSegment
-                    End="-51.1333320369325,19.2029261757252" />
+                    End="-51.1333320369325,19.2029261757251" />
                   <mssgle:CubicBezierSegment
-                    Point1="-51.1333320369325,19.2029261757252"
-                    Point2="-55.1333320369325,19.2029261757252"
-                    Point3="-55.1333320369325,23.2029261757252" />
+                    Point1="-51.1333320369325,19.2029261757251"
+                    Point2="-55.1333320369325,19.2029261757251"
+                    Point3="-55.1333320369325,23.2029261757251" />
                   <mssgle:LineSegment
-                    End="-55.1333320369325,24.8999988973142" />
+                    End="-55.1333320369325,24.899998897314" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -11206,34 +11111,32 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="117.999998480082,80.3999981820584"
+              EndConnector="97.7333318134153,80.399998182059"
               Start="0,0"
-              End="117.999998480082,72.8999981820584">
+              End="97.7333318134153,72.899998182059">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,36.1999990910292" />
+                    End="0,43.6517062396106" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,36.1999990910292"
-                    Point2="0,40.1999990910292"
-                    Point3="4,40.1999990910292" />
+                    Point1="0,43.6517062396106"
+                    Point2="0,47.6517062396106"
+                    Point3="4,47.6517062396106" />
                   <mssgle:LineSegment
-                    End="113.999998480082,40.1999990910292" />
+                    End="93.7333318134153,47.6517062396106" />
                   <mssgle:CubicBezierSegment
-                    Point1="113.999998480082,40.1999990910292"
-                    Point2="117.999998480082,40.1999990910292"
-                    Point3="117.999998480082,44.1999990910292" />
+                    Point1="93.7333318134153,47.6517062396106"
+                    Point2="97.7333318134153,47.6517062396106"
+                    Point3="97.7333318134153,51.6517062396106" />
                   <mssgle:LineSegment
-                    End="117.999998480082,72.8999981820584" />
+                    End="97.7333318134153,72.899998182059" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -11267,9 +11170,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -11303,9 +11204,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -11339,9 +11238,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -11350,34 +11247,32 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="115.599998450279,28.3999989569187"
+              EndConnector="115.599998450279,28.3999989569189"
               Start="0,0"
-              End="115.599998450279,20.8999989569187">
+              End="115.599998450279,20.8999989569189">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,10.1999994784593" />
+                    End="0,10.1999994784595" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,10.1999994784593"
-                    Point2="0,14.1999994784593"
-                    Point3="4,14.1999994784593" />
+                    Point1="0,10.1999994784595"
+                    Point2="0,14.1999994784595"
+                    Point3="4,14.1999994784595" />
                   <mssgle:LineSegment
-                    End="111.599998450279,14.1999994784593" />
+                    End="111.599998450279,14.1999994784595" />
                   <mssgle:CubicBezierSegment
-                    Point1="111.599998450279,14.1999994784593"
-                    Point2="115.599998450279,14.1999994784593"
-                    Point3="115.599998450279,18.1999994784593" />
+                    Point1="111.599998450279,14.1999994784595"
+                    Point2="115.599998450279,14.1999994784595"
+                    Point3="115.599998450279,18.1999994784595" />
                   <mssgle:LineSegment
-                    End="115.599998450279,20.8999989569187" />
+                    End="115.599998450279,20.8999989569189" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -11399,9 +11294,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -11423,9 +11316,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -11451,7 +11342,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
     design-time-name="Package\Load Google Trends into DW">
     <LayoutInfo>
       <GraphLayout
-        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="211.2,41.6"
           Id="Package\Load Google Trends into DW\Prepare for date aggregation"
@@ -11511,9 +11402,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -11547,9 +11436,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -11571,9 +11458,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -11607,9 +11492,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -11643,9 +11526,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -11679,9 +11560,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -11827,7 +11706,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
     design-time-name="Package\Load IMDb and Hulu into Staging">
     <LayoutInfo>
       <GraphLayout
-        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="168,41.6"
           Id="Package\Load IMDb and Hulu into Staging\Insert Staging imdb"
@@ -11891,9 +11770,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -11915,9 +11792,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -11939,9 +11814,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -11975,9 +11848,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -12011,9 +11882,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -12159,9 +12028,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -12195,9 +12062,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -12231,9 +12096,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -12267,9 +12130,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -12291,9 +12152,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -12327,9 +12186,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -12351,9 +12208,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -12375,9 +12230,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -12411,9 +12264,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -12447,9 +12298,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
